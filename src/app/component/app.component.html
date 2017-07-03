@@ -1,0 +1,9 @@
+<div style="position: relative">
+  <!--头部-->
+  <app-header ></app-header>
+  <alert></alert>
+  <!--主体-->
+  <router-outlet></router-outlet>
+  <!--尾部-->
+  <app-footer *ngIf="isShowHeaderAndFooter()"></app-footer>
+</div>

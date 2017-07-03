@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-6 column">
+      <h3>
+        {{Title}}
+        <small>{{LittleTitle}}</small>
+      </h3>
+      <ul class="breadcrumb">
+        <li>
+          <a  routerLink="/index" routerLinkActive="active">Home</a>
+        </li>
+        <li class="active">
+          Data
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6 column">
+      <ul class="breadcrumb">
+        <li *ngIf="!isLogin()">
+          <a routerLink="login" routerLinkActive="active">登录</a>
+        </li>
+        <li *ngIf="!isLogin()">
+          <a routerLink="register" routerLinkActive="active">注册</a>
+        </li>
+        <li >
+          <a routerLink="admin/index" routerLinkActive="active"  >后台</a>
+        </li>
+        <li *ngIf="isLogin()" >
+          <a routerLink="/"  (click)="logout()"  routerLinkActive="active"  >
+          退出登录  </a>
+        </li>
+        <li class="active">
+           {{MoreFunction}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

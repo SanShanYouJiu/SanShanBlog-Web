@@ -1,0 +1,23 @@
+<div class="container" *ngIf="blog">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="row clearfix">
+        <div class="col-md-2 column">
+        </div>
+        <div class="col-md-9 column">
+          <h3>
+            {{blog.title}}
+
+            <em>类型为:{{blog.type}}</em>
+          </h3>
+          <div *ngIf="markdownblog!=null"  [innerHtml]="markdownblog.content">
+          </div>
+          <div *ngIf="uEditorBlog!=null"  [innerHtml]="uEditorBlog.content">
+          </div>
+        </div>
+        <div class="col-md-2 column">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

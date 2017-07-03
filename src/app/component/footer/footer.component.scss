@@ -1,0 +1,59 @@
+footer {
+  padding: 10px 0;
+  color: black;
+  width: 100%;
+}
+
+a {
+  font-size: 1.8rem;
+  color: black;
+}
+a:hover{
+  text-decoration: none;
+  color: green;
+}
+
+.fa {
+  opacity: .6;
+  line-height: 100%;
+  margin-top: 10px;
+}
+
+.fa:hover {
+  opacity: 1;
+}
+
+.tooltip-inner {
+  padding: 0;
+}
+
+.footer-socials {
+  float: right;
+  margin-right: 200px;
+}
+
+.footer-socials span {
+  padding: 5px 5px;
+}
+.footer-qrcode{
+  margin-top: -15px;
+}
+.backtop {
+  margin-top: -15px;
+}
+
+.qrcode{
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  bottom: 10px;
+  left: -70px;
+  margin-left: -10px;
+}
+.iconfont:hover{
+  opacity: 1;
+}
+.iconfont{
+  opacity: .6;
+}
+

@@ -1,0 +1,36 @@
+<h2 align="center">Markdown编辑器  </h2>
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4>
+          注意!
+        </h4> <strong>Warning!</strong> 必须要刷新一下才能使用MarkDown编辑器功能
+      </div>
+    </div>
+  </div>
+</div>
+<form>
+  <div class="center-block" style="width:70%;background-color:#ccc;">
+  <input name="title" type="text" placeholder="Title?" #markdown_title />
+  <input name="title" type="text" placeholder="tag?" #markdown_tag />
+  <textarea #markdown_blog_content  name="content" data-provide="markdown" rows="10"></textarea>
+  </div>
+  <label class="checkbox" align="center">
+    <input name="publish" type="checkbox" align="center"> Publish
+  </label>
+  <hr/>
+  <div class="container">
+    <div class="row clearfix">
+      <div class="col-md-4 column">
+      </div>
+      <div class="col-md-4 column">
+        <button type="button" (click)="insert_blog()" class="btn btn-info btn-block btn-lg" type="submit">提交</button>
+      </div>
+      <div class="col-md-4 column">
+      </div>
+    </div>
+  </div>
+</form>
+

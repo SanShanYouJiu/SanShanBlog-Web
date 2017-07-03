@@ -1,0 +1,226 @@
+<div class="container">
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <div class="row clearfix">
+        <div class="col-md-6 column">
+          <table class="table table-hover" >
+            <thead>
+            <tr>
+              <th>
+                ID
+              </th>
+              <th>
+                标题
+              </th>
+              <th>
+                时间
+              </th>
+              <th>
+                状态
+              </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="info" *ngFor="let blog of blogs">
+            <td>{{blog.id}}</td>
+            <td>{{blog.title}}</td>
+            <td>{{blog.time}}</td>
+            <td>{{blog.type}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <dl>
+          <dt>
+            Description lists
+          </dt>
+          <dd>
+            A description list is perfect for defining terms.
+          </dd>
+          <dt>
+            Euismod
+          </dt>
+          <dd>
+            Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
+          </dd>
+          <dd>
+            Donec id elit non mi porta gravida at eget metus.
+          </dd>
+          <dt>
+            Malesuada porta
+          </dt>
+          <dd>
+            Etiam porta sem malesuada magna mollis euismod.
+          </dd>
+          <dt>
+            Felis euismod semper eget lacinia
+          </dt>
+          <dd>
+            Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet
+            risus.
+          </dd>
+        </dl>
+        </div>
+        <div class="col-md-6 column">
+          <div class="row clearfix">
+            <div class="col-md-6 column">
+              <ol>
+                <li>
+                  <a href="#">用户排名</a>
+                </li>
+                <li>
+                  <a href="#"> Consectetur adipiscing elit</a>
+                </li>
+                <li>
+                  <a href="#"> Consectetur adipiscing elit</a>
+                </li>
+                <li>
+                  <a href="#"> Consectetur adipiscing elit</a>
+                </li>
+                <li>
+                  <a href="#"> Consectetur adipiscing elit</a>
+                </li>
+                <li>
+                  <a href="#"> Consectetur adipiscing elit</a>
+                </li>
+                <li>
+                  <a href="#"> Consectetur adipiscing elit</a>
+                </li>
+                <li>
+                  <a href="#"> Consectetur adipiscing elit</a>
+                </li>
+              </ol>
+            </div>
+            <div class="col-md-6 column">
+              <ul class="nav nav-pills">
+                <li class="active">
+                  <a  routerLinkActive="active" routerLink="/index"> <span class="badge pull-right">42</span> 总赞数</a>
+                </li>
+                <li>
+                  <a href="#"> <span class="badge pull-right">16</span> 总踩数</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <a id="modal-844604" href="#modal-container-844604" role="button" class="btn" data-toggle="modal">触发遮罩窗体</a>
+
+          <div class="modal fade" id="modal-container-844604" role="dialog" aria-labelledby="myModalLabel"
+               aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h4 class="modal-title" id="myModalLabel">
+                    标题
+                  </h4>
+                </div>
+                <div class="modal-body">
+                  内容...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                  <button type="button" class="btn btn-primary">保存</button>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="row clearfix">
+            <div class="col-md-8 column">
+              <div class="panel-group" id="panel-648583">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <a class="panel-title" data-toggle="collapse" data-parent="#panel-648583"
+                       href="#panel-element-153247">关于Markdown格式的博客纵览</a>
+                  </div>
+                  <div id="panel-element-153247" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                      <table class="table table-hover" >
+                        <thead>
+                        <tr>
+                          <th>
+                            ID
+                          </th>
+                          <th>
+                            标题
+                          </th>
+                          <th>
+                            时间
+                          </th>
+                          <th>
+                            标签
+                          </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="info" *ngFor="let blog of markdownblogs">
+                          <td>{{blog.id}}</td>
+                          <td>{{blog.title}}</td>
+                          <td>{{blog.time}}</td>
+                          <td>{{blog.tag}}</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <a class="panel-title" data-toggle="collapse" data-parent="#panel-648583"
+                       href="#panel-element-106489">关于富文本格式的博客纵览</a>
+                  </div>
+                  <div id="panel-element-106489" class="panel-collapse collapse">
+                    <div class="panel-body">
+                      <table class="table table-hover" >
+                        <thead>
+                        <tr>
+                          <th>
+                            ID
+                          </th>
+                          <th>
+                            标题
+                          </th>
+                          <th>
+                            时间
+                          </th>
+                          <th>
+                            标签
+                          </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="info" *ngFor="let blog of ueditorblogs">
+                          <td>{{blog.id}}</td>
+                          <td>{{blog.title}}</td>
+                          <td>{{blog.time}}</td>
+                          <td>{{blog.tag}}</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 column">
+              <div class="btn-group btn-group-lg">
+                <a routerLink="/admin/editor"
+                   routerLinkActive="active">  <button class="btn btn-default" type="button">  <em
+                  class="glyphicon glyphicon-th-list"></em> 编辑器
+                </button></a>
+                <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-center"
+                > </em> 删除博客
+                </button>
+                <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-right"></em> 更新博客
+                </button>
+                <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-justify"></em> 新增博客
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
