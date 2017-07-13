@@ -1,13 +1,11 @@
 import {NgModule} from '@angular/core';
 import {EditorComponent} from "./Editor/editor.component";
 import {UEditorEditorComponent} from "./Editor/ueditor.component";
-import {MarkDownEditorComponent} from "./Editor/markdown-editor.component";
 import {CommonModule} from "@angular/common";
 import {AdminIndexComponent} from "./index/admin-index.component";
 import {childRouter} from "./admin.router.module";
 import {RouterModule} from "@angular/router";
 import {AdminComponent} from "./admin.component";
-import {HighlightDirective} from "../../directive/highlight.directive";
 import {HttpModule} from "@angular/http";
 import {UEditorModule} from "ngx-ueditor";
 import {FormsModule} from "@angular/forms";
@@ -32,7 +30,6 @@ import {FormsModule} from "@angular/forms";
     AdminComponent,
     AdminIndexComponent,
     EditorComponent,
-    HighlightDirective,
     UEditorEditorComponent,
   ],
 })

@@ -47,10 +47,10 @@ export class UEditorEditorComponent implements OnInit{
   update_blog(ueditorblog:UEditorBlog){
     this.uEditorService.update_by_id(ueditorblog)
       .then(response=>{
-        if(response.msg=="SUCCESS")
+        if(response.status==0)
           this.alterService.success("成功");
         else
-          this.alterService.error("博客写入失败");
+          this.alterService.error(response.msg);
       })
   }
 

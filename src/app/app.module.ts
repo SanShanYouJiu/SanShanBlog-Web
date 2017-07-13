@@ -8,7 +8,7 @@ import {BsDropdownModule, ModalModule} from 'ng2-bootstrap';
 import {Ng2PaginationModule} from "ng2-pagination";
 import {TooltipModule } from 'ng2-bootstrap';
 import {ToastModule} from "ng2-toastr/ng2-toastr";
-
+import { FileUploadModule } from 'ng2-file-upload';
 
 import {LoginComponent} from "./component/home/login/login.component";
 import {RegisterComponent} from "./component/home/register/register.component";
@@ -30,7 +30,12 @@ import {AlertService} from "./service/alert.service";
 import {AlertComponent} from "./directive/alert.component";
 import {AuthGuard2} from "./service/guard/auth.guard2";
 import {BlogDetailComponent} from "./component/home/blog/blog.detail.component";
-import {IndexService} from "./service/index.server";
+import {IndexService} from "./service/index.service";
+import {BlogTagComponent} from "./component/home/index/tag/blog-tag.component";
+import {BlogTitleComponent} from "./component/home/index/title/blog-title.component";
+import {BlogDateComponent} from "./component/home/index/date/blog-date.component";
+import {UploadDemoComponent} from "./component/admin/upload/upload.component";
+
 
 @NgModule({
   declarations: [
@@ -41,13 +46,18 @@ import {IndexService} from "./service/index.server";
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
+    BlogTagComponent,
+    BlogTitleComponent,
+    BlogDateComponent,
     FooterComponent,
     ErrorComponent,
     AlertComponent,
+    UploadDemoComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    FileUploadModule,
     RouterModule.forRoot(appRoutes),
     HttpModule,
     BsDropdownModule.forRoot(),

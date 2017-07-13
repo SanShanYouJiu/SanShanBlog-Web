@@ -7,6 +7,9 @@ import {MarkDownEditorComponent} from "./component/admin/Editor/markdown-editor.
 import {AuthGuard} from "./service/guard/auth.guard";
 import {AuthGuard2} from "./service/guard/auth.guard2";
 import {BlogDetailComponent} from "./component/home/blog/blog.detail.component";
+import {BlogDateComponent} from "./component/home/index/date/blog-date.component";
+import {BlogTitleComponent} from "./component/home/index/title/blog-title.component";
+import {UploadDemoComponent} from "./component/admin/upload/upload.component";
 
 export const appRoutes: Routes = [
   {
@@ -17,6 +20,18 @@ export const appRoutes: Routes = [
   {
     path: 'index',
     component: IndexComponent
+  },
+  {
+    path:'blog-date',
+    component:BlogDateComponent
+  },
+  {
+    path:'blog-tag',
+    component:BlogDateComponent
+  },
+  {
+    path:'blog-title',
+    component:BlogTitleComponent
   },
   {
     path:'blog-detail/:id',
@@ -31,6 +46,10 @@ export const appRoutes: Routes = [
     path: 'register',
     component: RegisterComponent,
     canActivate:[AuthGuard2]
+  },
+  {
+    path: 'upload',
+    component: UploadDemoComponent
   },
   {
     path: 'error',

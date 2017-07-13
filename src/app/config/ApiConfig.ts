@@ -11,12 +11,13 @@ export class  Config{
    * 首页发送建议 大文件方式
    * @type {string}
    */
-  static index_advice_upload:string=Config.baseUrl+"/index/advice/upload";
+  static index_advice_upload:string=Config.baseUrl+"/index/advice/file";
 
   static login:string=Config.baseUrl+"/auth/login";
 
   static register:string=Config.baseUrl+"/auth/register";
 
+  //刷新有效期
   static refresh_token:string=Config.baseUrl+"/auth/refresh";
 
   static change_password:string=Config.baseUrl+"/user/change-pwd";

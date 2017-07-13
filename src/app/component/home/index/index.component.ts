@@ -2,12 +2,22 @@ import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import {BlogService} from "../../../service/index";
 import {Blog} from "../../../pojo/blog";
 import {Router} from "@angular/router";
-import {IndexService} from "../../../service/index.server";
+import {IndexService} from "../../../service/index.service";
+import {isCombinedNodeFlagSet} from "tslint";
+import {AlertService} from "../../../service/alert.service";
+import {LogService} from "../../../service/Log.service";
+import {FileUploader} from 'ng2-file-upload';
+import {Config} from "../../../config/ApiConfig";
+
+const  URL=Config.index_advice_upload+'2';
 
 @Component({
   selector: 'index',
   templateUrl: 'index.component.html'
 })
+
+
+
 export class IndexComponent implements OnInit {
   private blogs: Blog[];
 
@@ -20,26 +30,92 @@ export class IndexComponent implements OnInit {
   @ViewChild('file')
   file:ElementRef;
 
+  filechange:number;
+
+
+  public uploader:FileUploader = new FileUploader({url: URL});
+  public hasBaseDropZoneOver:boolean = false;
+  public hasAnotherDropZoneOver:boolean = false;
+
+  public fileOverBase(e:any):void {
+    this.hasBaseDropZoneOver = e;
+  }
+
+  public fileOverAnother(e:any):void {
+    this.hasAnotherDropZoneOver = e;
+  }
+
+
   ngOnInit() {
     this.getBlogs();
+
   }
 
   constructor(
     private router:Router,
     private  blogService: BlogService,
-    private indexservice:IndexService) {
-
+    private indexService:IndexService,
+    private alertService: AlertService) {
+    this.filechange=0;
   }
+
 
   getBlogs(): void {
     this.blogService.getBlogs()
       .then(response => this.blogs = response.data);
   }
 
-   feedback(){
-      this.indexservice.feedBack(this.email.nativeElement.value,this.opinion.nativeElement.value);
-      if(this.file.nativeElement.value!=null){
-        console.log("上传文件 还没写");
-      }
-   }
+  changeFileFlag(){
+    this.filechange=1;
+  }
+
+
+  //TODO 修复这个功能
+
+  feedback(){
+    let emailValue=this.email.nativeElement.value;
+    let opinionValue=this.opinion.nativeElement.value;
+
+    if(emailValue!=""&&this.filechange!=0){
+      this.indexService.feedbackIncludeFile(emailValue,opinionValue,"空")
+        .subscribe(
+          data=>{
+            if(data.status==0){
+              this.alertService.success('反馈成功',true);
+              return;
+            }else {
+              LogService.errorMsg("反馈文件出错:"+data.msg);
+              this.alertService.error(data.msg);
+              return;
+            }
+          },
+          error=>{
+            LogService.error("反馈文件出错",error);
+            this.alertService.error(error.data);
+            return;
+          }
+        )
+    }else if(emailValue!="") {
+      this.indexService.feedBack(emailValue,opinionValue)
+        .subscribe(
+          data => {
+            if (data.status == 0) {
+              this.alertService.success('反馈成功', true);
+              return;
+            } else {
+              LogService.errorMsg("反馈出错:"+data.msg);
+              this.alertService.error(data.msg);
+              return;
+            }
+          },
+          error => {
+            LogService.error("反馈出错",error);
+            this.alertService.error(error.data);
+            return;
+          }
+        );
+    }else {
+      this.alertService.error("email不能为空");
+    }
+  }
 }

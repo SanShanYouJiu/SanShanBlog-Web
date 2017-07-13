@@ -8,7 +8,7 @@ import {AlertService} from "../../../service/alert.service";
     templateUrl: 'login.component.html'
 })
 export class LoginComponent implements OnInit {
-  model: any = {};
+  private model: any = {};
   loading = false;
   error = '';
   returnUrl: string;

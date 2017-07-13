@@ -6,13 +6,18 @@
           <div class="col-md-12 column">
             <div class="btn-group btn-group-vertical btn-group-lg">
               <button class="btn btn-default" type="button">
-                <em class="glyphicon glyphicon-th-list"></em> 归档
+                <a routerLinkActive="active" routerLink="/blog-date">
+                  <em class="glyphicon glyphicon-th-list"></em> 归档</a>
               </button>
               <button class="btn btn-default" type="button">
-                <em class="glyphicon glyphicon-th-list"></em> 分类
+                <a routerLinkActive="active" routerLink="/blog-title">
+                  <em class="glyphicon glyphicon-th-list"></em> 分类
+                </a>
               </button>
               <button class="btn btn-default" type="button">
-                <em class="glyphicon glyphicon-th-list"></em> 标签
+                <a routerLinkActive="active" routerLink="/blog-tag">
+                  <em class="glyphicon glyphicon-th-list"></em> 标签
+                </a>
               </button>
               <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=wba2tu-59PXy8-D28oGwsO_irqw">
                 <button class="btn btn-default" type="button">
@@ -46,7 +51,7 @@
 
       <blockquote>
         <p>
-             这是一个人无聊弄出的博客
+          这是一个人无聊弄出的博客
         </p>
         <small>就是 <cite>有点不好看</cite></small>
       </blockquote>
@@ -57,32 +62,36 @@
           如果您有什么建议的话
         </h4> <strong>注意!</strong> 也在下方进行说明 <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=wba2tu-59PXy8-D28oGwsO_irqw" class="alert-link">当然也可以直接Email我</a>
       </div>
-        <div class="row clearfix">
-            <form role="form">
-              <div class="form-group">
-                <div class="row">
-                <div class="col-xs-12">
-                <label for="exampleInputEmail1">您的Email</label><input type="email" class="form-control" id="exampleInputEmail1"  #emailfeedback />
+      <div class="row clearfix">
+        <form class="form-horizontal"   enctype="multipart/form-data"  >
+          <div class="form-group">
+            <div class="row">
+              <div class="col-xs-12">
+                <label for="exampleInputEmail1">您的Email</label><input type="email" class="form-control" id="exampleInputEmail1"  #emailfeedback required placeholder="在此输入"/>
               </div>
-              </div>
-              </div>
-              <div class="form-group">
-                <div class="row">
-                <div class="col-xs-12">
-                <label for="exampleInputPassword1">您的意见</label><input type="password" class="form-control" id="exampleInputPassword1" #opinionfeedback/>
-              </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputFile">选择文件</label><input type="file" id="exampleInputFile" #file />
-                <p class="help-block">
-                  或者选择文件进行说明
-                </p>
-              </div>
-              <div class="checkbox">
-              </div> <button type="submit" class="btn btn-default" (click)="feedback()">Submit</button>
-            </form>
+            </div>
           </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-xs-12">
+                <label for="exampleInputPassword1">您的意见</label><input type="text" class="form-control" id="exampleInputPassword1" #opinionfeedback placeholder="在此输入"/>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="InputFile">选择文件</label> <input type="file"  id="InputFile" ng2FileSelect [uploader]="uploader" />
+            <p class="help-block">
+               您可以选择文件进行说明
+            </p>
+            <button type="button" class="btn btn-success btn-s"
+                    (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+              <span class="glyphicon glyphicon-upload"></span> Upload all
+            </button>
+          </div>
+          <div class="checkbox">
+          </div> <button type="submit" class="btn btn-default" (click)="feedback()">Submit</button>
+        </form>
       </div>
+    </div>
   </div>
 </div>
