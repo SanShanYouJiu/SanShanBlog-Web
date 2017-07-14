@@ -35,9 +35,9 @@ export class BlogDetailComponent implements OnInit  {
       .subscribe(response => {
         this.blog = response.data;
         if (this.blog.type === 1) {
-          var HyperDown = require('hyperdown');
+          let HyperDown = require('hyperdown');
           this.markdownblog = new MarkDownBlog();
-          var parser = new HyperDown, html = parser.makeHtml(this.blog.content);
+          let parser = new HyperDown, html = parser.makeHtml(this.blog.content);
           this.markdownblog.content=html;
         }
         else {

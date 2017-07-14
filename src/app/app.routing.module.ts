@@ -48,12 +48,14 @@ export const appRoutes: Routes = [
     canActivate:[AuthGuard2]
   },
   {
-    path: 'upload',
-    component: UploadDemoComponent
-  },
-  {
     path: 'error',
     component: ErrorComponent
+  },
+  //TODO 未知原因 不能lazy load
+  {
+    path: 'admin/upload',
+    component: UploadDemoComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'admin/editor/markdown-editor',

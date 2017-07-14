@@ -1,15 +1,29 @@
 import { Component } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
+import {AlertService} from "../../../service/alert.service";
+import {Config} from "../../../config/ApiConfig";
+import {RequestOptions, Headers} from "@angular/http";
 
-// const URL = '/api/';
-const URL = 'http://localhost/api/index/advice/file2';
+//TODO URL暂时放在这里
+const URL = Config.index_advice_upload;
 
 @Component({
-  selector: 'upload-demo',
+  selector: 'admin-upload',
   templateUrl: 'upload.component.html'
 })
 export class UploadDemoComponent {
-  public uploader:FileUploader = new FileUploader({url: URL});
+
+  constructor(alterService:AlertService,
+  ){
+  }
+  public uploader:FileUploader = new FileUploader({
+    url: URL,
+    method:"POST",
+    //作为JWT验证头部使用
+    authTokenHeader:'Authorization',
+    authToken:'Bearer ' + JSON.parse(localStorage.getItem('currentUser')).token
+  });
+
   public hasBaseDropZoneOver:boolean = false;
   public hasAnotherDropZoneOver:boolean = false;
 
