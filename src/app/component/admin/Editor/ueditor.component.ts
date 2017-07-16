@@ -24,7 +24,7 @@ export class UEditorEditorComponent implements OnInit{
   ) {
   }
 
-  @ViewChild('ueditor-tag')
+  @ViewChild('ueditor_tag')
   tag:ElementRef;
 
   @ViewChild('ueditor_title')

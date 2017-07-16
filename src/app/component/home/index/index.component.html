@@ -40,7 +40,7 @@
           <li *ngFor="let blog of blogs | paginate: { itemsPerPage: 8, currentPage: p }"
           >
             <h2>{{blog.title}}</h2>
-            <a routerLinkActive="active" [routerLink]="['/blog-detail',blog.id]">View Detail</a>
+            <a routerLinkActive="active" [routerLink]="['/blog-detail',blog.id]">查看更多</a>
             <!--<blog-detail [blog]="blog"></blog-detail>-->
           </li>
         </ul>

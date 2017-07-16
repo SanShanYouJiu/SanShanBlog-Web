@@ -62,7 +62,7 @@ export class IndexComponent implements OnInit {
 
 
   getBlogs(): void {
-    this.blogService.getBlogs()
+    this.blogService.getBlog_All()
       .then(response => this.blogs = response.data);
   }
 
@@ -80,7 +80,7 @@ export class IndexComponent implements OnInit {
     if (emailValue != "" && this.filechange != 0) {
       //用的是ng2-file-upload中自带的传递功能 在header中加入其它数据
       let header1 = new Headers("email", emailValue);
-      let header2 = new Headers("opinion", emailValue);
+      let header2 = new Headers("opinion", opinionValue);
       let list: Headers[] = [header1, header2];
       this.uploader.options.headers = list;
       this.uploader.uploadAll();

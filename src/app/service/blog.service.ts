@@ -10,7 +10,7 @@ export class BlogService {
   constructor(private http:Http) { }
 
 
-  getBlogs(): Promise<any> {
+  getBlog_All(): Promise<any> {
     return this.http.get(Config.query_blog_all)
       .toPromise()
       .then(response => response.json())
@@ -34,6 +34,32 @@ export class BlogService {
     return this.http.post(Config.delete_blog_by_id,urlParams)
       .toPromise()
       .then(response =>response.json())
+      .catch(LogService.handleError);
+  }
+
+
+  getBlog_Tag_All(): Promise<any> {
+    return this.http.get(Config.query_tag_all)
+      .toPromise()
+      .then(response => response.json())
+      .catch(LogService.handleError);
+  }
+
+  getBlog_by_tag(tag:string): Promise<any> {
+    let urlParams = new URLSearchParams();
+    urlParams.set("tag",tag);
+    return this.http.get(Config.query_by_tag,urlParams)
+      .toPromise()
+      .then(response => response.json())
+      .catch(LogService.handleError);
+  }
+
+  getBlog_Title_All(title:string): Promise<any> {
+    let urlParams = new URLSearchParams();
+    urlParams.set("title",title);
+    return this.http.get(Config.query_title_all,urlParams)
+      .toPromise()
+      .then(response => response.json())
       .catch(LogService.handleError);
   }
 

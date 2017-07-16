@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from "../../../service/authentication.service";
 import {Blog} from "../../../pojo/blog";
-import {BlogService} from "../../../service/blog.service";
-import {MarkDownService} from "../../../service/markdown-editor.service";
-import {UEditorService} from "../../../service/ueditor-editor.service";
-import {MarkDownBlog} from "../../../pojo/markdown-blog";
-import {UEditorBlog} from "../../../pojo/ueditor-blog";
+import {AdminIndexService} from "../../../service/admin.index.service";
+import {User} from "../../../pojo/user";
+import {UserInfo} from "../../../pojo/user-info";
 
 @Component({
   selector: 'admin-index',
@@ -13,22 +11,24 @@ import {UEditorBlog} from "../../../pojo/ueditor-blog";
 })
 export class AdminIndexComponent implements OnInit {
     blogs:Blog[];
-    markdownblogs:MarkDownBlog[];
-    ueditorblogs:UEditorBlog[];
+    markdownblogs:Blog[];
+    ueditorblogs:Blog[];
+    userinfo:UserInfo;
 
   constructor(private authenticationService: AuthenticationService,
-              private  blogService: BlogService,
-              private markdownservice:MarkDownService,
-              private ueditorservice:UEditorService) {
+              private adminIndexService:AdminIndexService) {
   }
 
   ngOnInit(){
-    this.blogService.getBlogs()
+    this.adminIndexService.getBlog_All()
       .then(response => this.blogs = response.data);
-    this.markdownservice.query_all().
+    this.adminIndexService.getMarkdown_All().
          then(response =>this.markdownblogs = response.data);
-    this.ueditorservice.query_all()
+    this.adminIndexService.getUEditor_All()
       .then(response => this.ueditorblogs = response.data);
+    this.adminIndexService.getUserInfo()
+      .then(response=>this.userinfo=response.data);
+
   }
 
 

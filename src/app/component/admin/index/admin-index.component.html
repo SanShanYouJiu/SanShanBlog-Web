@@ -29,66 +29,12 @@
               </tr>
             </tbody>
           </table>
-          <dl>
-          <dt>
-            Description lists
-          </dt>
-          <dd>
-            A description list is perfect for defining terms.
-          </dd>
-          <dt>
-            Euismod
-          </dt>
-          <dd>
-            Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
-          </dd>
-          <dd>
-            Donec id elit non mi porta gravida at eget metus.
-          </dd>
-          <dt>
-            Malesuada porta
-          </dt>
-          <dd>
-            Etiam porta sem malesuada magna mollis euismod.
-          </dd>
-          <dt>
-            Felis euismod semper eget lacinia
-          </dt>
-          <dd>
-            Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet
-            risus.
-          </dd>
-        </dl>
+
         </div>
         <div class="col-md-6 column">
           <div class="row clearfix">
             <div class="col-md-6 column">
-              <ol>
-                <li>
-                  <a href="#">用户排名</a>
-                </li>
-                <li>
-                  <a href="#"> Consectetur adipiscing elit</a>
-                </li>
-                <li>
-                  <a href="#"> Consectetur adipiscing elit</a>
-                </li>
-                <li>
-                  <a href="#"> Consectetur adipiscing elit</a>
-                </li>
-                <li>
-                  <a href="#"> Consectetur adipiscing elit</a>
-                </li>
-                <li>
-                  <a href="#"> Consectetur adipiscing elit</a>
-                </li>
-                <li>
-                  <a href="#"> Consectetur adipiscing elit</a>
-                </li>
-                <li>
-                  <a href="#"> Consectetur adipiscing elit</a>
-                </li>
-              </ol>
+              <img alt="140x140" src="/images/defaultUser.jpg" class="img-circle"/>
             </div>
             <div class="col-md-6 column">
               <ul class="nav nav-pills">
@@ -101,7 +47,8 @@
               </ul>
             </div>
           </div>
-          <a id="modal-844604" href="#modal-container-844604" role="button" class="btn" data-toggle="modal">触发遮罩窗体</a>
+          <strong aling="center">  {{userinfo.username}}</strong>
+          <a id="modal-844604" href="#modal-container-844604" role="button" class="btn" data-toggle="modal">个人信息</a>
 
           <div class="modal fade" id="modal-container-844604" role="dialog" aria-labelledby="myModalLabel"
                aria-hidden="true">
@@ -114,7 +61,12 @@
                   </h4>
                 </div>
                 <div class="modal-body">
-                  内容...
+                  <p>个人信息</p>
+                  <hr/>
+                  用户名:<p>{{userinfo.username}}</p>
+                 邮箱<p>{{userinfo.email}}</p>
+                 博客链接 <p>{{userinfo.bloglink}}</p>
+                 账户状态 <p>{{userinfo.status}}</p>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>

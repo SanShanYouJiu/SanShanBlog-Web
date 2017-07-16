@@ -17,6 +17,9 @@ export class  Config{
 
   static register:string=Config.baseUrl+"/auth/register";
 
+  //验证码
+  static codeValidate=Config.baseUrl+"/codeValidate";
+
   //刷新有效期
   static refresh_token:string=Config.baseUrl+"/auth/refresh";
 
@@ -27,6 +30,15 @@ export class  Config{
 
   // 检查邮箱是否可以使用
   static check_email: string = Config.baseUrl + "/user/email/check";
+
+  static admin_query_blog_all: string = Config.baseUrl + "/admin/index/blog/query-all";
+
+  static admin_query_markdown_all: string = Config.baseUrl + "/admin/index/blog/query-markdown-all";
+
+  static admin_query_ueditor_all: string = Config.baseUrl + "/admin/index/blog/query-ueditor-all";
+
+  //获取当前用户信息
+  static get_user_info: string = Config.baseUrl + "/admin/index/user-info";
 
   static query_blog_all:string=Config.baseUrl+"/blog/query-all";
 
@@ -41,6 +53,8 @@ export class  Config{
   static query_by_tag:string=Config.baseUrl+"/blog/query-by-tag";
 
   static query_tag_all: string = Config.baseUrl + "/blog/query-tag-all";
+
+  static query_date_all: string = Config.baseUrl + "/blog/query-tag-date";
 
 
   static insert_markdown_blog:string=Config.baseUrl+"/markdown-editor/insert-blog";

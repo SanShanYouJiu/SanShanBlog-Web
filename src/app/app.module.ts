@@ -35,6 +35,7 @@ import {BlogTagComponent} from "./component/home/index/tag/blog-tag.component";
 import {BlogTitleComponent} from "./component/home/index/title/blog-title.component";
 import {BlogDateComponent} from "./component/home/index/date/blog-date.component";
 import {UploadDemoComponent} from "./component/admin/upload/upload.component";
+import {AdminIndexService} from "./service/admin.index.service";
 
 
 @NgModule({
@@ -77,6 +78,7 @@ import {UploadDemoComponent} from "./component/admin/upload/upload.component";
     AlertService,
 
 
+    AdminIndexService,
     MarkDownService,
     UEditorService,
     BlogService],
