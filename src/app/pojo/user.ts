@@ -3,7 +3,7 @@ export class User {
   username:string;x
   email: string;
   password: string;
-  bloglink:string;
+  blogLink:string;
   honer:string;
   codevalidate:string;
 }

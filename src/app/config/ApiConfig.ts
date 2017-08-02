@@ -38,7 +38,7 @@ export class  Config{
   static admin_query_ueditor_all: string = Config.baseUrl + "/admin/index/blog/query-ueditor-all";
 
   //获取当前用户信息
-  static get_user_info: string = Config.baseUrl + "/admin/index/user-info";
+  static get_user_info: string = Config.baseUrl + "/admin/index/get-user-info";
 
   static query_blog_all:string=Config.baseUrl+"/blog/query-all";
 

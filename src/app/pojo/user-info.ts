@@ -4,7 +4,7 @@ export class UserInfo {
   avater: string;
   username: string;
   email: string;
-  bloglink: string;
+  blogLink: string;
   honor: string;
   status: number;
 

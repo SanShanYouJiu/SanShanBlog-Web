@@ -84,7 +84,9 @@ export class IndexComponent implements OnInit {
       let list: Headers[] = [header1, header2];
       this.uploader.options.headers = list;
       this.uploader.uploadAll();
+      //todo 增加反馈失败的alter
       this.alertService.success('反馈成功', true);
+      return;
     } else if (emailValue != "") {
       this.indexService.feedback(emailValue, opinionValue)
         .subscribe(
