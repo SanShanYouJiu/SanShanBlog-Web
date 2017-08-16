@@ -1,18 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import {BlogService} from "../../../../service/blog.service";
-
+import { BlogService } from "../../../../service/blog.service";
+import { AlertService } from "app/service";
+import { Router } from "@angular/router";
 @Component({
-    selector: 'blog-date',
-    templateUrl: 'blog-date.component.html'
+  selector: 'blog-date',
+  templateUrl: 'blog-date.component.html'
 })
 export class BlogDateComponent implements OnInit {
-    constructor(private blogService:BlogService) { }
+  DateAll: string[];
+  constructor(
+    private route: Router,
+    private blogService: BlogService,
+    private alertService: AlertService) { }
 
-    ngOnInit() {
-
-    }
-
-
-    // getBlog_data_all
+  ngOnInit() {
+    this.blogService.getBlog_date_all().then(response => {
+      if (response.msg == "SUCCESS") {
+        this.DateAll = response.data;
+      } else {
+        this.alertService.error(response.msg);
+      }
+    });
+  }
 
 }

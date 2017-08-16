@@ -18,7 +18,7 @@ import {BlogService} from "./service/blog.service";
 import {HeaderComponent} from "./component/header/header.component";
 import {FooterComponent} from "./component/footer/footer.component";
 import { AppComponent } from './component/app.component';
-import { appRoutes} from "./app.routing.module";
+import { AppRoutingModule } from "./app.routing.module";
 import { IndexComponent} from "./component/home/index/index.component";
 import {RouterModule} from "@angular/router";
 import {ErrorComponent} from "./component/home/error/error.component";
@@ -36,6 +36,8 @@ import {BlogTitleComponent} from "./component/home/index/title/blog-title.compon
 import {BlogDateComponent} from "./component/home/index/date/blog-date.component";
 import {UploadDemoComponent} from "./component/admin/upload/upload.component";
 import {AdminIndexService} from "./service/admin.index.service";
+import { BlogSearchShowComponent } from "app/component/home/index/search/blog-search-show.component";
+import { AdminModule } from "app/component/admin/admin.module";
 
 
 @NgModule({
@@ -50,6 +52,7 @@ import {AdminIndexService} from "./service/admin.index.service";
     BlogTagComponent,
     BlogTitleComponent,
     BlogDateComponent,
+    BlogSearchShowComponent,
     FooterComponent,
     ErrorComponent,
     AlertComponent,
@@ -59,7 +62,6 @@ import {AdminIndexService} from "./service/admin.index.service";
     BrowserModule,
     FormsModule,
     FileUploadModule,
-    RouterModule.forRoot(appRoutes),
     HttpModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
@@ -67,6 +69,7 @@ import {AdminIndexService} from "./service/admin.index.service";
     ToastModule.forRoot(),
     Ng2PaginationModule,
     CommonModule,
+    AppRoutingModule
   ],
   providers: [
     AuthGuard,
@@ -77,10 +80,6 @@ import {AdminIndexService} from "./service/admin.index.service";
     IndexService,
     AlertService,
 
-
-    AdminIndexService,
-    MarkDownService,
-    UEditorService,
     BlogService],
   bootstrap: [AppComponent]
 })

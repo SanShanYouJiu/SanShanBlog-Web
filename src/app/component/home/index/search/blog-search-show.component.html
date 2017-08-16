@@ -1,0 +1,17 @@
+<div align="center">
+    <h1 align="center">搜索获得数据展示框</h1>
+    <p><strong>{{msg}}</strong></p>
+    <ul class="pagination">
+        <ul>
+          <li *ngFor="let blog of blogs | paginate: { itemsPerPage: 8, currentPage: p }"
+          >
+            <h2>{{blog.title}}</h2>
+            <a routerLinkActive="active" [routerLink]="['/blog-detail',blog.id]">查看更多</a>
+            <!--<blog-detail [blog]="blog"></blog-detail>-->
+          </li>
+        </ul>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </ul>
+</div>
+
+ 
