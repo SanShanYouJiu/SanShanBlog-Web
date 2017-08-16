@@ -11,6 +11,7 @@ import {AlertService} from "../../../service/alert.service";
 @Component({
   selector: 'ueditor-editor',
   templateUrl: 'ueditor.component.html',
+  providers:[UEditorService]
 })
 export class UEditorEditorComponent implements OnInit{
   ngOnInit(): void {

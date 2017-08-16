@@ -31,7 +31,7 @@ export class BlogDetailComponent implements OnInit  {
 
   ngOnInit() {
     this.route.params
-      .switchMap((params: Params) => this.blogService.get_blog_by_id(+params['id']))
+      .switchMap((params: Params) => this.blogService.getBlog_by_id(+params['id']))
       .subscribe(response => {
         this.blog = response.data;
         if (this.blog.type === 1) {

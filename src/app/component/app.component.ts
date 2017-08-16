@@ -1,5 +1,5 @@
-import {Component, ViewEncapsulation} from '@angular/core';
-import {Router} from "@angular/router";
+import { Component, ViewEncapsulation } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -17,7 +17,7 @@ export class AppComponent {
   isShowHeaderAndFooter(): boolean{
     let url = this.router.url;
     if (url.includes('login') || url.includes('register')
-      || url.includes('emailcheck') || url.includes('error')){
+      || url.includes('emailcheck') || url.includes('error')) {
       return false;
     }
     return true;

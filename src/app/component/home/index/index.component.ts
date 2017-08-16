@@ -71,7 +71,7 @@ export class IndexComponent implements OnInit {
   }
 
 
-  //TODO 修复这个功能
+  //TODO: 修复这个功能
 
   feedback() {
     let emailValue = this.email.nativeElement.value;
@@ -84,7 +84,7 @@ export class IndexComponent implements OnInit {
       let list: Headers[] = [header1, header2];
       this.uploader.options.headers = list;
       this.uploader.uploadAll();
-      //todo 增加反馈失败的alter
+      //TODO: 增加反馈失败的alter
       this.alertService.success('反馈成功', true);
       return;
     } else if (emailValue != "") {

@@ -4,7 +4,7 @@ import {AlertService} from "../../../service/alert.service";
 import {Config} from "../../../config/ApiConfig";
 import {RequestOptions, Headers} from "@angular/http";
 
-//TODO URL暂时放在这里
+//TODO: URL暂时放在这里
 const URL = Config.index_advice_upload;
 
 @Component({

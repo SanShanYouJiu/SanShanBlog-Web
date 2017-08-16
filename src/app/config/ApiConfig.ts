@@ -8,7 +8,7 @@ export class  Config{
   static index_advice:string=Config.baseUrl+'/index/advice';
 
   /**
-   * 首页发送建议 大文件方式
+   * 首页发送建议 文件方式
    * @type {string}
    */
   static index_advice_upload:string=Config.baseUrl+"/index/advice/file";
@@ -20,7 +20,7 @@ export class  Config{
   //验证码
   static codeValidate=Config.baseUrl+"/codeValidate";
 
-  //刷新有效期
+  //刷新验证token有效期
   static refresh_token:string=Config.baseUrl+"/auth/refresh";
 
   static change_password:string=Config.baseUrl+"/user/change-pwd";
@@ -54,7 +54,9 @@ export class  Config{
 
   static query_tag_all: string = Config.baseUrl + "/blog/query-tag-all";
 
-  static query_date_all: string = Config.baseUrl + "/blog/query-tag-date";
+  static query_by_date: string = Config.baseUrl + "/blog/query-by-date";
+
+  static query_date_all: string = Config.baseUrl + "/blog/query-date-all";
 
 
   static insert_markdown_blog:string=Config.baseUrl+"/markdown-editor/insert-blog";

@@ -1,7 +1,7 @@
 export class UserInfo {
 
   id: number;
-  avater: string;
+  avatar: string;
   username: string;
   email: string;
   blogLink: string;

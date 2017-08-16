@@ -5,7 +5,9 @@ import {AlertService} from "../../../service/alert.service";
 
 @Component({
     selector: 'markdown-editor',
-    templateUrl: 'markdown-editor.component.html'
+    templateUrl: 'markdown-editor.component.html',
+  providers:[MarkDownService]
+
 })
 export class MarkDownEditorComponent implements OnInit {
     constructor(
