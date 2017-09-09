@@ -38,7 +38,7 @@ export class BlogSearchShowComponent {
        }
     })
       .subscribe(response => {
-        if(response.msg!='SUCCESS'){
+        if(response.status!==0){
           this.msg = response.msg;
         }else{
           this.blogs=response.data;

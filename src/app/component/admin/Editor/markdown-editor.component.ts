@@ -38,7 +38,7 @@ export class MarkDownEditorComponent implements OnInit {
     markdown.tag=this.tag.nativeElement.value;
     this.markDownService.insert_blog(markdown)
       .then(response=>{
-        if(response.msg=="SUCCESS")
+        if(response.status==0)
           this.alterService.success("成功");
         else
           this.alterService.error("博客写入失败");

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
 import {AuthenticationService} from "../../../service/authentication.service";
 import {AlertService} from "../../../service/alert.service";
+import {Config} from "../../../config/ApiConfig";
 @Component({
     selector: 'login',
     templateUrl: 'login.component.html'
@@ -12,12 +13,15 @@ export class LoginComponent implements OnInit {
   loading = false;
   error = '';
   returnUrl: string;
+  codeUrl:string;
 
     constructor(
       private route: ActivatedRoute,
       private router:Router,
       private authenticationService:AuthenticationService,
-      private alertService: AlertService) { }
+      private alertService: AlertService) {
+      this.codeUrl=Config.codeValidate;
+    }
 
     ngOnInit() {
       // get return url from route parameters or default to '/'

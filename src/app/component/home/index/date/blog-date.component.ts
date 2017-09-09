@@ -15,7 +15,7 @@ export class BlogDateComponent implements OnInit {
 
   ngOnInit() {
     this.blogService.getBlog_date_all().then(response => {
-      if (response.msg == "SUCCESS") {
+      if (response.status==0) {
         this.DateAll = response.data;
       } else {
         this.alertService.error(response.msg);

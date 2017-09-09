@@ -25,8 +25,12 @@ export class  Config{
 
   static change_password:string=Config.baseUrl+"/user/change-pwd";
 
-   //1是发送注册码 2是发送忘记密码 3是修改密码
-  static email_send: string = Config.baseUrl + "/user/email/send";
+   //参数type  其中具体为 1是发送注册码 2是修改密码
+   //参数Email  用于发送的Email
+   static send_email: string = Config.baseUrl + "/user/email/send";
+
+  //忘记密码
+  static forget_password:string=Config.baseUrl+"/user/forget-pwd";
 
   // 检查邮箱是否可以使用
   static check_email: string = Config.baseUrl + "/user/email/check";

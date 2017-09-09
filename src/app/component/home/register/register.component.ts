@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../../service/user.service";
 import {Router} from "@angular/router";
 import {AlertService} from "../../../service/alert.service";
+import {Config} from "../../../config/ApiConfig";
 
 @Component({
     selector: 'register',
@@ -11,12 +12,16 @@ export class RegisterComponent implements OnInit {
   model: any = {};
   loading = false;
   repeatPassword:string;
+  codeUrl:string;
 
     constructor(  private router: Router,
                   private userService: UserService,
-                  private alertService: AlertService) { }
+                  private alertService: AlertService) {
+      this.codeUrl=Config.codeValidate;
+    }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
   register() {
     this.loading = true;

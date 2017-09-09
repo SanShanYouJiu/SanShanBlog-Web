@@ -38,6 +38,9 @@ import {UploadDemoComponent} from "./component/admin/upload/upload.component";
 import {AdminIndexService} from "./service/admin.index.service";
 import { BlogSearchShowComponent } from "app/component/home/index/search/blog-search-show.component";
 import { AdminModule } from "app/component/admin/admin.module";
+import {ForgetPasswordComponent} from "./component/home/auth/forget-password.component";
+import {ChangePasswordComponent} from "./component/home/auth/change-password.component";
+import { ConfirmForgetPasswordComponent } from "app/component/home/auth/confirm-forget-password.component";
 
 
 @NgModule({
@@ -57,6 +60,9 @@ import { AdminModule } from "app/component/admin/admin.module";
     ErrorComponent,
     AlertComponent,
     UploadDemoComponent,
+    ForgetPasswordComponent,
+    ChangePasswordComponent,
+    ConfirmForgetPasswordComponent
   ],
   imports: [
     BrowserModule,

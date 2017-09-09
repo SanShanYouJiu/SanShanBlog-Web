@@ -16,7 +16,7 @@ export class BlogTitleComponent implements OnInit {
 
     ngOnInit() {
         this.blogService.getBlog_title_all().then(response => {
-            if (response.msg == "SUCCESS") {
+            if (response.status==0) {
                 this.TitleAll = response.data;
             } else {
                 this.alertService.error(response.msg);

@@ -38,7 +38,7 @@ export class UEditorEditorComponent implements OnInit{
     ueditorblog.content=this.full.Instance.getContent();
     this.uEditorService.insert_blog(ueditorblog)
       .then(response=>{
-        if(response.msg=="SUCCESS")
+        if(response.status==0)
          this.alterService.success("成功");
         else
           this.alterService.error("博客写入失败");

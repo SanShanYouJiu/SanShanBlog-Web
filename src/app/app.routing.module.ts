@@ -13,6 +13,9 @@ import { UploadDemoComponent } from "./component/admin/upload/upload.component";
 import { BlogTagComponent } from "app/component/home/index/tag/blog-tag.component";
 import { BlogSearchShowComponent } from "app/component/home/index/search/blog-search-show.component";
 import { NgModule } from '@angular/core';
+import {ForgetPasswordComponent} from "./component/home/auth/forget-password.component";
+import {ChangePasswordComponent} from "./component/home/auth/change-password.component";
+import { ConfirmForgetPasswordComponent } from "app/component/home/auth/confirm-forget-password.component";
 
  const appRoutes: Routes = [
   {
@@ -36,6 +39,19 @@ import { NgModule } from '@angular/core';
     path: 'blog-title',
     component: BlogTitleComponent
   },
+   {
+     path:'auth/forget-pwd',
+     component:ForgetPasswordComponent,
+   },
+   {
+     path:'auth/change-pwd/:code',
+     component:ChangePasswordComponent,
+     canActivate:[AuthGuard]
+   },
+   {
+     path:'auth/confirm-forget-pwd',
+     component:ConfirmForgetPasswordComponent
+   },
   {
     path: 'blog-detail/:id',
     component: BlogDetailComponent
@@ -54,7 +70,8 @@ import { NgModule } from '@angular/core';
     component: RegisterComponent,
     canActivate: [AuthGuard2]
   },
-  {
+
+   {
     path: 'error',
     component: ErrorComponent
   },
