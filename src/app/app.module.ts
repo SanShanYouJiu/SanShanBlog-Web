@@ -41,6 +41,7 @@ import { AdminModule } from "app/component/admin/admin.module";
 import {ForgetPasswordComponent} from "./component/home/auth/forget-password.component";
 import {ChangePasswordComponent} from "./component/home/auth/change-password.component";
 import { ConfirmForgetPasswordComponent } from "app/component/home/auth/confirm-forget-password.component";
+import { CodeValidateService } from "app/service/code-validate.service";
 
 
 @NgModule({
@@ -86,6 +87,7 @@ import { ConfirmForgetPasswordComponent } from "app/component/home/auth/confirm-
     IndexService,
     AlertService,
 
+    CodeValidateService,
     BlogService],
   bootstrap: [AppComponent]
 })

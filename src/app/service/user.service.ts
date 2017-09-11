@@ -22,11 +22,12 @@ export class UserService {
     return this.http.get('/api/users/' + id, this.jwt()).map((response: Response) => response.json());
   }
 
-  create(user: User) {
+  create(user: User,codeId:number) {
     let urlParams = new URLSearchParams();
     urlParams.set('username',user.username);
     urlParams.set('password',user.password);
-    // urlParams.set("codevalidate",user.codevalidate);
+    urlParams.set("codeid",codeId.toString());
+    urlParams.set("code",user.codevalidate);
     return this.http.post(Config.register, urlParams, this.jwt()).map((response: Response) => response.json());
   }
 
@@ -34,7 +35,7 @@ export class UserService {
     let urlParams = new URLSearchParams();
     urlParams.set('username',user.username);
     urlParams.set('password',user.password);
-    urlParams.set("codevalidate",user.codevalidate);
+    urlParams.set("code",user.codevalidate);
     return this.http.put('/api/users/' + user.id, user, this.jwt()).map((response: Response) => response.json());
   }
 

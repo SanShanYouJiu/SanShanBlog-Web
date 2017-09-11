@@ -9,19 +9,22 @@ import {User} from "../pojo/user";
 export class AuthenticationService {
   constructor(private http: Http) { }
 
-  login(user:User) {
+  login(user:User,codeid:number) {
     let urlParams = new URLSearchParams();
     urlParams.set('username',user.username);
     urlParams.set('password',user.password);
+    urlParams.set('code',user.codevalidate);
+    urlParams.set('codeid',codeid.toString());
     // urlParams.set("codevalidate",codevalidate);
     return this.http.post(Config.login,urlParams)
       .map((response: Response) => {
         // login successful if there's a jwt token in the response
         let user = response.json();
-        if (user && user.token) {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
+        if (user.data && user.data.token) {
+          // sto.datare user .datadetails and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('currentUser', JSON.stringify(user.data));
         }
+        return user;
       });
   }
 
@@ -38,10 +41,12 @@ export class AuthenticationService {
     });
   }
 
-  send_mail(type:number,email:string):Promise<any>{
+  send_mail(type:number,email:string,code:string,codeId:number):Promise<any>{
     let urlParams =new URLSearchParams();
     urlParams.set('type',type.toString());
     urlParams.set('email',email);
+    urlParams.set('code',code);
+    urlParams.set('codeid',codeId.toString());
     return this.http.post(Config.send_email,urlParams)
     .toPromise()
     .then(response => response.json())
