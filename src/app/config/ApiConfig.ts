@@ -41,9 +41,13 @@ export class  Config{
 
   static admin_query_ueditor_all: string = Config.baseUrl + "/admin/index/blog/query-ueditor-all";
 
+  static admin_update_blog_by_id:string=Config.baseUrl+"/admin/index/blog/update-by-id";
+
   //获取当前用户信息
   static get_user_info: string = Config.baseUrl + "/admin/index/get-user-info";
 
+  static change_user_info:string=Config.baseUrl+"/admin/index/change-user-info";
+  
   static query_blog_all:string=Config.baseUrl+"/blog/query-all";
 
   static query_blog_by_id:string=Config.baseUrl+"/blog/query-by-id";

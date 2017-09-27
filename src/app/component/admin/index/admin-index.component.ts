@@ -10,13 +10,14 @@ import { LogService } from "app/service/Log.service";
 @Component({
   selector: 'admin-index',
   templateUrl: 'admin-index.component.html',
-  providers: [AdminIndexService]
 })
 export class AdminIndexComponent implements OnInit {
-  blogs: Blog[];
+  blogs: Blog[];//TODO: 将blogs进行排序 下面同理
   markdownblogs: Blog[];
   ueditorblogs: Blog[];
   userinfo: UserInfo;
+
+  private model:any={};
 
   constructor(private authenticationService: AuthenticationService,
     private adminIndexService: AdminIndexService,
@@ -24,10 +25,14 @@ export class AdminIndexComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.adminIndexService.getUserInfo()
+    .then(response =>
+      this.userinfo = response.data
+    );
     this.adminIndexService.getBlog_All()
-      .then(response =>
-        this.blogs = response.data
-      );
+    .then(response =>
+      this.blogs = response.data
+    );
     this.adminIndexService.getMarkdown_All().
       then(response =>
         this.markdownblogs = response.data
@@ -36,10 +41,31 @@ export class AdminIndexComponent implements OnInit {
       .then(response =>
         this.ueditorblogs = response.data
       );
-    this.adminIndexService.getUserInfo()
-      .then(response =>
-        this.userinfo = response.data
-      );
+
+  }
+
+   change_user_info(){
+     this.adminIndexService.change_user_info(this.userinfo.username,this.model.avater,this.model.blogLink)
+     .then(response=>{
+       if(response.status==0){
+         this.alertService.success("成功");
+       }else{
+         this.alertService.error(response.msg);
+       }
+     })
+   }
+
+  deleteBlogById(id: number) {
+    console.log(id);
+    this.adminIndexService.deleteBlogById(id)
+      .then(response => {
+        if(response.status==0){
+          this.alertService.success("操作成功");
+        }else{
+          this.alertService.error(response.msg);
+        }
+          
+      });
   }
 
 

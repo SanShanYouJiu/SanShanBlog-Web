@@ -37,6 +37,43 @@ export class AdminIndexService {
       .catch(LogService.handleError);
   }
 
+  change_user_info(username:string,avater:string,blogLink:string):Promise<any>{
+    let urlParams =new URLSearchParams();
+    urlParams.set('username',username);
+    if(avater!=null)
+      urlParams.set('avatar',avater);
+    if(blogLink!=null)
+      urlParams.set('blogLink',blogLink);
+
+    return this.http.post(Config.change_user_info,urlParams,this.jwt())
+    .toPromise()
+    .then(response=>response.json())
+    .catch(LogService.handleError);
+    }
+
+  deleteBlogById(id:number):Promise<any>{
+    let urlParams =new URLSearchParams();
+     urlParams.set('id',id.toString());
+    return this.http.post(Config.delete_blog_by_id,urlParams,this.jwt())
+    .toPromise()
+    .then(response=>response.json())
+    .catch(LogService.handleError);
+  }
+
+  updateBlogById(id:number,title:string,tag:string,content:string):Promise<any>{
+    let urlParams =new URLSearchParams();
+    urlParams.set('id',id.toString());
+    if(title!=null)
+      urlParams.set('title',title);
+    if(tag!=null)
+      urlParams.set('tag',tag);
+    if(content!=null)
+      urlParams.set('content',content);
+    return  this.http.post(Config.admin_update_blog_by_id,urlParams,this.jwt()).toPromise()
+    .then(response=>response.json())
+    .catch(LogService.handleError);
+  }
+
     private jwt() {
     // create authorization header with jwt token
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));

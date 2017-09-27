@@ -11,7 +11,6 @@ import {AlertService} from "../../../service/alert.service";
 @Component({
   selector: 'ueditor-editor',
   templateUrl: 'ueditor.component.html',
-  providers:[UEditorService]
 })
 export class UEditorEditorComponent implements OnInit{
   ngOnInit(): void {
@@ -131,15 +130,25 @@ export class UEditorEditorComponent implements OnInit{
 
  private config_source: string;
   config: any = {
-    toolbars: [['FullScreen', 'Source', 'Undo', 'Redo', 'Bold' ]],
+    toolbars: [[
+      'fullscreen', 'source', '|', 'undo', 'redo', '|',
+      'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+      'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+      'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+      'directionalityltr', 'directionalityrtl', 'indent', '|',
+      'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+      'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+      'simpleupload', 'insertimage', 'emotion', 'scrawl', 'insertvideo', 'music', 'attachment', 'map', 'gmap', 'insertframe', 'insertcode', 'webapp', 'pagebreak', 'template', 'background', '|',
+      'horizontal', 'date', 'time', 'spechars', 'snapscreen', 'wordimage', '|',
+      'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts', '|',
+      'print', 'preview', 'searchreplace', 'drafts', 'help'
+  ]],
     autoClearinitialContent: true,
-    wordCount: false
+    wordCount: true,
+    initialFrameHeight:400,initialFrameWidth:1147 
   };
 
   form_source: string;
 
   custom_source: string;
-  custom: any = {
-    toolbars: [['FullScreen', 'Source', 'Undo', 'Redo', 'Bold', 'button']]
-  };
 }

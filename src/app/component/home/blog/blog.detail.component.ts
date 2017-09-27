@@ -45,7 +45,7 @@ export class BlogDetailComponent implements OnInit  {
           this.uEditorBlog.content = this.blog.content;
         }
       });
-  }
+  } 
 
 
   goBack(): void {

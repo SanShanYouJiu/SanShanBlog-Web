@@ -49,7 +49,6 @@ import { CodeValidateService } from "app/service/code-validate.service";
     AppComponent,
     IndexComponent,
     BlogDetailComponent,
-    MarkDownEditorComponent,
     LoginComponent,
     RegisterComponent,
     HeaderComponent,
@@ -63,7 +62,9 @@ import { CodeValidateService } from "app/service/code-validate.service";
     UploadDemoComponent,
     ForgetPasswordComponent,
     ChangePasswordComponent,
-    ConfirmForgetPasswordComponent
+    ConfirmForgetPasswordComponent,
+
+    MarkDownEditorComponent,
   ],
   imports: [
     BrowserModule,

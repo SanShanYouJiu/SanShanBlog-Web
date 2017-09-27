@@ -35,8 +35,8 @@ export class AuthenticationService {
     return this.http.post(Config.forget_password,urlParams)
       .map((response:Response)=>{
         let user=response.json();
-        if (user&&user.token) {
-          localStorage.setItem('currentUser', JSON.stringify(user));
+        if (user.data&&user.data.token) {
+          localStorage.setItem('currentUser', JSON.stringify(user.data));
         }
     });
   }

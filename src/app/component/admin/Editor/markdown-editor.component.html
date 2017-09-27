@@ -1,4 +1,4 @@
-<h2 align="center">Markdown编辑器  </h2>
+<h2 class="text-center">Markdown编辑器  </h2>
 <div class="container">
   <div class="row clearfix">
     <div class="col-md-12 column">
@@ -13,9 +13,9 @@
 </div>
 <form>
   <div class="center-block" style="width:70%;background-color:#ccc;">
-  <input name="title" type="text" placeholder="Title?" #markdown_title />
-  <input name="title" type="text" placeholder="tag?" #markdown_tag />
-  <textarea #markdown_blog_content  name="content" data-provide="markdown" rows="10"></textarea>
+  <input name="title" type="text" placeholder="标题?" class="form-control" #markdown_title />
+  <input name="title" type="text" placeholder="标签?"  class="form-control" #markdown_tag />
+  <textarea #markdown_blog_content  name="content" data-provide="markdown" cols="132" rows="16"></textarea>
   </div>
   <label class="checkbox" align="center">
     <input name="publish" type="checkbox" align="center"> Publish

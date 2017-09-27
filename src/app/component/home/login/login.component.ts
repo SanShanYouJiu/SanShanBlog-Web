@@ -53,11 +53,11 @@ export class LoginComponent implements OnInit {
         if(data.status == 0){
         this.router.navigate([this.returnUrl]);
         }else{
-          this.alertService.error(data.msg);
+          this.alertService.error("无法登陆:可能是用户名与密码错误");
         }
       },
       error => {
-        this.alertService.error("无法登陆 可能是用户名与密码错误");
+        this.alertService.error("出现传输错误:可能是网络问题");
         this.loading = false;
       });
   }

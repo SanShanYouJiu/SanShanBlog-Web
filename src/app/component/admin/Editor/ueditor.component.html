@@ -1,10 +1,11 @@
 <div class="card mb-3">
-  <h1 align="center"> Ueditor 编辑器</h1>
+  <h1 class="text-center"> Ueditor 编辑器</h1>
   <div class="center-block" style="width:85%;background-color:#ccc;">
-    <input name="title" type="text" placeholder="Title?" #ueditor_title />
-    <input name="title" type="text" placeholder="tag?" #ueditor_tag />
+    <input name="title" type="text"  class="form-control" placeholder="标题?" #ueditor_title />
+    <input name="title" type="text"  class="form-control" placeholder="标签?" #ueditor_tag />
     <ueditor [(ngModel)]="full_source"
-             #full></ueditor>
+    [config]="config"
+    #full></ueditor>
     <div class="card card-outline-secondary mt-3">
       <div class="mb-3">
       </div>

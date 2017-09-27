@@ -25,7 +25,11 @@
                 <td>{{blog.id}}</td>
                 <td>{{blog.title}}</td>
                 <td>{{blog.time}}</td>
-                <td>{{blog.type}}</td>
+                <td>{{blog.tag}}</td>
+                <td><a role="btn" class="btn btn-info" routerLinkActive="active" [routerLink]="['/admin/update-blog',blog.id]">更新</a>                  </td>
+                <td>
+                  <a role="btn" class="btn btn-danger" routerLinkActive="active" [routerLink]="['/admin/delete-blog',blog.id]">X</a>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -47,9 +51,8 @@
               </ul>
             </div>
           </div>
-          <strong aling="center">  {{userinfo.username}}</strong>
+          <strong class="text-center">  {{userinfo.username}}</strong>
           <a id="modal-844604" href="#modal-container-844604" role="button" class="btn" data-toggle="modal">个人信息</a>
-
           <div class="modal fade" id="modal-container-844604" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -60,7 +63,7 @@
                   </h4>
                 </div>
                 <div class="modal-body">
-                  <p>个人信息</p> <button class="btn btn-default">修改</button>
+                  <p>个人信息</p> <a id="change-user-info" href="#modal-container-change-user-info" role="button" class="btn btn-default" data-toggle="modal">修改</a>
                   <hr/> 头像
                   <p>{{userinfo.avatar}}</p>
                   用户名:
@@ -77,11 +80,30 @@
                   <button type="button" class="btn btn-primary">保存</button>
                 </div>
               </div>
-
             </div>
-
           </div>
-
+          <div class="modal fade" id="modal-container-change-user-info" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h4 class="modal-title" id="myModalLabel">
+                    修改个人信息
+                  </h4>
+                </div>
+                <div class="modal-body">
+                  <h4>头像</h4>
+                   <input type="text"  class="" name="avater" class="form-control" [(ngModel)]="model.avater" #avater   />
+                   <h4>博客链接</h4>
+                   <input type="text"  class="" name="blogLink" class="form-control" [(ngModel)]="model.blogLink" #blogLink />
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                  <button type="button" class="btn btn-primary" (click)="change_user_info()">保存</button>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="row clearfix">
             <div class="col-md-8 column">
               <div class="panel-group" id="panel-648583">
@@ -178,4 +200,3 @@
       </div>
     </div>
   </div>
-</div>

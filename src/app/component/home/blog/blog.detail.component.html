@@ -7,12 +7,14 @@
         <div class="col-md-9 column">
           <h3>
             {{blog.title}}
-
+            <em>标签为:{{blog.tag}}</em>
+            <em>时间为:{{blog.time}}</em>
             <em>类型为:{{blog.type}}</em>
+            <em>作者为:{{blog.user}}</em>
           </h3>
-          <div *ngIf="markdownblog!=null"  [innerHtml]="markdownblog.content">
+          <div *ngIf="markdownblog!=null" [innerHtml]="markdownblog.content">
           </div>
-          <div *ngIf="uEditorBlog!=null"  [innerHtml]="uEditorBlog.content">
+          <div *ngIf="uEditorBlog!=null" [innerHtml]="uEditorBlog.content">
           </div>
         </div>
         <div class="col-md-2 column">

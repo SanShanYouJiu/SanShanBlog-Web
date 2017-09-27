@@ -45,15 +45,12 @@ export class ConfirmForgetPasswordComponent implements OnInit {
                     this.router.navigateByUrl(this.ToDoUrl);
                 } else {
                     console.log('验证码错误 或者操作太频繁 5分钟一次');
-                    if (response.status == 20014) {
-                        this.alter.error("发送EMAIL出现错误")
-                    } else if (response.status == 20016) {
+                    }if (response.status == 20016) {
                         this.alter.error("请求太过频繁 5分钟一次");
                     } else {
                         this.alter.error(response.msg);
                     }
                 }
-            }
             );
     }
 
