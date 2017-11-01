@@ -9,15 +9,16 @@
             <div class="row clearfix">
                 <div class="col-md-4 column">
                 </div>
-                <div class="col-md-4 column">
-                    <ul>
-                        <li *ngFor="let title of TitleAll;">
-                            <h2> <a routerLinkActive="active" [routerLink]="['/blog-search-show','title:'+title]">{{title}}</a>
-                            </h2>
+                <div class="col-md-6 column">
+                    <ul class="pagination">
+                        <li *ngFor="let title of asyncTitles | paginate: { id: 'server', itemsPerPage: 10, currentPage: p, totalItems: total }">
+                            <h3> <a routerLinkActive="active" [routerLink]="['/blog-search-show','title:'+title]">{{title}}</a>
+                            </h3>
                         </li>
+                        <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
                     </ul>
                 </div>
-                <div class="col-md-4 column">
+                <div class="col-md-2 column">
                 </div>
             </div>
         </div>

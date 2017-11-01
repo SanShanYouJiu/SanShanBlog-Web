@@ -1,56 +1,24 @@
-<!-- <div>
-  <div class=" alert alert-info" style=" width:450px;height:35px;padding-top:0px;padding-left:0;margin-bottom:0;margin-top:10px"
-    align="">
-    <button type="button" class=" btn btn-link" data-toggle="collapse" data-target="#demo1"><span class=" glyphicon glyphicon-plus"></span></button>
-    <span>这是一级标题</span>
-    <input type="checkbox" name=" pageid" value="" style=" float:right; margin-top:10px">
-  </div>
-  <div id="demo1" class="collapse in" style=" margin-left:40px;margin-bottom:10px;margin-top:0px">
-    <div class=" alert alert-info" style=" margin-top:10px; width:410px; height:35px; padding-top:7px; padding-left:15px; margin-bottom:0">
-      <span>这是二级标题</span>
-      <input type="checkbox" name=" pageid" value="" style=" float:right;">
-    </div>
-    <div class=" alert alert-info" style=" margin-top:10px; width:410px; height:35px; padding-top:7px; padding-left:15px; margin-bottom:0">
-      <span>这是二级标题</span>
-      <input type="checkbox" name=" pageid" value="" style=" float:right;">
-    </div>
-    <div class=" alert alert-info" style=" margin-top:10px; width:410px; height:35px; padding-top:7px; padding-left:15px; margin-bottom:0">
-      <span>这是二级标题</span>
-      <input type="checkbox" name=" pageid" value="" style=" float:right;">
-    </div>
-    <div class=" alert alert-info" style=" margin-top:10px; width:410px; height:35px; padding-top:7px; padding-left:15px; margin-bottom:0">
-      <span>这是二级标题</span>
-      <input type="checkbox" name=" pageid" value="" style=" float:right;">
-    </div>
-  </div>
-  <div class=" alert alert-info" style=" width:450px;height:35px;padding-top:0px;padding-left:0;margin-bottom:0;margin-top:10px"
-    align="">
-    <button type="button" class=" btn btn-link" data-toggle="collapse" data-target="#demo2"><span class=" glyphicon glyphicon-plus"></span></button>
-    <span>这是一级标题</span>
-    <input type="checkbox" name=" pageid" value="" style=" float:right; margin-top:10px">
-  </div>
-</div> -->
-
 <div class="container">
   <div class="row clearfix">
       <div class="col-md-12 column">
           <div class="center-block">
-              <h2 align="center">
+              <h2 class="text-center">
                   归档
               </h2>
           </div>
           <div class="row clearfix">
               <div class="col-md-4 column">
               </div>
-              <div class="col-md-4 column">
-                  <ul>
-                      <li *ngFor="let date of DateAll;">
-                          <h2> <a routerLinkActive="active" [routerLink]="['/blog-search-show','date:'+date]">{{date}}</a>
+              <div class="col-md-6 column">
+                <ul class="pagination">
+                      <li *ngFor="let date of asyncDates | paginate: { id: 'server', itemsPerPage: 8, currentPage: p, totalItems: total }">
+                          <h2 class="text-center"> <a  routerLinkActive="active" [routerLink]="['/blog-search-show','date:'+date]">{{date}}</a>
                           </h2>
                       </li>
-                  </ul>
+                  <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
+                  </ul> 
               </div>
-              <div class="col-md-4 column">
+              <div class="col-md-2 column"> 
               </div>
           </div>
       </div>

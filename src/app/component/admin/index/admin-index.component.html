@@ -16,7 +16,7 @@
                   时间
                 </th>
                 <th>
-                  状态
+                  标签
                 </th>
               </tr>
             </thead>
@@ -38,7 +38,7 @@
         <div class="col-md-6 column">
           <div class="row clearfix">
             <div class="col-md-6 column">
-              <img alt="140x140" src="{{userinfo.avatar}}" class="img-circle" />
+              <img alt="140x140" src="{{userinfo.avatar}}" class="img-responsive" />
             </div>
             <div class="col-md-6 column">
               <ul class="nav nav-pills">
@@ -65,7 +65,7 @@
                 <div class="modal-body">
                   <p>个人信息</p> <a id="change-user-info" href="#modal-container-change-user-info" role="button" class="btn btn-default" data-toggle="modal">修改</a>
                   <hr/> 头像
-                  <p>{{userinfo.avatar}}</p>
+                  <p><a href="{{userinfo.avatar}}">{{userinfo.avatar}}</a></p>
                   用户名:
                   <p>{{userinfo.username}}</p>
                   邮箱

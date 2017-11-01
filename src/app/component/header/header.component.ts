@@ -1,18 +1,19 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {AuthGuard} from "../../service/guard/auth.guard";
-import {AuthenticationService} from "../../service/authentication.service";
+import {Router} from '@angular/router';
+import {AuthGuard} from '../../service/guard/auth.guard';
+import {AuthenticationService} from '../../service/authentication.service';
 
 @Component({
   selector: 'app-header',
-  templateUrl: 'header.component.html'
+  templateUrl: 'header.component.html',
+  styleUrls:['header.component.css']
 })
 export class HeaderComponent implements OnInit {
   isBackColor: boolean = false;
 
   private Title = '欢迎来到博客';
   private LittleTitle = '三山个人博客';
-  private MoreFunction = "更多功能等待扩展..";
+  private MoreFunction = '更多功能等待扩展..';
 
   constructor(private router: Router,
              private  authenticationService:AuthenticationService) {

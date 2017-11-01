@@ -15,7 +15,7 @@ import { LogService } from "app/service/Log.service";
   providers: [AdminIndexService, AlertService]
 })
 export class DeleteBlogComponent implements OnInit {
-  id: number;
+  id:number;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,10 +26,11 @@ export class DeleteBlogComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.switchMap(((params: Params) => {
+      this.id=params['id'];
       return params['id'];
     })).subscribe(
       response => {
-        this.deleteBlogById(<number>response);
+        this.deleteBlogById(this.id);
       }
       );
   }

@@ -7,18 +7,18 @@
 		</div>
 		<div class="col-md-12 column">
 			<div class="row clearfix">
-				<div class="col-md-4 column">
+				<div class="col-md-2 column">
 				</div>
-				<div class="col-md-4 column">
-					<ul>
-						<li *ngFor="let tag of TagAll;">
-							<a routerActive="active" [routerLink]="['/blog-search-show','tag:'+tag]">
-								<h2>{{tag}}</h2>
+				<div class="col-md-8 column">
+					<ul class="pagination">
+						<li *ngFor="let tag of TagAll  ">
+							<a routerActive="active" class="btn btn-default" [routerLink]="['/blog-search-show','tag:'+tag]">
+								<h3>{{tag}}</h3>
 							</a>
 						</li>
 					</ul>
 				</div>
-				<div class="col-md-4 column">
+				<div class="col-md-2 column">
 				</div>
 			</div>
 		</div>

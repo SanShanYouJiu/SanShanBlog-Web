@@ -1,15 +1,16 @@
 import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
-import {MarkDownBlog} from "../../../pojo/markdown-blog";
-import {UEditorBlog} from "../../../pojo/ueditor-blog";
-import {Blog} from "../../../pojo/blog";
+import {MarkDownBlog} from '../../../pojo/markdown-blog';
+import {UEditorBlog} from '../../../pojo/ueditor-blog';
+import {Blog} from '../../../pojo/blog';
 import 'rxjs/add/operator/switchMap';
-import {Params, ActivatedRoute} from "@angular/router";
-import {Location}               from '@angular/common';
-import {BlogService} from "../../../service/blog.service";
+import {Params, ActivatedRoute} from '@angular/router';
+import {Location}    from '@angular/common';
+import {BlogService} from '../../../service/blog.service';
 
 @Component({
   selector: 'blog-detail',
-  templateUrl: 'blog.detail.component.html'
+  templateUrl: 'blog.detail.component.html',
+  styleUrls: ['blog.detail.component.css']
 })
 
 export class BlogDetailComponent implements OnInit  {
@@ -38,7 +39,7 @@ export class BlogDetailComponent implements OnInit  {
           let HyperDown = require('hyperdown');
           this.markdownblog = new MarkDownBlog();
           let parser = new HyperDown, html = parser.makeHtml(this.blog.content);
-          this.markdownblog.content=html;
+          this.markdownblog.content = html;
         }
         else {
           this.uEditorBlog = new UEditorBlog();

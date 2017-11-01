@@ -31,7 +31,7 @@ export class AdminIndexService {
   }
 
   getUserInfo():Promise<any>{
-    return this.http.get(Config.get_user_info,this.jwt())
+    return this.http.get(Config.admin_get_user_info,this.jwt())
       .toPromise()
       .then(response=>response.json())
       .catch(LogService.handleError);
@@ -45,7 +45,7 @@ export class AdminIndexService {
     if(blogLink!=null)
       urlParams.set('blogLink',blogLink);
 
-    return this.http.post(Config.change_user_info,urlParams,this.jwt())
+    return this.http.post(Config.admin_change_user_info,urlParams,this.jwt())
     .toPromise()
     .then(response=>response.json())
     .catch(LogService.handleError);

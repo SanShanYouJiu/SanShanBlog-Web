@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from "../../../service/user.service";
+import { UserService } from "../../../../service/user.service";
 import { Router } from "@angular/router";
-import { AlertService } from "../../../service/alert.service";
-import { Config } from "../../../config/ApiConfig";
+import { AlertService } from "../../../../service/alert.service";
+import { Config } from "../../../../config/ApiConfig";
 import { Headers, RequestOptions, Response } from '@angular/http';
-import { CodeValidateService } from "app/service/code-validate.service";
+import { CodeValidateService } from "../../../../service/code-validate.service";
 
 @Component({
   selector: 'register',

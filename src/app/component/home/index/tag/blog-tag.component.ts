@@ -16,7 +16,7 @@ export class BlogTagComponent implements OnInit {
 
     ngOnInit() {
         this.blogService.getBlog_tag_all().then(response => {
-            if (response.status==0) {
+            if (response.status===0) {
                 this.TagAll = response.data;
             } else {
                 this.alertService.error(response.msg);

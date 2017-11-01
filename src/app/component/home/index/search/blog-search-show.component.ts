@@ -1,9 +1,9 @@
 import { Component, ViewEncapsulation } from '@angular/core';
-import { Router, Params, ActivatedRoute } from "@angular/router";
-import { BlogService } from "app/service";
+import { Router, Params, ActivatedRoute } from '@angular/router';
+import { BlogService } from 'app/service';
 import 'rxjs/add/operator/switchMap';
-import { LogService } from "app/service/Log.service";
-import { Blog } from "app/pojo/blog";
+import { LogService } from 'app/service/Log.service';
+import { Blog } from 'app/pojo/blog';
 
 @Component({
   selector: 'blog-search-show',
@@ -12,7 +12,7 @@ import { Blog } from "app/pojo/blog";
 export class BlogSearchShowComponent {
 
   msg: string;
-  blogs:Blog[];
+  blogs: Blog[];
   constructor(private route: ActivatedRoute,
     private router: Router,
     private blogService: BlogService
@@ -22,15 +22,15 @@ export class BlogSearchShowComponent {
   ngOnInit(): void {
 
     this.route.paramMap.switchMap((params: Params) => {
-      let string = params.get('string');
-       if(string.indexOf('tag:')!=-1){
-         let requestString=string.replace('tag:','');
+      const string = params.get('string');
+       if(string.indexOf('tag:') !== -1){
+         const requestString = string.replace('tag:', '');
       return this.blogService.getBlog_by_tag(requestString);
-       }else if(string.indexOf('title:')!=-1){
-         let requestString=string.replace('title:','');
+       }else if (string.indexOf('title:') !== -1){
+         const requestString = string.replace('title:', '');
          return this.blogService.getBlog_by_title(requestString);
-       }else if(string.indexOf('date:')!=-1){
-        let requestString=string.replace('date:','');
+       }else if (string.indexOf('date:') !== -1){
+        const requestString = string.replace('date:', '');
          return this.blogService.getBlog_by_date(requestString);
        }else{
          LogService.errorMsg('匹配错误');
@@ -38,10 +38,10 @@ export class BlogSearchShowComponent {
        }
     })
       .subscribe(response => {
-        if(response.status!==0){
+        if (response.status !== 0){
           this.msg = response.msg;
         }else{
-          this.blogs=response.data;
+          this.blogs = response.data;
         }
       });
   }

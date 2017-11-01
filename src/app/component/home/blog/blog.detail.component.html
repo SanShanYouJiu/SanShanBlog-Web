@@ -3,21 +3,44 @@
     <div class="col-md-12 column">
       <div class="row clearfix">
         <div class="col-md-2 column">
+          <div class="box">
+            <div class="box-content">
+              <h4 class="tag-title">简要信息</h4>
+              <hr />
+              <p><strong>标签:</strong>{{blog.tag}} </p>
+              <p><strong>时间:</strong>{{blog.time}}</p>
+              <p><strong>类型:</strong>{{blog.type}}</p>
+              <p><strong> 作者:</strong>
+              <a routerLink="active" [routerLink]="['/spec-users',blog.user]">{{blog.user}}</a>
+              </p>
+              <hr />
+              <div class="row clearfix">
+                <div class="col-md-2 column">
+                  32
+                  <button type="button" class="btn btn-danger btn-circle">  <i class="glyphicon glyphicon-heart"></i></button>
+                </div>
+                <div class="col-md-2 column">
+                </div>
+                <div class="col-md-2 column">
+                  21
+                  <button type="button" class="btn btn-warning btn-circle ">  <i class="glyphicon glyphicon-remove"></i></button>
+                </div>
+              </div>
+            </div>  
+          </div>
+
         </div>
         <div class="col-md-9 column">
-          <h3>
+          <h3 class="text-center">
             {{blog.title}}
-            <em>标签为:{{blog.tag}}</em>
-            <em>时间为:{{blog.time}}</em>
-            <em>类型为:{{blog.type}}</em>
-            <em>作者为:{{blog.user}}</em>
           </h3>
           <div *ngIf="markdownblog!=null" [innerHtml]="markdownblog.content">
           </div>
           <div *ngIf="uEditorBlog!=null" [innerHtml]="uEditorBlog.content">
           </div>
         </div>
-        <div class="col-md-2 column">
+        <div class="col-md-1 column">
+
         </div>
       </div>
     </div>

@@ -26,6 +26,7 @@ export class UserService {
     let urlParams = new URLSearchParams();
     urlParams.set('username',user.username);
     urlParams.set('password',user.password);
+    urlParams.set('email',user.email);
     urlParams.set("codeid",codeId.toString());
     urlParams.set("code",user.codevalidate);
     return this.http.post(Config.register, urlParams, this.jwt()).map((response: Response) => response.json());
