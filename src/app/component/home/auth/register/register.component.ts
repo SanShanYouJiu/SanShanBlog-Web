@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   model: any = {};
   loading = false;
   repeatPassword: string;
-  private imagePrefix = "data:image/png;base64,";
+  private imagePrefix = 'data:image/png;base64,';
 
   private imageCode: string;
 
@@ -27,21 +27,26 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getCodeValidate();
+  }
+
+
+  getCodeValidate(): void {
     this.codeValidate.getCodeValidate()
-      .then(response => {
-        if (response.status == 0) {
-          this.imageCode = this.imagePrefix + response.data.imageCode;
-          this.codeId=response.data.codeId;
-        } else {
-          this.alertService.error(response.msg);
-        }
-      });
+    .then(response => {
+      if (response.status === 0) {
+        this.imageCode = this.imagePrefix + response.data.imageCode;
+        this.codeId = response.data.codeId;
+      } else {
+        this.alertService.error(response.msg);
+      }
+    });
   }
 
   register() {
     this.loading = true;
 
-    if (this.model.password != this.repeatPassword) {
+    if (this.model.password !== this.repeatPassword) {
       this.alertService.error('密码不重复');
       return;
     }
@@ -49,7 +54,7 @@ export class RegisterComponent implements OnInit {
     this.userService.create(this.model,this.codeId)
       .subscribe(
       data => {
-        if (data.status == 0) {
+        if (data.status === 0) {
           this.alertService.success('注册成功', true);
           this.router.navigate(['/login']);
         } else {

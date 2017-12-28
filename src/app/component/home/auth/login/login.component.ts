@@ -15,9 +15,9 @@ export class LoginComponent implements OnInit {
   error = '';
   returnUrl: string;
 
-  private codeid:number;
+  private codeid: number;
 
-  private imagePrefix = "data:image/png;base64,";
+  private imagePrefix = 'data:image/png;base64,';
 
   private imageCode: string;
 
@@ -32,32 +32,36 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.getCodeValidate();
+  }
+
+  getCodeValidate(): void {
     this.codeValidate.getCodeValidate()
-      .then(response => {
-        if (response.status == 0) {
-          this.codeid=response.data.codeId;
-          this.imageCode = this.imagePrefix + response.data.imageCode;
-        } else {
-          this.alertService.error(response.msg);
-        }
-      });
+    .then(response => {
+      if (response.status === 0) {
+        this.codeid = response.data.codeId;
+        this.imageCode = this.imagePrefix + response.data.imageCode;
+      } else {
+        this.alertService.error(response.msg);
+      }
+    });
   }
 
 
   login() {
     this.loading = true;
     console.log(this.codeid);
-    this.authenticationService.login(this.model,this.codeid)
+    this.authenticationService.login(this.model, this.codeid)
       .subscribe(
       data => {
-        if(data.status == 0){
+        if (data.status === 0) {
         this.router.navigate([this.returnUrl]);
-        }else{
-          this.alertService.error("无法登陆:可能是用户名与密码错误");
+        }else {
+          this.alertService.error(data.msg);
         }
       },
       error => {
-        this.alertService.error("出现传输错误:可能是网络问题");
+        this.alertService.error('出现传输错误:可能是网络问题');
         this.loading = false;
       });
   }

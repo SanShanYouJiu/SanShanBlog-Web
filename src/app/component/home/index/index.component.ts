@@ -73,8 +73,6 @@ export class IndexComponent implements OnInit {
     this.filechange = 0;
   }
 
- 
-
 
   getBlogs(): void {
     this.blogService.getBlog_All()

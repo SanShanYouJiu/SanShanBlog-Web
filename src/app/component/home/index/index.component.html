@@ -63,7 +63,7 @@
         </p>
         <small>就是 <cite>有点不好看</cite></small>
       </blockquote>
-      <img alt="140x140" src="assets/images/樱花庄.jpg" class="img-circle" />
+      <img alt="140x140" src="assets/images/defaultHomePage.jpg" class="img-circle" />
       <div class="alert alert-success alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         <h4>
@@ -90,11 +90,11 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="InputFile">选择文件</label> <input type="file" id="InputFile" accept=".txt,.doc" ng2FileSelect [uploader]="uploader"
+            <label for="InputFile">选择文件</label> <input type="file" id="InputFile" accept="image/jpeg,image/gif,image/png" ng2FileSelect [uploader]="uploader"
               (change)="changeFileFlag()" />
             <p class="help-block">
-              您可以选择文件进行说明
-            </p>
+              您可以选择图片来进行补充说明 注意 图片不能大于2M 
+            </p> 
           </div>
           <div class="checkbox">
           </div> <button type="submit" class="btn btn-default" (click)="feedback()">反馈</button>

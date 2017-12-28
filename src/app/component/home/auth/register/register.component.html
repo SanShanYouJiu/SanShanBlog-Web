@@ -44,7 +44,7 @@
           <div class="col-sm-10">
             <input type="text" name="codevalidate" [(ngModel)]="model.codevalidate" class="form-control" id="authCode"
                    #codevalidate="ngModel" required/>
-            <img src="{{imageCode}}" alt="验证码" />
+            <img src="{{imageCode}}" (click)="getCodeValidate()" alt="验证码" />
             <div *ngIf="f.submitted && !codevalidate.valid" class="help-block">请输入验证码</div>
           </div>
 

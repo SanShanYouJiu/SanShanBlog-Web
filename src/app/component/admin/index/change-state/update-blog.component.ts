@@ -42,9 +42,9 @@ export class UpdateBlogComponent implements OnInit {
       .subscribe(response => {
         this.blog = response.data;
         if (this.blog.type === 1) {
-          let  HyperDown = require('hyperdown');
+          const  HyperDown = require('hyperdown');
           this.markdownblog = new MarkDownBlog();
-          let  parser = new HyperDown, html = parser.makeHtml(this.blog.content);
+          const  parser = new HyperDown, html = parser.makeHtml(this.blog.content);
           this.markdownblog.content = html;
         }
         else {
@@ -57,8 +57,8 @@ export class UpdateBlogComponent implements OnInit {
   updateBlog() {
     this.loading = true;
     this.adminIndexService.updateBlogById(this.id, this.model.title, this.model.tag, this.model.content)
-    .then(response =>{
-      if(response.state === 0) {
+    .then(response => {
+      if (response.state === 0) {
         this.alterService.success('操作成功');
       }else{
         this.alterService.error(response.msg);

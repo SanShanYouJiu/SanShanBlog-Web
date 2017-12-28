@@ -45,6 +45,7 @@ import { ConfirmForgetPasswordComponent } from 'app/component/home/auth/confirm-
 import { CodeValidateService } from 'app/service/code-validate.service';
 import {SpecificUsersInfoComponent} from './component/home/user-info/spec-users-info.component';
 import { UserInfoService } from 'app/service/user-info.service';
+import { VoteService } from 'app/service';
 
 
 @NgModule({
@@ -90,6 +91,7 @@ import { UserInfoService } from 'app/service/user-info.service';
     UserInfoService,
     IndexService,
     AlertService,
+    VoteService,
 
     CodeValidateService,
     BlogService],

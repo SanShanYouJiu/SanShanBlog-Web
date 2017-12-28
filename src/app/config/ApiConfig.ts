@@ -96,5 +96,13 @@ export class  Config{
 
   static update_ueditor_blog: string = Config.baseUrl + '/ueditor-editor/update-blog-by-id';
 
+  // 投票相关
+  static favour_blog: string = Config.baseUrl + '/blog/vote/favour';
+
+  static tread_blog: string  = Config.baseUrl + '/blog/vote/tread';
+
+  static get_blog_vote_info: string = Config.baseUrl + '/blog/vote/blog-info';
+
+  static get_ip_vote_info: string = Config.baseUrl + '/blog/vote/ip-vote-info';
 
 }

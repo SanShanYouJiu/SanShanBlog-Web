@@ -28,24 +28,28 @@ export class ConfirmForgetPasswordComponent implements OnInit {
     ngOnInit() {
         //TODO: 魔法值 
         this.ToDoUrl = "/auth/forget-pwd"
-        this.codeValidate.getCodeValidate().then(response => {
-            if (response.status == 0) {
-                this.imageCode = this.imagePrefix + response.data.imageCode;
-                this.codeId=response.data.codeId;
-            } else {
-                this.alter.error(response.msg);
-            }
-        });
+        this.getCodeValidate();
     }
+
+  getCodeValidate(): void {
+    this.codeValidate.getCodeValidate().then(response => {
+        if (response.status === 0) {
+            this.imageCode = this.imagePrefix + response.data.imageCode;
+            this.codeId = response.data.codeId;
+        } else {
+            this.alter.error(response.msg);
+        }
+    });
+  }
 
     onSubmit() {
         this.authService.send_mail(2, this.model.email,this.model.code,this.codeId)
             .then(response => {
-                if (response.status == 0) {
+                if (response.status === 0) {
                     this.router.navigateByUrl(this.ToDoUrl);
                 } else {
                     console.log('验证码错误 或者操作太频繁 5分钟一次');
-                    }if (response.status == 20016) {
+                    }if (response.status === 20016) {
                         this.alter.error("请求太过频繁 5分钟一次");
                     } else {
                         this.alter.error(response.msg);
