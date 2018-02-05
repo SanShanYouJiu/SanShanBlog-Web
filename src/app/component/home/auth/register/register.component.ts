@@ -14,7 +14,6 @@ export class RegisterComponent implements OnInit {
   model: any = {};
   loading = false;
   repeatPassword: string;
-  private imagePrefix = 'data:image/png;base64,';
 
   private imageCode: string;
 
@@ -35,7 +34,7 @@ export class RegisterComponent implements OnInit {
     this.codeValidate.getCodeValidate()
     .then(response => {
       if (response.status === 0) {
-        this.imageCode = this.imagePrefix + response.data.imageCode;
+        this.imageCode =  response.data.imageCode;
         this.codeId = response.data.codeId;
       } else {
         this.alertService.error(response.msg);
@@ -59,6 +58,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['/login']);
         } else {
           this.alertService.error(data.msg);
+          this.loading = false;
         }
       },
       error => {

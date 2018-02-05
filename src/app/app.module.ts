@@ -46,7 +46,8 @@ import { CodeValidateService } from 'app/service/code-validate.service';
 import {SpecificUsersInfoComponent} from './component/home/user-info/spec-users-info.component';
 import { UserInfoService } from 'app/service/user-info.service';
 import { VoteService } from 'app/service';
-
+import { AboutComponent } from 'app/component/home/about/about.component';
+import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { VoteService } from 'app/service';
     ConfirmForgetPasswordComponent,
     SpecificUsersInfoComponent,
     MarkDownEditorComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -81,6 +83,7 @@ import { VoteService } from 'app/service';
     CommonModule,
     AppRoutingModule,
     Ng2PaginationModule,
+    LMarkdownEditorModule,
   ],
   providers: [
     AuthGuard,

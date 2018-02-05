@@ -11,7 +11,6 @@ import { CodeValidateService } from "app/service/code-validate.service";
 })
 export class ConfirmForgetPasswordComponent implements OnInit {
     private imageCode: string;
-    private imagePrefix = "data:image/png;base64,";
     private model: any = {};
 
     private codeId:number;
@@ -26,7 +25,7 @@ export class ConfirmForgetPasswordComponent implements OnInit {
 
     }
     ngOnInit() {
-        //TODO: 魔法值 
+        //TODO: 魔法值
         this.ToDoUrl = "/auth/forget-pwd"
         this.getCodeValidate();
     }
@@ -34,7 +33,7 @@ export class ConfirmForgetPasswordComponent implements OnInit {
   getCodeValidate(): void {
     this.codeValidate.getCodeValidate().then(response => {
         if (response.status === 0) {
-            this.imageCode = this.imagePrefix + response.data.imageCode;
+            this.imageCode =  response.data.imageCode;
             this.codeId = response.data.codeId;
         } else {
             this.alter.error(response.msg);
@@ -46,7 +45,9 @@ export class ConfirmForgetPasswordComponent implements OnInit {
         this.authService.send_mail(2, this.model.email,this.model.code,this.codeId)
             .then(response => {
                 if (response.status === 0) {
-                    this.router.navigateByUrl(this.ToDoUrl);
+                  this.router.navigateByUrl(this.ToDoUrl);
+                  this.alter.success("成功");
+                    return;
                 } else {
                     console.log('验证码错误 或者操作太频繁 5分钟一次');
                     }if (response.status === 20016) {

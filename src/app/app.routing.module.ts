@@ -17,6 +17,7 @@ import { ForgetPasswordComponent } from './component/home/auth/forget-password.c
 import { ChangePasswordComponent } from './component/home/auth/change-password.component';
 import { ConfirmForgetPasswordComponent } from 'app/component/home/auth/confirm-forget-password.component';
 import { SpecificUsersInfoComponent } from './component/home/user-info/spec-users-info.component';
+import { AboutComponent } from 'app/component/home/about/about.component';
 
 const appRoutes: Routes = [
   {
@@ -27,6 +28,10 @@ const appRoutes: Routes = [
   {
     path: 'index',
     component: IndexComponent
+  },
+  {
+      path: 'about',
+      component: AboutComponent
   },
   {
     path: 'blog-date',

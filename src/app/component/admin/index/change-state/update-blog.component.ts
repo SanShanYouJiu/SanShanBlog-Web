@@ -58,10 +58,11 @@ export class UpdateBlogComponent implements OnInit {
     this.loading = true;
     this.adminIndexService.updateBlogById(this.id, this.model.title, this.model.tag, this.model.content)
     .then(response => {
-      if (response.state === 0) {
+      if (response.status === 0) {
         this.alterService.success('操作成功');
       }else{
-        this.alterService.error(response.msg);
+        this.alterService.error('操作失败');
+        this.loading = false;
       }
     } );
   }

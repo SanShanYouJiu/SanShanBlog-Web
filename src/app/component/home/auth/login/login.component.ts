@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
 
   private codeid: number;
 
-  private imagePrefix = 'data:image/png;base64,';
 
   private imageCode: string;
 
@@ -40,7 +39,7 @@ export class LoginComponent implements OnInit {
     .then(response => {
       if (response.status === 0) {
         this.codeid = response.data.codeId;
-        this.imageCode = this.imagePrefix + response.data.imageCode;
+        this.imageCode = response.data.imageCode;
       } else {
         this.alertService.error(response.msg);
       }
@@ -58,6 +57,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate([this.returnUrl]);
         }else {
           this.alertService.error(data.msg);
+          this.loading = false;
         }
       },
       error => {

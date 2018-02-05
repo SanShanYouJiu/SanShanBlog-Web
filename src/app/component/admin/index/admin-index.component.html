@@ -43,10 +43,10 @@
             <div class="col-md-6 column">
               <ul class="nav nav-pills">
                 <li class="active">
-                  <a  href="javascript:void(0)"> <span class="badge pull-right">42</span> 总赞数</a>
+                  <a  href="javascript:void(0)"> <span class="badge pull-right">{{userVoteInfo.amountFavours}}</span> 总赞数</a>
                 </li>
                 <li>
-                  <a href="javascript:void(0)"> <span class="badge pull-right">16</span> 总踩数</a>
+                  <a href="javascript:void(0)"> <span class="badge pull-right">{{userVoteInfo.amountTreads}}</span> 总踩数</a>
                 </li>
               </ul>
             </div>
@@ -184,12 +184,12 @@
                 <a routerLink="/admin/editor" routerLinkActive="active">  <button class="btn btn-default" type="button">  <em
                   class="glyphicon glyphicon-th-list"></em> 编辑器
                 </button></a>
-                <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-justify"></em>
+               <a routerLink="#" routerLinkActive="active"><button class="btn btn-default"  title="功能尚未提供" type="button"><em class="glyphicon glyphicon-align-justify"></em>
                   赞数变化
-                </button>
-                <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-justify"></em>
+                </button></a>
+               <a routerLink="#" routerLinkActive="active"><button class="btn btn-default"  title="功能尚未提供" type="button"><em class="glyphicon glyphicon-align-justify"></em>
                   评论管理
-                </button>
+                </button></a>
               </div>
             </div>
           </div>
