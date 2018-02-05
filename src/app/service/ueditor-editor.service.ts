@@ -30,24 +30,21 @@ export class UEditorService{
   }
 
   query_all():Promise<any>{
-    let urlParams = new URLSearchParams();
-    return this.http.post(Config.ueditor_query_all,urlParams, this.jwt())
+    return this.http.get(Config.ueditor_query_all, this.jwt())
       .toPromise()
       .then(response => response.json())
       .catch(LogService.handleError);
   }
 
-//TODO 还没实现完
   update_by_id(uEditorBlog:UEditorBlog):Promise<any>{
     let urlParams = new URLSearchParams();
-    urlParams.set("id", uEditorBlog.id.toString());
     if(uEditorBlog.content!=null)
       urlParams.set("content", uEditorBlog.content);
     if(uEditorBlog.tag!=null)
       urlParams.set("tag", uEditorBlog.tag);
     if(uEditorBlog.title!=null)
       urlParams.set("title", uEditorBlog.title);
-    return this.http.post(Config.update_ueditor_blog, urlParams, this.jwt()).
+    return this.http.post(Config.update_ueditor_blog+uEditorBlog.id, urlParams, this.jwt()).
       toPromise()
       .then(response=>response.json())
       .catch(LogService.handleError);

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, RequestOptions, Response, URLSearchParams } from "@angular/http";
+import {Headers, Http, RequestOptions, Response, URLSearchParams, RequestOptionsArgs} from "@angular/http";
 import 'rxjs/add/operator/map'
 import {Config} from  '../config/ApiConfig';
 import {LogService} from "./Log.service";
@@ -53,7 +53,7 @@ export class AuthenticationService {
     .catch(LogService.handleError);
   }
 
-  
+
   change_pwd(code:string,password:string):Promise<any>{
     let urlParams = new URLSearchParams();
     urlParams.set('code',code);

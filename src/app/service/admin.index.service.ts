@@ -52,9 +52,7 @@ export class AdminIndexService {
     }
 
   deleteBlogById(id:number):Promise<any>{
-    let urlParams =new URLSearchParams();
-     urlParams.set('id',id.toString());
-    return this.http.post(Config.delete_blog_by_id,urlParams,this.jwt())
+    return this.http.delete(Config.delete_blog_by_id+id,this.jwt())
     .toPromise()
     .then(response=>response.json())
     .catch(LogService.handleError);

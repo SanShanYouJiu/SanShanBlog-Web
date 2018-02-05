@@ -28,8 +28,7 @@ export class MarkDownService{
   }
 
   query_all():Promise<any>{
-    let urlParams = new URLSearchParams();
-    return this.http.post(Config.markdown_query_all, urlParams,this.jwt()).
+    return this.http.get(Config.markdown_query_all,this.jwt()).
     toPromise().then(response => response.json())
       .catch(LogService.handleError);
   }
@@ -38,14 +37,13 @@ export class MarkDownService{
 //TODO 还没实现完
   update_by_id(markdownblog:MarkDownBlog):Promise<any>{
     let urlParams = new URLSearchParams();
-    urlParams.set("id", markdownblog.id.toString());
     if(markdownblog.content!=null)
       urlParams.set("content", markdownblog.content);
     if(markdownblog.tag!=null)
       urlParams.set("tag", markdownblog.tag);
     if(markdownblog.title!=null)
       urlParams.set("title", markdownblog.title);
-    return this.http.post(Config.update_markdown_blog, urlParams, this.jwt()).
+    return this.http.post(Config.update_markdown_blog+markdownblog.id, urlParams, this.jwt()).
       toPromise()
       .then(response=>response.json())
       .catch(LogService.handleError);

@@ -8,19 +8,15 @@ export class UserInfoService {
 
     constructor( private http: Http, ) { }
 
-   getBasic(username: string): Promise<any>{
-     const urlParams = new URLSearchParams();
-     urlParams.set('username', username);
-    return this.http.post(Config.get_user_info_basic, urlParams)
+   getBasic(username: string): Promise<any> {
+    return this.http.get(Config.get_user_info + username + Config.user_info_basic)
       .toPromise()
       .then(response => response.json())
       .catch(LogService.handleError);
    }
 
-   getBlogs(username: string): Promise<any>{
-       const  urlParams = new URLSearchParams();
-       urlParams.set('username', username);
-     return  this.http.post(Config.get_user_info_blogs, urlParams)
+   getBlogs(username: string): Promise<any> {
+     return  this.http.get(Config.get_user_info + username + Config.user_info_blogs)
        .toPromise()
        .then(response => response.json())
        .catch(LogService.handleError);

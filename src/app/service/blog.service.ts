@@ -18,20 +18,14 @@ export class BlogService {
   }
 
   getBlog_by_page(pageRows: number, pageNum: number): Promise<any> {
-    const urlParams = new URLSearchParams();
-    urlParams.set('pageRows', pageRows.toString());
-    urlParams.set('pageNum', pageNum.toString());
-    return this.http.post(Config.query_blog_by_page, urlParams)
+    return this.http.get(Config.query_blog_by_page+"pageRows:"+pageRows+"/pageNum:"+pageNum)
       .toPromise()
       .then(response => response.json())
       .catch(LogService.handleError);
   }
 
   getBlog_by_id(id: number): Promise<any> {
-    const urlParams = new URLSearchParams();
-    urlParams.set('id', id.toString());
-    // get是有问题的
-    return this.http.post(Config.query_blog_by_id, urlParams)
+    return this.http.get(Config.query_blog_by_id+id)
       .toPromise()
       .then(response => response.json())
       .catch(LogService.handleError);
@@ -39,9 +33,7 @@ export class BlogService {
 
 
   delete_by_id(id: number): Promise<any> {
-    const urlParams = new URLSearchParams();
-    urlParams.set('id', id.toString());
-    return this.http.post(Config.delete_blog_by_id, urlParams, this.jwt())
+    return this.http.delete(Config.delete_blog_by_id+id, this.jwt())
       .toPromise()
       .then(response => response.json())
       .catch(LogService.handleError);
@@ -56,19 +48,14 @@ export class BlogService {
   }
 
   getBlog_by_tag(tag: string): Promise<any> {
-    const urlParams = new URLSearchParams();
-    urlParams.set('tag', tag);
-    return this.http.post(Config.query_by_tag, urlParams)
+    return this.http.get(Config.query_by_tag+tag)
       .toPromise()
       .then(response => response.json())
       .catch(LogService.handleError);
   }
 
 getTag_by_page(pageRows: number, pageNum: number):Promise<any>{
-  const urlParams = new URLSearchParams();
-  urlParams.set('pageRows', pageRows.toString());
-  urlParams.set('pageNum', pageNum.toString());
-  return this.http.post(Config.query_tag_by_page, urlParams)
+  return this.http.get(Config.query_tag_by_page+"pageRows:"+pageRows+"/pageNum:"+pageNum)
     .toPromise()
     .then(response => response.json())
     .catch(LogService.handleError);
@@ -80,19 +67,14 @@ getTag_by_page(pageRows: number, pageNum: number):Promise<any>{
   }
 
   getBlog_by_title(title: string): Promise<any> {
-    const urlParams = new URLSearchParams();
-    urlParams.set('title', title);
-    return this.http.post(Config.query_by_title, urlParams)
+    return this.http.get(Config.query_by_title+title)
       .toPromise()
       .then(response => response.json())
       .catch(LogService.handleError);
   }
 
   getTitle_by_page(pageRows: number, pageNum: number):Promise<any>{
-    const urlParams = new URLSearchParams();
-    urlParams.set('pageRows', pageRows.toString());
-    urlParams.set('pageNum', pageNum.toString());
-    return this.http.post(Config.query_title_by_page, urlParams)
+    return this.http.get(Config.query_title_by_page+"pageRows:"+pageRows+"/pageNum:"+pageNum)
       .toPromise()
       .then(response => response.json())
       .catch(LogService.handleError);
@@ -100,19 +82,14 @@ getTag_by_page(pageRows: number, pageNum: number):Promise<any>{
 
 
   getBlog_by_date(date: string): Promise<any> {
-    const urlParams = new URLSearchParams();
-    urlParams.set('date', date);
-    return this.http.post(Config.query_by_date, urlParams)
+    return this.http.get(Config.query_by_date+date)
       .toPromise()
       .then(response => response.json())
       .catch(LogService.handleError);
   }
 
   getDate_by_page(pageRows: number, pageNum: number): Promise<any> {
-    const urlParams = new URLSearchParams();
-    urlParams.set('pageRows', pageRows.toString());
-    urlParams.set('pageNum', pageNum.toString());
-    return this.http.post(Config.query_date_by_page, urlParams)
+    return this.http.get(Config.query_date_by_page+"pageRows:"+pageRows+"/pageNum:"+pageNum)
       .toPromise()
       .then(response => response.json())
       .catch(LogService.handleError);
