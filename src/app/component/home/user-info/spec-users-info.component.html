@@ -1,0 +1,66 @@
+<div class="container">
+	<div class="row profile">
+		<div class="col-md-3">
+			<div class="profile-sidebar">
+				<!-- SIDEBAR USERPIC -->
+				<div class="profile-userpic">
+					<img src="{{user.avatar}}" class="img-responsive" alt="">
+				</div>
+				<!-- END SIDEBAR USERPIC -->
+				<!-- SIDEBAR USER TITLE -->
+				<div class="profile-usertitle">
+					<div class="profile-usertitle-name">
+						{{username}}
+					</div>
+					<div class="profile-usertitle-job">
+					      测试人员
+					</div>
+				</div>
+				<!-- END SIDEBAR USER TITLE -->
+				<!-- SIDEBAR BUTTONS -->
+				<div class="profile-userbuttons">
+					<button type="button" class="btn btn-success btn-sm">关注</button>
+					<button type="button" class="btn btn-danger btn-sm">留言</button>
+				</div>
+				<!-- END SIDEBAR BUTTONS -->
+				<!-- SIDEBAR MENU -->
+				<div class="profile-usermenu">
+					<ul class="nav">
+						<li class="active">
+							<a href="#">
+							<i class="glyphicon glyphicon-home"></i>
+							博客概览 </a>
+						</li>
+						<li>
+							<a href="#">
+							<i class="glyphicon glyphicon-user"></i>
+							具体资料 </a>
+						</li>
+						<li>
+							<a href="https://github.com/SanShanYouJiu/SanShanBlog-Web">
+							<i class="glyphicon glyphicon-flag"></i>
+							帮助 </a>
+						</li>
+					</ul>
+				</div>
+				<!-- END MENU -->
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="profile-content">
+				<ul class="pagination">
+					<li *ngFor="let blog of blogs | paginate: { itemsPerPage: 8, currentPage: p }">
+						<div>
+							<h3> {{blog.title}} </h3>
+							<a routerLinkActive="active" [routerLink]="['/blog-detail',blog.id]">查看更多</a>
+						</div>
+					</li>
+					<pagination-controls (pageChange)="p = $event"></pagination-controls>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br>
+<br>
