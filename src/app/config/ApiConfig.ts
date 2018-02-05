@@ -21,7 +21,7 @@ export class  Config{
   static codeValidate= Config.baseUrl + '/codeValidate';
 
   // 刷新验证token有效期
-  static refresh_token: string= Config.baseUrl + '/auth/refresh';
+  static refresh_token: string= Config.baseUrl + '/auth/refresh-token';
 
   static change_password: string= Config.baseUrl + '/user/change-pwd';
 
@@ -35,74 +35,83 @@ export class  Config{
   // 检查邮箱是否可以使用
   static check_email: string = Config.baseUrl + '/user/email/check';
 
-  static admin_query_blog_all: string = Config.baseUrl + '/admin/index/blog/query-all';
+  static admin_query_blog_all: string = Config.baseUrl + '/admin/index/blog/all';
 
-  static admin_query_markdown_all: string = Config.baseUrl + '/admin/index/blog/query-markdown-all';
+  static admin_query_markdown_all: string = Config.baseUrl + '/admin/index/blog/markdown-all';
 
-  static admin_query_ueditor_all: string = Config.baseUrl + '/admin/index/blog/query-ueditor-all';
+  static admin_query_ueditor_all: string = Config.baseUrl + '/admin/index/blog/ueditor-all';
 
-  static admin_update_blog_by_id: string= Config.baseUrl + '/admin/index/blog/update-by-id';
+  static admin_update_blog_by_id: string= Config.baseUrl + '/admin/index/blog';
 
   // 获取当前用户信息
-  static admin_get_user_info: string = Config.baseUrl + '/admin/index/get-user-info';
+  static admin_get_user_info: string = Config.baseUrl + '/admin/index/user-info';
 
-  static admin_change_user_info: string= Config.baseUrl + '/admin/index/change-user-info';
+  static admin_change_user_info: string= Config.baseUrl + '/admin/index/user-info';
 
-  static get_user_info_basic: string= Config.baseUrl + '/user-info/basic';
+  static get_user_info: string= Config.baseUrl + '/user-info/';
 
-  static get_user_info_blogs: string= Config.baseUrl + '/user-info/blogs';
+  static user_info_basic: string ='/basic';
 
-  static query_blog_all: string= Config.baseUrl + '/blog/query-all';
+  static user_info_blogs: string= '/blogs';
 
-  static query_blog_by_page: string= Config.baseUrl + '/blog/query-by-page';
+  static query_blog_all: string= Config.baseUrl + '/blog/all';
 
-  static query_blog_by_id: string= Config.baseUrl + '/blog/query-by-id';
+  static query_blog_by_page: string= Config.baseUrl + '/blog/page/';
 
-  static delete_blog_by_id: string= Config.baseUrl + '/blog/delete-by-id';
+  static query_blog_by_id: string= Config.baseUrl + '/blog/id/';
 
-  static query_by_title: string= Config.baseUrl + '/blog/query-by-title';
+  static delete_blog_by_id: string= Config.baseUrl + '/blog/id/';
 
-  static query_title_all: string = Config.baseUrl + '/blog/query-title-all';
+  static query_by_title: string= Config.baseUrl + '/blog/title/';
 
-  static query_title_by_page: string = Config.baseUrl + '/blog/query-title-by-page';
+  static query_title_all: string = Config.baseUrl + '/blog/title-all';
 
-  static query_by_tag: string= Config.baseUrl + '/blog/query-by-tag';
+  static query_title_by_page: string = Config.baseUrl + '/blog/title-page/';
 
-  static query_tag_all: string = Config.baseUrl + '/blog/query-tag-all';
+  static query_by_tag: string= Config.baseUrl + '/blog/tag/';
 
-  static query_tag_by_page: string = Config.baseUrl + '/blog/query-tag-by-page';
+  static query_tag_all: string = Config.baseUrl + '/blog/tag-all';
 
-  static query_by_date: string = Config.baseUrl + '/blog/query-by-date';
+  static query_tag_by_page: string = Config.baseUrl + '/blog/tag-page/';
 
-  static query_date_all: string = Config.baseUrl + '/blog/query-date-all';
+  static query_by_date: string = Config.baseUrl + '/blog/date/';
 
-  static query_date_by_page: string = Config.baseUrl + '/blog/query-date-by-page';
+  static query_date_all: string = Config.baseUrl + '/blog/date-all';
 
-  static insert_markdown_blog: string= Config.baseUrl + '/markdown-editor/insert-blog';
+  static query_date_by_page: string = Config.baseUrl + '/blog/date-page/';
 
-  static markdown_query_all: string = Config.baseUrl + '/markdown-editor/query-all';
+  static insert_markdown_blog: string= Config.baseUrl + '/markdown-editor/blog';
 
-  static delete_markdown_blog: string= Config.baseUrl + '/markdown-editor/delete-by-id';
+  static markdown_query_all: string = Config.baseUrl + '/markdown-editor/blog/all';
 
-  static update_markdown_blog: string= Config.baseUrl + '/markdown-editor/update-blog-by-id';
+  static delete_markdown_blog: string= Config.baseUrl + '/markdown-editor/blog/id:';
+
+  static update_markdown_blog: string= Config.baseUrl + '/markdown-editor/blog/id:';
 
 
 
-  static insert_ueditor_blog: string = Config.baseUrl + '/ueditor-editor/insert-blog';
+  static insert_ueditor_blog: string = Config.baseUrl + '/ueditor-editor/blog';
 
-  static ueditor_query_all: string = Config.baseUrl + '/ueditor-editor/query-all';
+  static ueditor_query_all: string = Config.baseUrl + '/ueditor-editor/blog/all';
 
-  static delete_ueditor_blog: string= Config.baseUrl + '/ueditor-editor/delete-by-id';
+  static delete_ueditor_blog: string= Config.baseUrl + '/ueditor-editor/blog/id:';
 
-  static update_ueditor_blog: string = Config.baseUrl + '/ueditor-editor/update-blog-by-id';
+  static update_ueditor_blog: string = Config.baseUrl + '/ueditor-editor/blog/id:';
 
   // 投票相关
-  static favour_blog: string = Config.baseUrl + '/blog/vote/favour';
+  static vote_blogId: string = Config.baseUrl + '/blog/vote/blogId:';
 
-  static tread_blog: string  = Config.baseUrl + '/blog/vote/tread';
+  static favour_blog: string ='/favour';
 
-  static get_blog_vote_info: string = Config.baseUrl + '/blog/vote/blog-info';
+  static tread_blog: string = '/tread';
 
-  static get_ip_vote_info: string = Config.baseUrl + '/blog/vote/ip-vote-info';
+  static blog_vote_info: string = '/info';
 
+  static vote_ip: string = Config.baseUrl + '/blog/vote/ip:';
+
+  static ip_vote_info: string = '/ip-vote-info';
+
+  static vote_user: string = Config.baseUrl + '/blog/vote/user:';
+
+  static user_vote_info: string ='/info';
 }
