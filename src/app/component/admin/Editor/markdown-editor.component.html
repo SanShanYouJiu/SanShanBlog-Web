@@ -15,7 +15,7 @@
   <div class="center-block" style="width:80%;background-color:#ccc;">
   <input name="title" type="text" placeholder="标题?" class="form-control" #markdown_title />
   <input name="title" type="text" placeholder="标签?"  class="form-control" #markdown_tag />
-  <md-editor  name="Content" [preRender]="preRenderFunc" [(ngModel)]="content" [height]="'400px'" [mode]="mode" [options]="options" required maxlength="20000"></md-editor>
+  <md-editor  name="Content"   [(ngModel)]="content" [height]="'400px'"  required maxlength="20000"></md-editor>
   </div>
   <hr/>
   <div class="container">
@@ -23,7 +23,7 @@
       <div class="col-md-4 column">
       </div>
       <div class="col-md-4 column">
-        <button type="button" (click)="insert_blog()" class="btn btn-info btn-block btn-lg" type="submit">提交</button>
+        <button [disabled]="alreadySubmit" type="button"  (click)="insert_blog()" class="btn btn-info btn-block btn-lg" type="submit">提交</button>
       </div>
       <div class="col-md-4 column">
       </div>

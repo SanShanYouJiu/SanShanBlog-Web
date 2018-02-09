@@ -10,7 +10,8 @@ import { Blog } from 'app/pojo/blog';
   templateUrl: 'blog-search-show.component.html',
 })
 export class BlogSearchShowComponent {
-
+  p:number = 1;
+  total: number;
   msg: string;
   blogs: Blog[];
   constructor(private route: ActivatedRoute,
@@ -46,6 +47,10 @@ export class BlogSearchShowComponent {
       });
   }
 
+  getPage(page: number) {
+          this.total = this.blogs.length;
+          this.p = page;
+}
 }
 
 

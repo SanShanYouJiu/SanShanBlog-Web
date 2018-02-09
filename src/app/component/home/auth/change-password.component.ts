@@ -13,7 +13,7 @@ export class ChangePasswordComponent implements OnInit {
     private route: ActivatedRoute,
     private alter:AlertService ) { }
 
-  private model: any = {};
+    model: any = {};
  
   private code:string;
 

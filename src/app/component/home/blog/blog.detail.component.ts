@@ -20,7 +20,7 @@ export class BlogDetailComponent implements OnInit {
 
   blog: Blog;
 
-  blogVoteinfo: BlogVoteInfo;
+  blogVoteinfo: BlogVoteInfo = new BlogVoteInfo();
 
   markdownblog: MarkDownBlog;
 

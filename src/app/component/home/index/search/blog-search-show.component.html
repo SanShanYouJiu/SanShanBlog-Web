@@ -3,14 +3,14 @@
     <p><strong>{{msg}}</strong></p>
     <ul class="pagination">
         <ul>
-          <li *ngFor="let blog of blogs | paginate: { itemsPerPage: 8, currentPage: p }"
+          <li *ngFor="let blog of blogs | paginate: { id:'server', itemsPerPage: 8, currentPage: p , totalItems: total}"
           >
             <h2>{{blog.title}}</h2>
             <a routerLinkActive="active" [routerLink]="['/blog-detail',blog.id]">查看更多</a>
             <!--<blog-detail [blog]="blog"></blog-detail>-->
           </li>
         </ul>
-        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
       </ul>
 </div>
 

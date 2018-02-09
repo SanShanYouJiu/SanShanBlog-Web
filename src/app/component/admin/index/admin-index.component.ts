@@ -16,10 +16,10 @@ export class AdminIndexComponent implements OnInit {
   blogs: Blog[];//TODO: 将blogs进行排序 下面同理
   markdownblogs: Blog[];
   ueditorblogs: Blog[];
-  userinfo: UserInfo;
-  userVoteInfo: UserVoteInfo;
+  userinfo: UserInfo = new UserInfo();
+  userVoteInfo: UserVoteInfo = new UserVoteInfo();
 
-  private model: any = {};
+   model: any = {};
 
   constructor(private authenticationService: AuthenticationService,
     private adminIndexService: AdminIndexService,

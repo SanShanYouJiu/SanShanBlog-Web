@@ -11,8 +11,10 @@ import { Blog } from 'app/pojo/blog';
 })
 
 export class SpecificUsersInfoComponent implements OnInit {
+  p:number = 1;
+  total: number;
   username: string;
-  user: User;
+  user: User = new User();
   blogs: Blog[];
 
   constructor(private route: ActivatedRoute,
@@ -43,4 +45,9 @@ export class SpecificUsersInfoComponent implements OnInit {
       }
     )
   }
+
+  getPage(page: number) {
+    this.total = this.blogs.length;
+    this.p = page;
+}
 }

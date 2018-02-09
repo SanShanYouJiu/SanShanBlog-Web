@@ -78,7 +78,7 @@
           <div class="col-md-4 column">
           </div>
           <div class="col-md-4 column">
-            <button type="button" (click)="insert_blog()" class="btn btn-default btn-block">提交内容</button>
+            <button type="button" [disabled]="alreadySumbit" (click)="insert_blog()" class="btn btn-default btn-block">提交内容</button>
           </div>
           <div class="col-md-4 column">
           </div>

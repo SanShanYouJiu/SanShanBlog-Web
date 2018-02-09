@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   loading = false;
   repeatPassword: string;
 
-  private imageCode: string;
+  imageCode: string;
 
   private codeId: number;
 

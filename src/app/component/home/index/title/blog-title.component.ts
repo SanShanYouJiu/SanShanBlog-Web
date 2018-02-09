@@ -6,7 +6,8 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'blog-title',
-    templateUrl: 'blog-title.component.html'
+    templateUrl: 'blog-title.component.html',
+    styleUrls:['blog-title.component.css']
 })
 export class BlogTitleComponent implements OnInit {
     p = 1;
@@ -25,7 +26,7 @@ export class BlogTitleComponent implements OnInit {
 
     getPage(page: number) {
         this.loading = true;
-        this.blogService.getTitle_by_page(8, page)
+        this.blogService.getTitle_by_page(15, page)
           .then(
           res => {
             if (res.status === 0) {

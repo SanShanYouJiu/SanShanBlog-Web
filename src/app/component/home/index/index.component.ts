@@ -22,7 +22,8 @@ const URL = Config.index_advice_upload;
 
 @Component({
   selector: 'index',
-  templateUrl: 'index.component.html'
+  templateUrl: 'index.component.html',
+  styleUrls:["index.component.css"]
 })
 
 
@@ -85,7 +86,7 @@ export class IndexComponent implements OnInit {
 
   getPage(page: number) {
     this.loading = true;
-    this.blogService.getBlog_by_page(8, page)
+    this.blogService.getBlog_by_page(11, page)
       .then(
       res => {
         if (res.status === 0) {

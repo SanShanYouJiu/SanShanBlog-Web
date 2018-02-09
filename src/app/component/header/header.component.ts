@@ -11,9 +11,9 @@ import {AuthenticationService} from '../../service/authentication.service';
 export class HeaderComponent implements OnInit {
   isBackColor: boolean = false;
 
-  private Title = '欢迎来到博客';
-  private LittleTitle = '今日无事';
-  private MoreFunction = '更多功能等待扩展..';
+  Title = '欢迎来到三山博客';
+  LittleTitle = '今日无事';
+  MoreFunction = '更多功能等待扩展..';
 
   constructor(private router: Router,
              private  authenticationService:AuthenticationService) {

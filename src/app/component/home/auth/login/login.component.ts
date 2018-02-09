@@ -10,7 +10,7 @@ import { CodeValidateService } from "../../../../service/code-validate.service";
   templateUrl: 'login.component.html'
 })
 export class LoginComponent implements OnInit {
-  private model: any = {};
+  model: any = {};
   loading = false;
   error = '';
   returnUrl: string;
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   private codeid: number;
 
 
-  private imageCode: string;
+  imageCode: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.loading = true;
-    console.log(this.codeid);
     this.authenticationService.login(this.model, this.codeid)
       .subscribe(
       data => {

@@ -30,17 +30,23 @@ export class UEditorEditorComponent implements OnInit{
   @ViewChild('ueditor_title')
   title:ElementRef;
 
+   alreadySumbit : boolean =false; 
+
   insert_blog(){
    let  ueditorblog =new UEditorBlog();
     ueditorblog.tag=this.tag.nativeElement.value;
     ueditorblog.title=this.title.nativeElement.value;
     ueditorblog.content=this.full.Instance.getContent();
+    this.alreadySumbit = true;
     this.uEditorService.insert_blog(ueditorblog)
       .then(response=>{
-        if(response.status==0)
+        if(response.status==0){
          this.alterService.success("成功");
-        else
+        }
+        else {
           this.alterService.error("博客写入失败");
+          this.alreadySumbit = false;
+      }
       })
   }
 
@@ -55,16 +61,16 @@ export class UEditorEditorComponent implements OnInit{
   }
 
 
- private setLanguage(lang: 'zh-cn' | 'en') {
+   setLanguage(lang: 'zh-cn' | 'en') {
     this.full.setLanguage(lang);
   }
 
 
-  private getAllHtml() {
+    getAllHtml() {
     alert(this.full.Instance.getAllHtml())
   }
 
- private getContent() {
+   getContent() {
     let arr = [];
     arr.push("使用editor.getContent()方法可以获得编辑器的内容");
     arr.push("内容为：");
@@ -72,7 +78,7 @@ export class UEditorEditorComponent implements OnInit{
     alert(arr.join("\n"));
   }
 
-  private getContentTxt() {
+    getContentTxt() {
     let arr = [];
     arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
     arr.push("编辑器的纯文本内容为：");
@@ -80,14 +86,14 @@ export class UEditorEditorComponent implements OnInit{
     alert(arr.join("\n"));
   }
 
-  private setContent(isAppendTo: boolean) {
+    setContent(isAppendTo: boolean) {
     let arr = [];
     arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
     this.full.Instance.setContent('欢迎使用ueditor', isAppendTo);
     alert(arr.join("\n"));
   }
 
-  private getPlainTxt() {
+    getPlainTxt() {
     let arr = [];
     arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
     arr.push("内容为：");
@@ -95,7 +101,7 @@ export class UEditorEditorComponent implements OnInit{
     alert(arr.join('\n'))
   }
 
-  private hasContent() {
+    hasContent() {
     let arr = [];
     arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
     arr.push("判断结果为：");
@@ -103,12 +109,12 @@ export class UEditorEditorComponent implements OnInit{
     alert(arr.join("\n"));
   }
 
- private insertHtml() {
+   insertHtml() {
     let value = prompt('插入html代码', '');
     this.full.Instance.execCommand('insertHtml', value)
   }
 
-  private getText() {
+    getText() {
     //当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
     let range = this.full.Instance.selection.getRange();
     range.select();
@@ -117,18 +123,18 @@ export class UEditorEditorComponent implements OnInit{
   }
 
   focus: boolean | string;
- private addListenerFocus() {
+   addListenerFocus() {
     this.full.addListener('focus', () => {
       this.focus = `fire focus in ${new Date().getTime()}`;
     });
     this.focus = '监听中，尝试在编辑中输入几个字！';
   }
- private removeListenerFocus() {
+   removeListenerFocus() {
     this.full.removeListener('focus');
     this.focus = '已移除监听';
   }
 
- private config_source: string;
+   config_source: string;
   config: any = {
     toolbars: [[
       'fullscreen', 'source', '|', 'undo', 'redo', '|',
@@ -145,7 +151,8 @@ export class UEditorEditorComponent implements OnInit{
   ]],
     autoClearinitialContent: true,
     wordCount: true,
-    initialFrameHeight:400,initialFrameWidth:1147 
+    initialFrameHeight: 400 
+    // , initialFrameWidth:1147 
   };
 
   form_source: string;

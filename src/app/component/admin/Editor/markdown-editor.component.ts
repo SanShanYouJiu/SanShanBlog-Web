@@ -15,14 +15,16 @@ export class MarkDownEditorComponent implements OnInit {
     private markDownService: MarkDownService) { }
 
 
-  private content: string;
+  content: string;
+
+  alreadySubmit: boolean = false;
 
 
   @ViewChild('markdown_title')
-  title: ElementRef;
+  private title: ElementRef;
 
   @ViewChild('markdown_tag')
-  tag: ElementRef;
+  private tag: ElementRef;
 
 
   ngOnInit() { }
@@ -33,12 +35,14 @@ export class MarkDownEditorComponent implements OnInit {
     markdown.content = this.content;
     markdown.title = this.title.nativeElement.value;
     markdown.tag = this.tag.nativeElement.value;
+    this.alreadySubmit = true;
     this.markDownService.insert_blog(markdown)
       .then(response => {
         if (response.status === 0) {
           this.alterService.success('成功');
         } else {
           this.alterService.error('博客写入失败');
+          this.alreadySubmit = false;
         }
       });
   }

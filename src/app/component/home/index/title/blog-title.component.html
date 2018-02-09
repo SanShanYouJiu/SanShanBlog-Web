@@ -7,18 +7,23 @@
                 </h2>
             </div>
             <div class="row clearfix">
+                <div class="col-md-3 column">
+                </div>
+                <div class="col-md-5 column">
+                    <div class="receipt-main col-xs-10 col-sm-10 col-md-12 col-xs-offset-1 col-sm-offset-1 ">
+                        <ul class="blog-list">
+                            <li *ngFor="let title of asyncTitles | paginate: { id: 'server', itemsPerPage: 15, currentPage: p, totalItems: total }">
+                                <h3>
+                                    <a routerLinkActive="active"  style="color:darkturquoise" [routerLink]="['/blog-search-show','title:'+title]"><small>{{title}}</small></a>
+                                </h3>
+                            </li>
+                        </ul>
+                        <div class="has-text-centered">
+                            <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-4 column">
-                </div>
-                <div class="col-md-6 column">
-                    <ul class="pagination">
-                        <li *ngFor="let title of asyncTitles | paginate: { id: 'server', itemsPerPage: 10, currentPage: p, totalItems: total }">
-                            <h3> <a routerLinkActive="active" [routerLink]="['/blog-search-show','title:'+title]">{{title}}</a>
-                            </h3>
-                        </li>
-                        <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
-                    </ul>
-                </div>
-                <div class="col-md-2 column">
                 </div>
             </div>
         </div>

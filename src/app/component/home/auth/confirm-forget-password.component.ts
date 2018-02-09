@@ -10,8 +10,8 @@ import { CodeValidateService } from "app/service/code-validate.service";
     templateUrl: 'confirm-forget-password.component.html'
 })
 export class ConfirmForgetPasswordComponent implements OnInit {
-    private imageCode: string;
-    private model: any = {};
+      imageCode: string;
+      model: any = {};
 
     private codeId:number;
 

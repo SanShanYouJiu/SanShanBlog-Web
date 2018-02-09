@@ -37,17 +37,19 @@ export class AdminIndexService {
       .catch(LogService.handleError);
   }
 
-  change_user_info(username:string,avater:string,blogLink:string):Promise<any>{
-    let urlParams =new URLSearchParams();
-    urlParams.set('username',username);
-    if(avater!=null)
-      urlParams.set('avatar',avater);
-    if(blogLink!=null)
-      urlParams.set('blogLink',blogLink);
+  change_user_info(username: string, avater: string, blogLink: string): Promise<any> {
+    const urlParams = new URLSearchParams();
+    urlParams.set('username', username);
+    if (avater != null) {
+      urlParams.set('avatar', avater);
+    }
+    if (blogLink != null) {
+      urlParams.set('blogLink', blogLink);
+    }
 
-    return this.http.post(Config.admin_change_user_info,urlParams,this.jwt())
+    return this.http.post(Config.admin_change_user_info, urlParams, this.jwt())
     .toPromise()
-    .then(response=>response.json())
+    .then(response => response.json())
     .catch(LogService.handleError);
     }
 

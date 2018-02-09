@@ -23,7 +23,7 @@ export class UpdateBlogComponent implements OnInit {
 
   loading = false;
 
-  private model: any = {};
+   model: any = {};
 
   constructor(
     private route: ActivatedRoute,

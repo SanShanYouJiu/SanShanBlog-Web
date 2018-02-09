@@ -7,14 +7,14 @@ import { AlertService } from "app/service";
     templateUrl: 'forget-password.component.html'
 })
 export class ForgetPasswordComponent implements OnInit {
-   private TodoUrl:string;
+   private TodoUrl: string;
     constructor(
-         private router:Router,
+         private router: Router,
         private authService: AuthenticationService,
-        private alter:AlertService    
+        private alter: AlertService    
      ) { }
 
-    private model: any = {};
+      model: any = {};
 
     ngOnInit() {
         //TODO: 魔法值

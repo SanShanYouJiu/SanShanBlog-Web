@@ -12,7 +12,7 @@
 				<div class="col-md-8 column">
 					<ul class="pagination">
 						<li *ngFor="let tag of TagAll  ">
-							<a routerActive="active" class="btn btn-default" [routerLink]="['/blog-search-show','tag:'+tag]">
+							<a routerActive="active" style="color:darkslategray" class="btn btn-default" [routerLink]="['/blog-search-show','tag:'+tag]">
 								<h3>{{tag}}</h3>
 							</a>
 						</li>

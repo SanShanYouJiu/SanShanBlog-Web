@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
@@ -9,9 +10,11 @@ export class FooterComponent implements OnInit {
   /**
    * 返回顶部的速度因子
    */
-  private speed: number = 1000;
+  speed: number = 1000;
 
-  constructor() { }
+  constructor(
+    private router : Router,
+    private route: ActivatedRoute ) { }
 
   ngOnInit() {
   }
@@ -48,11 +51,20 @@ export class FooterComponent implements OnInit {
     }
   };
 
+   needBackToTopBtn(): boolean {
+    const url = this.router.url;
+    if ( url === '/about' || url.includes('/blog-detail')) {
+       return true;
+    }else {
+      return false;
+    }
+  }
+
   /**
    * 获取当前的纵坐标
    * @returns {number}
    */
-  private currentYPosition():number {
+  private currentYPosition(): number {
     if (self.pageYOffset)
       return self.pageYOffset;
     if (document.documentElement && document.documentElement.scrollTop)

@@ -5,6 +5,11 @@ export class UserVoteInfo {
   blogFavourMap: Map;
   blogTreadMap: Map;
 
+  constructor() {
+     this.amountFavours = 0;
+     this.amountTreads = 0;
+  }
+
 }
 interface IHash {
   [details: number]: number;
