@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'editor.component.html'
 })
 export class EditorComponent implements OnInit {
-     ceshi: string = '暂无通知';
 
     constructor() { }
 

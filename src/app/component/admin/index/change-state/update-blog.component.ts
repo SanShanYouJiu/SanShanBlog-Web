@@ -15,11 +15,11 @@ import { UEditorBlog } from 'app/pojo/ueditor-blog';
   templateUrl: 'update-blog.component.html',
 })
 export class UpdateBlogComponent implements OnInit {
-  blog: Blog;
+  blog: Blog = new Blog();
   private id:number;
-  markdownblog: MarkDownBlog;
+  markdownblog: MarkDownBlog = new MarkDownBlog();
 
-  uEditorBlog: UEditorBlog;
+  uEditorBlog: UEditorBlog =  new UEditorBlog();
 
   loading = false;
 

@@ -16,9 +16,12 @@
     position: relative;
     margin-bottom: 50px;
     height: 180px;
-    left:-100px;
+    left:-40px;
 }
 
+p {
+  max-width: 350px;
+}
 .timeline>li:before,
 .timeline>li:after {
     content: " ";

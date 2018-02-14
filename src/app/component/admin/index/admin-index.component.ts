@@ -58,8 +58,8 @@ export class AdminIndexComponent implements OnInit {
   change_user_info() {
     this.adminIndexService.change_user_info(this.userinfo.username, this.model.avater, this.model.blogLink)
       .then(response => {
-        if (response.status == 0) {
-          this.alertService.success("成功");
+        if (response.status === 0) {
+          this.alertService.success('成功');
         } else {
           this.alertService.error(response.msg);
         }
@@ -70,8 +70,8 @@ export class AdminIndexComponent implements OnInit {
     console.log(id);
     this.adminIndexService.deleteBlogById(id)
       .then(response => {
-        if (response.status == 0) {
-          this.alertService.success("操作成功");
+        if (response.status === 0) {
+          this.alertService.success('操作成功');
         } else {
           this.alertService.error(response.msg);
         }
