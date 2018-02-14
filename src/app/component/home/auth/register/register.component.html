@@ -3,70 +3,94 @@
     <div class="col-md-4 column">
     </div>
     <div class="col-md-4 column">
-      <form class="form-horizontal" name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" role="form"
-            novalidate >
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-          <label for="inputUsername3" class="col-sm-2 control-label">用户名</label>
-          <div class="col-sm-10">
-            <input type="text" name="username" [(ngModel)]="model.username" class="form-control" id="inputUsername3" #username="ngModel"
-                   required />
-            <div *ngIf="f.submitted && !username.valid" class="help-block">请输入用户名</div>
+      <div class="row main">
+        <div class="panel-heading">
+          <div class="panel-title text-center">
+            <h3 class="title">给与你的智慧</h3>
+            <hr />
           </div>
         </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-          <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
-          <div class="col-sm-10">
-            <input type="password" name="password" [(ngModel)]="model.password" class="form-control" id="inputPassword3"
-                   #password="ngModel" required />
-            <div *ngIf="f.submitted && !password.valid" class="help-block">请输入密码</div>
-          </div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password2.valid }">
-          <label for="inputPassword4" class="col-sm-2 control-label">重复密码</label>
-          <div class="col-sm-10">
-            <input type="password" name="password2"
-                   [(ngModel)]="repeatPassword" class="form-control"
-                   id="inputPassword4" #password2="ngModel" required/>
-            <div *ngIf="f.submitted && !password2.valid" class="help-block">请输入重复密码</div>
-          </div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-            <label for="inputEmail" class="col-sm-2 control-label">邮箱</label>
-            <div class="col-sm-10">
-              <input type="email" name="email"
-                     [(ngModel)]="model.email" class="form-control"
-                     id="inputEmail" #email="ngModel" required/>
-              <div *ngIf="f.submitted && !email.valid" class="help-block">请输入邮箱</div>
-            </div>
-          </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !codevalidate.valid }">
-          <label for="authCode" class="col-sm-2 control-label">验证码</label>
-          <div class="col-sm-10">
-            <input type="text" name="codevalidate" [(ngModel)]="model.codevalidate" class="form-control" id="authCode"
-                   #codevalidate="ngModel" required/>
-            <img src="{{imageCode}}" (click)="getCodeValidate()" alt="验证码" />
-            <div *ngIf="f.submitted && !codevalidate.valid" class="help-block">请输入验证码</div>
-          </div>
+        <div class="main-login main-center">
+          <form class="form-horizontal" name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" role="form" >
 
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <div class="checkbox">
-              <label><input type="checkbox"/>同意  <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/legalcode">知识共享协议</a></label>
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+              <label for="inputUsername" class="cols-sm-2 control-label">用户名</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="fa fa-users fa" aria-hidden="true"></i>
+                  </span>
+                  <input type="text" class="form-control" [(ngModel)]="model.username" name="username"  id="inputUsername"  #username="ngModel" placeholder="输入你的用户名"
+                  required />
+                </div>
+              </div>
             </div>
-          </div>
+
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+              <label for="inputEmail" class="cols-sm-2 control-label">邮箱</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="fa fa-envelope fa" aria-hidden="true"></i>
+                  </span>
+                  <input type="text" class="form-control" [(ngModel)]="model.email" name="email" #email="ngModel" id="inputEmail" placeholder="输入你的邮箱" required/>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group"  [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+              <label for="inputPassword" class="cols-sm-2 control-label">密码</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                  </span>
+                  <input type="password" class="form-control" [(ngModel)]="model.password" name="password"  #password="ngModel" id="inputPassword" placeholder="密码不少于6位"
+                  required  />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !confim.valid }">
+              <label for="inputconfim" class="cols-sm-2 control-label">确认密码</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                  </span>
+                  <input type="password" class="form-control" [(ngModel)]="repeatPassword" name="confim" #confim="ngModel" id="inputconfim" placeholder="确认密码" required />
+                </div>
+              </div>
+            </div>
+            <div class="form-group"  [ngClass]="{ 'has-error': f.submitted && !codevalidate.valid }">
+              <label for="authcode" class="cols-sm-2 control-label">验证码</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                  </span>
+                  <input type="type" class="form-control" name="codevalidate" #codevalidate="ngModel" [(ngModel)]="model.codevalidate" id="authcode" placeholder="输入你看到的验证码" required/>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group" > 
+              <button type="button" (click)="getCodeValidate()" class="btn btn-default  btn-lg ">切换验证码</button>
+              <img src="{{imageCode}}" align=center alt="验证码" />
+            </div>
+
+            <div class="form-group ">
+              <button type="submit"  [disabled]="loading" class="btn btn-primary btn-lg btn-block login-button">注册</button>
+            </div>
+
+            <div class="login-register">
+                <a [routerLink]="['/login']" class="btn btn-link">登录</a>
+            </div>
+          </form>
         </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button [disabled]="loading" type="submit" class="btn btn-default">注册</button>
-            <img *ngIf="loading"
-                 src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="/>
-            <a [routerLink]="['/login']" class="btn btn-link">登录</a>
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
     <div class="col-md-4 column">
-    </div>
+      </div>
   </div>
 </div>

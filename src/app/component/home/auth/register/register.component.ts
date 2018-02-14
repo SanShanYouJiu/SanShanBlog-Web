@@ -8,7 +8,8 @@ import { CodeValidateService } from "../../../../service/code-validate.service";
 
 @Component({
   selector: 'register',
-  templateUrl: 'register.component.html'
+  templateUrl: 'register.component.html',
+  styleUrls:["register.component.css"]
 })
 export class RegisterComponent implements OnInit {
   model: any = {};
@@ -44,13 +45,13 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.loading = true;
-
     if (this.model.password !== this.repeatPassword) {
-      this.alertService.error('密码不重复');
+      this.alertService.error('密码不一致');
       return;
     }
 
-    this.userService.create(this.model,this.codeId)
+
+    this.userService.create(this.model, this.codeId)
       .subscribe(
       data => {
         if (data.status === 0) {

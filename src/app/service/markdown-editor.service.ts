@@ -37,7 +37,6 @@ export class MarkDownService{
   }
 
 
-//TODO 还没实现完
   update_by_id(markdownblog: MarkDownBlog): Promise<any>{
     const urlParams = new URLSearchParams();
     if(markdownblog.content != null) {

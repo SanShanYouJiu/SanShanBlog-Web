@@ -7,7 +7,8 @@ import { Config } from "../../../../config/ApiConfig";
 import { CodeValidateService } from "../../../../service/code-validate.service";
 @Component({
   selector: 'login',
-  templateUrl: 'login.component.html'
+  templateUrl: 'login.component.html',
+  styleUrls:['login.component.css']
 })
 export class LoginComponent implements OnInit {
   model: any = {};

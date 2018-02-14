@@ -41,7 +41,7 @@ export class VoteService {
         .catch(LogService.handleError);
     }
 
-    // TODO 在Nginx中自带Ip
+    //在Nginx中自带Ip
     get_ip_vote_info(ip: string): Promise<any> {
         return  this.http.get(Config.vote_ip + ip + Config.ip_vote_info)
         .toPromise()
