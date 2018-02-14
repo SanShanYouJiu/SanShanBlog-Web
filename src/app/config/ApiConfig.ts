@@ -17,11 +17,16 @@ export class  Config{
 
   static register: string= Config.baseUrl + '/auth/register';
 
+  static register_novalidate: string= Config.baseUrl + '/auth/register-novalidate';
+
   // 验证码
   static codeValidate= Config.baseUrl + '/codeValidate';
 
   // 刷新验证token有效期
   static refresh_token: string= Config.baseUrl + '/auth/refresh-token';
+
+  // 是否可以登录
+  static login_status: string = Config.baseUrl + '/auth/login-status';
 
   static change_password: string= Config.baseUrl + '/user/change-pwd';
 

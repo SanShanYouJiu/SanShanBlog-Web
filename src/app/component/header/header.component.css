@@ -1,0 +1,15 @@
+.navbar-brand-centered {
+  position: absolute;
+  left: 10%;
+  display: block;
+  width: 160px;
+  text-align: center;
+  background-color: transparent;
+}
+
+.navbar-selection-centerd{
+  position: absolute;
+  left: 20%;
+  text-align: center;
+  background-color: transparent;
+}
