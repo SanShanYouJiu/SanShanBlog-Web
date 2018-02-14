@@ -5,7 +5,6 @@ import { RegisterComponent } from './component/home/auth/register/register.compo
 import { ErrorComponent } from './component/home/error/error.component';
 import { MarkDownEditorComponent } from './component/admin/Editor/markdown-editor.component';
 import { AuthGuard } from './service/guard/auth.guard';
-import { AuthGuard2 } from './service/guard/auth.guard2';
 import { BlogDetailComponent } from './component/home/blog/blog.detail.component';
 import { BlogDateComponent } from './component/home/index/date/blog-date.component';
 import { BlogTitleComponent } from './component/home/index/title/blog-title.component';
@@ -18,6 +17,7 @@ import { ChangePasswordComponent } from './component/home/auth/change-password.c
 import { ConfirmForgetPasswordComponent } from 'app/component/home/auth/confirm-forget-password.component';
 import { SpecificUsersInfoComponent } from './component/home/user-info/spec-users-info.component';
 import { AboutComponent } from 'app/component/home/about/about.component';
+import { LeaveGuard } from 'app/service/guard/leave.guard';
 
 const appRoutes: Routes = [
   {
@@ -69,12 +69,12 @@ const appRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [AuthGuard2]
+    canActivate: [LeaveGuard]
   },
   {
     path: 'register',
     component: RegisterComponent,
-    canActivate: [AuthGuard2]
+    canActivate: [LeaveGuard]
   },
   {
     path: 'error',

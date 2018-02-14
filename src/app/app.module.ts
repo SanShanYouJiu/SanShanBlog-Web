@@ -29,7 +29,6 @@ import {AuthenticationService} from './service/authentication.service';
 import {UserService} from './service/user.service';
 import {AlertService} from './service/alert.service';
 import {AlertComponent} from './directive/alert.component';
-import {AuthGuard2} from './service/guard/auth.guard2';
 import {BlogDetailComponent} from './component/home/blog/blog.detail.component';
 import {IndexService} from './service/index.service';
 import {BlogTagComponent} from './component/home/index/tag/blog-tag.component';
@@ -48,6 +47,8 @@ import { UserInfoService } from 'app/service/user-info.service';
 import { VoteService } from 'app/service';
 import { AboutComponent } from 'app/component/home/about/about.component';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+import { LeaveGuard } from './service/guard/leave.guard';
+
 
 @NgModule({
   declarations: [
@@ -87,7 +88,7 @@ import { LMarkdownEditorModule } from 'ngx-markdown-editor';
   ],
   providers: [
     AuthGuard,
-    AuthGuard2,
+    LeaveGuard,
     AuthenticationService,
     BaseRequestOptions,
     UserService,

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {LogService} from "./Log.service";
 import {Config} from "../config/ApiConfig";
 import {Headers, Http, RequestOptions,Response, URLSearchParams} from "@angular/http";
+import { LogService } from 'app/service';
 
 @Injectable()
 export class AdminIndexService {

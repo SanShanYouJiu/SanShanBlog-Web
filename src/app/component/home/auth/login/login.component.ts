@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router, ActivatedRoute } from "@angular/router";
-import { AuthenticationService } from "../../../../service/authentication.service";
-import { AlertService } from "../../../../service/alert.service";
 import { Config } from "../../../../config/ApiConfig";
-import { CodeValidateService } from "../../../../service/code-validate.service";
+ 
+import { AlertService, CodeValidateService, AuthenticationService } from 'app/service';
 @Component({
   selector: 'login',
   templateUrl: 'login.component.html',
