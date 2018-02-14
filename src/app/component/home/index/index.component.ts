@@ -16,6 +16,7 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/delay';
 import { PaginationInstance } from '../../../../../node_modules/_ng2-pagination@2.0.2@ng2-pagination';
+import { UserService } from 'app/service/user.service';
 
 const URL = Config.index_advice_upload;
 
@@ -35,6 +36,8 @@ export class IndexComponent implements OnInit {
   total: number;
   loading: boolean;
 
+  usermodel: any = {};
+  repeatPassword: string;
 
   @ViewChild('emailfeedback')
   email: ElementRef;
@@ -68,6 +71,7 @@ export class IndexComponent implements OnInit {
 
 
   constructor(private router: Router,
+    private userService: UserService,
     private blogService: BlogService,
     private indexService: IndexService,
     private alertService: AlertService) {
@@ -86,7 +90,7 @@ export class IndexComponent implements OnInit {
 
   getPage(page: number) {
     this.loading = true;
-    this.blogService.getBlog_by_page(11, page)
+    this.blogService.getBlog_by_page(15, page)
       .then(
       res => {
         if (res.status === 0) {
@@ -106,6 +110,52 @@ export class IndexComponent implements OnInit {
     //     this.loading = false;
     //   })
     //   .map(res => res.items);
+  }
+
+
+  //判断是否显示头部和尾部
+  isLogin(): boolean{
+    if (localStorage.getItem('currentUser')) {
+      // logged in so return true
+      return true;
+    }else
+         return false;
+  }
+
+  register() {
+    if (this.usermodel.username === undefined || this.usermodel.username === "") {
+      this.alertService.error('用户名不能为空');
+      return;
+    }
+    if (this.usermodel.email === undefined || this.usermodel.email ==="") {
+      this.alertService.error('邮箱不能为空');
+      return;
+    }
+    if (this.usermodel.password === undefined || this.usermodel.password ==="") {
+      this.alertService.error('密码不能为空');
+      return;
+    }
+    if (this.usermodel.password !== this.repeatPassword) {
+      this.alertService.error('密码不一致');
+      return;
+    }
+
+    
+    this.userService.create_novalidate(this.usermodel)
+      .subscribe(
+      data => {
+        if (data.status === 0) {
+          this.alertService.success('注册成功', true);
+          this.router.navigate(['/login']);
+        } else {
+          this.alertService.error(data.msg);
+          this.loading = false;
+        }
+      },
+      error => {
+        this.alertService.error(error.data);
+        this.loading = false;
+      });
   }
 
 

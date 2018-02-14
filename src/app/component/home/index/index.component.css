@@ -1,0 +1,112 @@
+.receipt-main {
+    background: #ffffff none repeat scroll 0 0;
+    /* border-bottom: 8px solid #333333; */
+    /* border-top: 6px solid #333333; */
+    /* margin-top: 30px; */
+    padding: 10px 8px !important;
+    position: relative;
+    box-shadow: 0 1px 10px #acacac;
+    color: #333333;
+    font-family: open sans;
+}
+ 
+
+#container {
+    background-color: #dcdcdc;
+}
+
+
+
+ul.blog-list{
+    padding:0;
+    margin:0;
+    list-style:none;
+    margin-top:30px;
+}
+ul.blog-list li a{
+    display:block;
+    border-bottom:1px dotted #CFCFCF;
+    padding:20px;
+    text-decoration:none;
+}
+ul.blog-list li:last-child a{
+    border-bottom:none;
+}
+ul.blog-list li a:hover{
+    background-color:#DBF9FF;
+}
+ul.blog-list li span{
+    display:block;
+}
+ul.blog-list li span.blog-sender{
+    font-weight:600;
+    color:#8F8F8F;
+}
+ul.blog-list li span.blog-subject{
+    color:#8C8C8C;
+}
+ul.blog-list li span.blog-message-preview{
+    display:block;
+    color:#A8A8A8;
+}
+
+/*
+/* Created by Filipe Pina
+ * Specific styles of signin, register, component
+ */
+/*
+ * General styles
+ */
+hr{
+   width: 50%;
+   color: #fff;
+}
+
+.form-group{
+   margin-bottom: 15px;
+}
+
+
+input,
+input::-webkit-input-placeholder {
+   font-size: 6px;
+   padding-top: 2px;
+}
+
+.main-login{
+   /* shadows and rounded borders */
+   background-color: #ffffff;
+   -moz-border-radius: 2px;
+   -webkit-border-radius: 2px;
+   border-radius: 2px;
+
+}
+
+.navbar-brand { position: relative; z-index: 2; }
+
+.main-center{
+    margin-top: 30px;
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 30px 30px;
+    border: 10px solid #fafbfc;
+
+}
+
+.nav-center{
+    background-color: #ffffff;
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 20px 20px 20px 20px;
+    border: 10px solid #fafbfc;
+
+}
+
+.login-button{
+   margin-top: 1px;
+}
+
+.login-register{
+   font-size: px;
+   text-align: center;
+}

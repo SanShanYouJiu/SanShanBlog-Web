@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Headers, Http, RequestOptions, Response, URLSearchParams, RequestOptionsArgs} from "@angular/http";
 import 'rxjs/add/operator/map'
+import { Observable } from 'rxjs/Observable';
 import {Config} from  '../config/ApiConfig';
 import {LogService} from "./Log.service";
 import {User} from "../pojo/user";
@@ -54,15 +55,19 @@ export class AuthenticationService {
   }
 
 
-  change_pwd(code:string,password:string):Promise<any>{
-    let urlParams = new URLSearchParams();
-    urlParams.set('code',code);
-    urlParams.set('password',password);
-    return this.http.post(Config.change_password,urlParams,this.jwt())
+  change_pwd(code: string, password: string): Promise<any>{
+    const urlParams = new URLSearchParams();
+    urlParams.set('code', code);
+    urlParams.set('password', password);
+    return this.http.post(Config.change_password, urlParams, this.jwt())
     .toPromise()
-    .then(response=>response.json())
+    .then(response => response.json())
     .catch(LogService.handleError);
   }
+
+  login_status():  Observable<Response> {
+    return  this.http.get(Config.login_status, this.jwt());
+   }
 
   logout() {
     // remove user from local storage to log user out
@@ -71,9 +76,9 @@ export class AuthenticationService {
 
   private jwt() {
     // create authorization header with jwt token
-    let currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser && currentUser.token) {
-      let headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+      const headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
       return new RequestOptions({ headers: headers });
     }
   }

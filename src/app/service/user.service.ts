@@ -32,6 +32,15 @@ export class UserService {
     return this.http.post(Config.register, urlParams, this.jwt()).map((response: Response) => response.json());
   }
 
+  create_novalidate(user: User) {
+    let urlParams = new URLSearchParams();
+    urlParams.set('username',user.username);
+    urlParams.set('password',user.password);
+    urlParams.set('email',user.email);
+    return this.http.post(Config.register_novalidate, urlParams, this.jwt()).map((response: Response) => response.json());
+  }
+
+
   update(user: User) {
     let urlParams = new URLSearchParams();
     urlParams.set('username',user.username);
