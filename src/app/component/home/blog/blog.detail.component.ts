@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { MarkDownBlog } from '../../../pojo/markdown-blog';
 import { UEditorBlog } from '../../../pojo/ueditor-blog';
 import { Blog } from '../../../pojo/blog';
@@ -16,15 +16,20 @@ import { BlogVoteInfo } from 'app/pojo/blog-vote-info';
   styleUrls: ['blog.detail.component.css']
 })
 
-export class BlogDetailComponent implements OnInit {
+export class BlogDetailComponent implements OnInit, AfterViewInit {
+
 
   blog: Blog;
 
   blogVoteinfo: BlogVoteInfo = new BlogVoteInfo();
 
-  markdownblog: MarkDownBlog;
+  @ViewChild('blogContent')
+  blogContentDiv: ElementRef;
 
-  uEditorBlog: UEditorBlog;
+
+  markdownblog: MarkDownBlog = new MarkDownBlog();
+
+  uEditorBlog: UEditorBlog = new UEditorBlog();
 
 
   constructor(private route: ActivatedRoute,
@@ -54,7 +59,31 @@ export class BlogDetailComponent implements OnInit {
         }
         this.get_blog_info(this.blog.id);
       });
+  }
+
+  ngAfterViewInit(): void {
+  }
+
+  onResize(event) {
+    // tslint:disable-next-line:no-unused-expression
+    const contentWidth = event.target.innerWidth;
+    const contentHeight = event.target.innerHeight;
+    this.img_width_change(contentWidth, contentHeight);
+  }
+
+  img_width_change(contentWidth: number, contentHeight: number) {
+    if (contentHeight / contentWidth > 1.2) {
+      const imgs = this.blogContentDiv.nativeElement.getElementsByTagName('img');
+      for (let i = 0; i < imgs.length; i++) {
+        imgs[i].style.width = '100%';
+      }
+    } else {
+      const imgs = this.blogContentDiv.nativeElement.getElementsByTagName('img');
+      for (let i = 0; i < imgs.length; i++) {
+        imgs[i].style.width = '';
+      }
     }
+  }
 
 
   goBack(): void {
@@ -86,7 +115,7 @@ export class BlogDetailComponent implements OnInit {
   get_blog_info(blogId: number): void {
     this.voteService.get_blog_info(blogId).then(response => {
       if (response.status === 0) {
-          this.blogVoteinfo = response.data;
+        this.blogVoteinfo = response.data;
       } else {
 
       }

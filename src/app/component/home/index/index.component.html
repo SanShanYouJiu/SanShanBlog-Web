@@ -22,7 +22,7 @@
           <div class="receipt-main col-xs-12 col-sm-12 col-md-12 ">
 
             <ul class="blog-list">
-              <li *ngFor="let blog of asyncBlogs | paginate: { id: 'server', itemsPerPage: 15, currentPage: p, totalItems: total }">
+              <li *ngFor="let blog of asyncBlogs | paginate: { id: 'server', itemsPerPage: 20, currentPage: p, totalItems: total }">
                 <a routerLinkActive="active" style="color:black" [routerLink]="['/blog-detail',blog.id]">{{blog.title}}</a>
               </li>
             </ul>

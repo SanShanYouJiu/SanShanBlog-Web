@@ -5,7 +5,7 @@
         <div class="col-md-2 column">
           <div class="box">
             <div class="box-content">
-              <h4 class="tag-title" align="center">简要信息</h4>
+              <h4 class="tag-title" align="center"  >简要信息</h4>
               <hr />
               <p><strong>标签:</strong>{{blog.tag}} </p>
               <p><strong>时间:</strong>{{blog.time}}</p>
@@ -29,13 +29,13 @@
           </div>
 
         </div>
-        <div class="col-md-10 column" style="background-color:#ffffff">
+        <div class="col-md-10 column" #blogContent style="background-color:#ffffff">
           <h3 class="text-center">
             {{blog.title}}
           </h3>
-          <div *ngIf="markdownblog!=null" [innerHtml]="markdownblog.content">
+          <div  (window:resize)="onResize($event)"  [innerHtml]="markdownblog.content">
           </div>
-          <div *ngIf="uEditorBlog!=null" [innerHtml]="uEditorBlog.content">
+          <div  (window:resize)="onResize($event)"   [innerHtml]="uEditorBlog.content">
           </div>
         </div>
         

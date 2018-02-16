@@ -1,9 +1,15 @@
 <div style="position: relative">
   <!--头部-->
-  <app-header ></app-header>
+  <app-header></app-header>
   <alert></alert>
   <!--主体-->
   <router-outlet></router-outlet>
-  <!--尾部-->
-  <app-footer *ngIf="isShowHeaderAndFooter()"></app-footer>
+  <!-- TODO: 对滚动高度进行监听 到一定高度才会显示 -->
+  <div class="hidden-xs hidden-sm" *ngIf="isNeedTopButton()">
+    <div id="toTop" *ngIf="needBackToTopBtn()"  (click)="smoothScroll()" class="btn btn-default">
+      <i class="fa fa-2x	fa fa-arrow-up "></i>
+    </div>
+  </div>
+    <!--尾部-->
+  <app-footer *ngIf="isShowFooter()"></app-footer>
 </div>

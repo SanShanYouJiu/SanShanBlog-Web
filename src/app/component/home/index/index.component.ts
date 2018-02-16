@@ -90,7 +90,7 @@ export class IndexComponent implements OnInit {
 
   getPage(page: number) {
     this.loading = true;
-    this.blogService.getBlog_by_page(15, page)
+    this.blogService.getBlog_by_page(20, page)
       .then(
       res => {
         if (res.status === 0) {
