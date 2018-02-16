@@ -4,18 +4,23 @@ import 'rxjs/add/operator/map'
 import { Observable } from 'rxjs/Observable';
 import {Config} from  '../config/ApiConfig';
 import {LogService} from "./Log.service";
-import {User} from "../pojo/user";
+import { ResponseVo } from 'app/pojo/responsevo';
+import { User } from 'app/pojo/user';
+
+interface loginStausResponse {
+  responseMsg: ResponseVo<any>;
+}
 
 @Injectable()
 export class AuthenticationService {
   constructor(private http: Http) { }
 
-  login(user:User,codeid:number) {
-    let urlParams = new URLSearchParams();
-    urlParams.set('username',user.username);
-    urlParams.set('password',user.password);
-    urlParams.set('code',user.codevalidate);
-    urlParams.set('codeid',codeid.toString());
+  login(user: User, codeid: number) {
+    const urlParams = new URLSearchParams();
+    urlParams.set('username', user.username);
+    urlParams.set('password', user.password);
+    urlParams.set('code', user.codevalidate);
+    urlParams.set('codeid', codeid.toString());
     // urlParams.set("codevalidate",codevalidate);
     return this.http.post(Config.login,urlParams)
       .map((response: Response) => {
@@ -29,33 +34,33 @@ export class AuthenticationService {
       });
   }
 
-  forget_pwd(email:string,code:string){
+  forget_pwd(email: string, code: string){
     let urlParams = new URLSearchParams();
-    urlParams.set('email',email);
-    urlParams.set('code',code);
+    urlParams.set('email', email);
+    urlParams.set('code', code);
     return this.http.post(Config.forget_password,urlParams)
-      .map((response:Response)=>{
-        let user=response.json();
-        if (user.data&&user.data.token) {
+      .map((response: Response) => {
+        let user = response.json();
+        if (user.data && user.data.token) {
           localStorage.setItem('currentUser', JSON.stringify(user.data));
         }
     });
   }
 
-  send_mail(type:number,email:string,code:string,codeId:number):Promise<any>{
-    let urlParams =new URLSearchParams();
-    urlParams.set('type',type.toString());
-    urlParams.set('email',email);
-    urlParams.set('code',code);
-    urlParams.set('codeid',codeId.toString());
-    return this.http.post(Config.send_email,urlParams)
+  send_mail(type: number, email: string, code: string, codeId: number): Promise<any> {
+    const urlParams = new URLSearchParams();
+    urlParams.set('type', type.toString());
+    urlParams.set('email', email);
+    urlParams.set('code', code);
+    urlParams.set('codeid', codeId.toString());
+    return this.http.post(Config.send_email, urlParams)
     .toPromise()
     .then(response => response.json())
     .catch(LogService.handleError);
   }
 
 
-  change_pwd(code: string, password: string): Promise<any>{
+  change_pwd(code: string, password: string): Promise<any> {
     const urlParams = new URLSearchParams();
     urlParams.set('code', code);
     urlParams.set('password', password);
@@ -64,6 +69,7 @@ export class AuthenticationService {
     .then(response => response.json())
     .catch(LogService.handleError);
   }
+
 
   login_status():  Observable<Response> {
     return  this.http.get(Config.login_status, this.jwt());

@@ -24,7 +24,7 @@ export class AuthGuard implements CanActivate {
 
       return this.authservice.login_status().map(
         data => {
-          //TODO: 这里需要获得请求体 并且将登录失效的alter信息显示在页面上
+          //TODO: 这里需要获得请求体 并且将登录失效的alter信息显示在页面上 跨域请求
           if (data['status'] !== 200) {
             localStorage.removeItem('currentUser');
             this.router.navigate(['/login']);
@@ -41,7 +41,7 @@ export class AuthGuard implements CanActivate {
           this.alterService.error('登录失效');
           console.log('auth is lose efficacy');
           return new Observable<boolean>();
-        }
+      }
       );
     }
 

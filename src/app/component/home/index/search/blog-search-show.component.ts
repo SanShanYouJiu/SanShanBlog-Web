@@ -8,6 +8,7 @@ import { Blog } from 'app/pojo/blog';
 @Component({
   selector: 'blog-search-show',
   templateUrl: 'blog-search-show.component.html',
+  styleUrls: ['blog-search-show.component.css']
 })
 export class BlogSearchShowComponent {
   p:number = 1;

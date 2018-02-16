@@ -1,17 +1,27 @@
-<div class="text-center">
-    <h1 class="text-center">搜索数据展示框</h1>
-    <p><strong>{{msg}}</strong></p>
-    <ul class="pagination">
-        <ul>
-          <li *ngFor="let blog of blogs | paginate: { id:'server', itemsPerPage: 8, currentPage: p , totalItems: total}"
-          >
-            <h2>{{blog.title}}</h2>
-            <a routerLinkActive="active" [routerLink]="['/blog-detail',blog.id]">查看更多</a>
-            <!--<blog-detail [blog]="blog"></blog-detail>-->
-          </li>
-        </ul>
-        <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
+<div class="container"> 
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8"   >
+    <div class="text-center">
+      <h1 class="text-center">查询结果</h1>
+      <p>
+        <strong>{{msg}}</strong>
+      </p>
+      <div style="background-color:#ffffff;"> 
+      <ul class="blog-list">
+        <li *ngFor="let blog of blogs | paginate: { id:'server', itemsPerPage: 8, currentPage: p , totalItems: total}">
+          <div>
+            <a routerLinkActive="active" style="color:black" [routerLink]="['/blog-detail',blog.id]"> <h3> {{blog.title}}</h3></a>
+          </div>
+        </li>
       </ul>
-</div>
+      <div class="has-text-centered">
+        <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
+      </div>
+    </div>
+    </div>
+  </div>
 
- 
+  <div class="col-md-2"></div>
+</div>
+</div>
