@@ -15,9 +15,10 @@ import { NgModule } from '@angular/core';
 import { ForgetPasswordComponent } from './component/home/auth/forget-password.component';
 import { ChangePasswordComponent } from './component/home/auth/change-password.component';
 import { ConfirmForgetPasswordComponent } from 'app/component/home/auth/confirm-forget-password.component';
-import { SpecificUsersInfoComponent } from './component/home/user-info/spec-users-info.component';
+import { SpecificUserInfoComponent } from './component/home/user-info/spec-user-info.component';
 import { AboutComponent } from 'app/component/home/about/about.component';
 import { LeaveGuard } from 'app/service/guard/leave.guard';
+import { SearchShowComponent } from './component/home/search/search-show.component';
 
 const appRoutes: Routes = [
   {
@@ -67,6 +68,10 @@ const appRoutes: Routes = [
     component: BlogSearchShowComponent
   },
   {
+    path: 'search-show/:key',
+    component: SearchShowComponent
+  },
+  {
     path: 'login',
     component: LoginComponent,
     canActivate: [LeaveGuard]
@@ -81,8 +86,8 @@ const appRoutes: Routes = [
     component: ErrorComponent
   },
   {
-    path: 'spec-users/:username',
-    component: SpecificUsersInfoComponent
+    path: 'spec-user/:username',
+    component: SpecificUserInfoComponent
   },
   // TODO: 未知原因 不能lazy load
   {

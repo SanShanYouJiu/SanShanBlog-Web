@@ -10,6 +10,8 @@ import {BsDropdownModule, ModalModule} from 'ng2-bootstrap';
 import {Ng2PaginationModule} from 'ng2-pagination';
 import {TooltipModule } from 'ng2-bootstrap';
 import { FileUploadModule } from 'ng2-file-upload';
+import {PopoverModule} from 'ngx-popover';
+import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 
 import {LoginComponent} from './component/home/auth/login/login.component';
 import {RegisterComponent} from './component/home/auth/register/register.component';
@@ -42,12 +44,13 @@ import {ForgetPasswordComponent} from './component/home/auth/forget-password.com
 import {ChangePasswordComponent} from './component/home/auth/change-password.component';
 import { ConfirmForgetPasswordComponent } from 'app/component/home/auth/confirm-forget-password.component';
 import { CodeValidateService } from 'app/service/code-validate.service';
-import {SpecificUsersInfoComponent} from './component/home/user-info/spec-users-info.component';
+import {SpecificUserInfoComponent} from './component/home/user-info/spec-user-info.component';
 import { UserInfoService } from 'app/service/user-info.service';
 import { VoteService } from 'app/service';
 import { AboutComponent } from 'app/component/home/about/about.component';
-import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { LeaveGuard } from './service/guard/leave.guard';
+import { SearchShowComponent } from './component/home/search/search-show.component';
+import { SearchService } from 'app/service/search.service';
 
 
 @NgModule({
@@ -69,9 +72,10 @@ import { LeaveGuard } from './service/guard/leave.guard';
     ForgetPasswordComponent,
     ChangePasswordComponent,
     ConfirmForgetPasswordComponent,
-    SpecificUsersInfoComponent,
+    SpecificUserInfoComponent,
     MarkDownEditorComponent,
-    AboutComponent
+    AboutComponent,
+    SearchShowComponent
   ],
   imports: [
     BrowserModule,
@@ -85,6 +89,9 @@ import { LeaveGuard } from './service/guard/leave.guard';
     AppRoutingModule,
     Ng2PaginationModule,
     LMarkdownEditorModule,
+    PopoverModule,
+    // TODO: 修复Disqus
+ 
   ],
   providers: [
     AuthGuard,
@@ -96,6 +103,7 @@ import { LeaveGuard } from './service/guard/leave.guard';
     IndexService,
     AlertService,
     VoteService,
+    SearchService,
 
     CodeValidateService,
     BlogService],

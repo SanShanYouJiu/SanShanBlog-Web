@@ -1,39 +1,48 @@
 <nav class="navbar navbar-default" style="background-color: #ffffff;">
   <div class="container-fluid">
     <div class="navbar-header">
-         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button> 
-          <a class="navbar-brand hidden-xs hidden-sm"  href="javascript:void(0)" style="color:rgb(255, 255, 255);" >这里是彩蛋位置</a>
-      <a class="navbar-brand "  routerLink="/index" style="color:blue; font-family: Georgia; " routerLinkActive="active"> 三山博客 </a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+        aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand hidden-xs hidden-sm" href="javascript:void(0)" style="color:rgb(255, 255, 255);">这里是彩蛋位置</a>
+      <a class="navbar-brand " routerLink="/index" style="color:blue; font-family: Georgia; " routerLinkActive="active"> 三山博客 </a>
     </div>
     <!-- Brand and toggle get grouped for better mobile display -->
     <ul class="nav navbar-nav   hidden-xs hidden-sm ">
-        <li>
-          <a routerLink="/index" routerLinkActive="active">首页
-          </a>
-        </li>
-      </ul>
+      <li>
+        <a routerLink="/index" routerLinkActive="active">首页
+        </a>
+      </li>
+    </ul>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav ">
-            <li >
-              <a routerLink="/about" routerLinkActive="active">关于</a>
-            </li>
-          </ul>
+      <ul class="nav navbar-nav ">
+        <li>
+          <a routerLink="/about" routerLinkActive="active">关于</a>
+        </li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
-        <form class="navbar-form  navbar-left" role="form">
+        <form class="navbar-form  navbar-left" role="form" (ngSubmit)="search()" #f="ngForm"  >
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="站内搜索">
+            <input type="text" class="form-control" [(ngModel)]="key"  name="key" placeholder="站内搜索" required>
             <span class="input-group-btn">
-              <button class="btn btn-default" type="button">Go!</button>
+              <button class="btn btn-default" type="submit">Go!</button>
             </span>
           </div>
           <!-- /input-group -->
         </form>
+        <button *ngIf="!isLogin()" style="color:blue" class="btn btn-link   navbar-left navbar-btn hidden-xs hidden-sm" [popover]="myPopover">写文章</button>
+        <a *ngIf="isLogin()" class="btn btn-info navbar-left navbar-btn hidden-xs hidden-sm" routerLink="admin/editor" routerLinkActive="active">写文章</a>
+        <popover-content #myPopover title="三山" placement="auto bottom" [animation]="true" [closeOnClickOutside]="true">
+          <p> 加入我们分享你的观点 </p>
+          <hr/>
+          <a routerLink="register" class="btn btn-default btn-block" routerLinkActive="active">开始写文章</a>
+        </popover-content>
+
         <li *ngIf="!isLogin()">
         </li>
         <li *ngIf="!isLogin()">
@@ -49,7 +58,9 @@
           <a routerLink="/" (click)="logout()" routerLinkActive="active">
             退出登录 </a>
         </li>
-        <li class="dropdown">
+
+
+        <li *ngIf="isLogin()" class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">更多功能
             <span class="caret"></span>
           </a>
@@ -64,9 +75,6 @@
               <a href="javascript:void(0)">评论管理</a>
             </li>
             <li role="separator" class="divider"></li>
-            <li *ngIf="!isLogin()">
-              <a routerLink="login" routerLinkActive="active">请登录</a>
-            </li>
             <li *ngIf="isLogin()">
               <a href="javascript:void(0)">{{MoreFunction}}</a>
             </li>

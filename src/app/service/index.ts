@@ -6,6 +6,7 @@ export * from './ueditor-editor.service'
 export * from './alert.service'
 export * from './vote.service';
 export * from './user-info.service';
+export * from './search.service';
 export * from './Log.service';
 export * from './code-validate.service';
 export * from './admin.index.service';

@@ -59,6 +59,8 @@ export class  Config{
 
   static user_info_blogs: string= '/blogs';
 
+  // 博客相关
+
   static query_blog_all: string= Config.baseUrl + '/blog/all';
 
   static query_blog_by_page: string= Config.baseUrl + '/blog/page/';
@@ -118,5 +120,18 @@ export class  Config{
 
   static vote_user: string = Config.baseUrl + '/blog/vote/user:';
 
-  static user_vote_info: string ='/info';
+  static user_vote_info: string = '/info';
+
+  //搜索相关
+  static search_base: string = Config.baseUrl+'/search';
+
+  static search_all: string = Config.search_base + '/all';
+
+  static search_user_info: string = Config.search_base + '/user-info';
+
+  static search_username: string = Config.search_base + '/username';
+
+  static search_blog_info: string = Config.search_base + '/blog-info';
+
+  static search_blog_content: string = Config.search_base + '/blog-content';
 }

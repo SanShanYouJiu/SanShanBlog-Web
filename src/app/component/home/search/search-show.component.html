@@ -1,0 +1,41 @@
+<div class="container  "> 
+    <div class="row main-center">
+      <div class="col-md-1"></div>
+      <div class="col-md-1">
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="active"><a href="#panel-blog-info" data-toggle="tab">博客</a></li>
+            <li role="presentation"><a href="#panel-user-info" data-toggle="tab" (click)="getUserPage(1);">用户</a></li>
+          </ul>
+      </div>
+      <div class="col-md-8" style="background-color:#ffffff;">
+          <div class="tab-content">
+            <div class="tab-pane active" id="panel-blog-info">
+              <ul class="blog-list">
+                <li *ngFor="let blog of asyncBlogs | paginate: { id: 'blogserver', itemsPerPage: 10, currentPage: blogP, totalItems: blogTotal }">
+                  <a routerLinkActive="active" style="color:black" [routerLink]="['/blog-detail',blog.id]">{{blog.title}}</a>
+                </li>
+              </ul>
+              <div class="has-text-centered">
+                <div class="spinner" [ngClass]="{ 'hidden': !blogLoading }"></div>
+                <pagination-controls class="my-pagination" (pageChange)="getBlogPage($event)" id="blogserver"></pagination-controls>
+              </div>
+            </div>
+  
+            <div class="tab-pane" id="panel-user-info">
+              <div class="tab-pane active" id="panel-blog-info">
+                <ul class="blog-list">
+                  <li *ngFor="let user of asyncUsers | paginate: { id: 'userserver', itemsPerPage: 10, currentPage: userP, totalItems: userTotal }">
+                    <a routerLinkActive="active" style="color:black" [routerLink]="['/spec-user',user.username]">{{user.username}}</a>
+                  </li>
+                </ul>
+                <div class="has-text-centered">
+                  <div class="spinner" [ngClass]="{ 'hidden': !userLoading }"></div>
+                  <pagination-controls class="my-pagination" (pageChange)="getUserPage($event)" id="userserver"></pagination-controls>
+                </div>
+            </div>
+          </div>
+
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    </div>

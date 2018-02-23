@@ -5,12 +5,12 @@ import { UserInfoService } from 'app/service/user-info.service';
 import { Blog } from 'app/pojo/blog';
 
 @Component({
-  selector: 'spec-users',
-  templateUrl: 'spec-users-info.component.html',
-  styleUrls: ['spec-users-info.component.css']
+  selector: 'spec-user',
+  templateUrl: 'spec-user-info.component.html',
+  styleUrls: ['spec-user-info.component.css']
 })
 
-export class SpecificUsersInfoComponent implements OnInit {
+export class SpecificUserInfoComponent implements OnInit {
   p:number = 1;
   total: number;
   username: string;

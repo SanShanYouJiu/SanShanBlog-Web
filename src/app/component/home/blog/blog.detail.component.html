@@ -11,7 +11,7 @@
               <p><strong>时间:</strong>{{blog.time}}</p>
               <p><strong>类型:</strong>{{blog.type}}</p>
               <p><strong> 作者:</strong>
-              <a routerLink="active" [routerLink]="['/spec-users',blog.user]">{{blog.user}}</a>
+              <a routerLink="active" [routerLink]="['/spec-user',blog.user]">{{blog.user}}</a>
               </p>
               <hr />
           
@@ -37,6 +37,7 @@
           </div>
           <div  (window:resize)="onResize($event)"   [innerHtml]="uEditorBlog.content">
           </div>
+          <!-- <disqus [identifier]="pageId"></disqus> -->
         </div>
         
       </div>

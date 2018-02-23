@@ -15,6 +15,8 @@ export class HeaderComponent implements OnInit {
   LittleTitle = '今日无事';
   MoreFunction = '更多功能等待扩展..';
 
+  key : string ;
+
   constructor(private router: Router,
              private  authenticationService:AuthenticationService) {
   }
@@ -24,6 +26,14 @@ export class HeaderComponent implements OnInit {
 
   logout(){
      this.authenticationService.logout();
+  }
+
+  search(){ 
+   if(this.key !== null && this.key !=='' && this.key !== undefined){
+       this.router.navigate(['/search-show/'+this.key]);
+   } else{
+     return;
+   }
   }
 
   //判断是否显示头部和尾部
