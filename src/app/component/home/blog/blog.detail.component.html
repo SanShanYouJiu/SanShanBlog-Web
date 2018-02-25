@@ -1,4 +1,4 @@
-<div class="container" *ngIf="blog">
+<div class="container"  >
   <div class="row clearfix">
     <div class="col-md-12 column">
       <div class="row clearfix">
@@ -33,7 +33,7 @@
           <h3 class="text-center">
             {{blog.title}}
           </h3>
-          <div  (window:resize)="onResize($event)"  [innerHtml]="markdownblog.content">
+          <div  (window:resize)="onResize($event)"    [innerHtml]="markdownblog.content">
           </div>
           <div  (window:resize)="onResize($event)"   [innerHtml]="uEditorBlog.content">
           </div>

@@ -1,4 +1,6 @@
-import { Component, OnInit, AfterViewInit, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, OnInit,OnDestroy,  AfterContentInit, ElementRef, ViewChild } from '@angular/core';
+// tslint:disable-next-line:import-spacing
+import {ChangeDetectionStrategy, ChangeDetectorRef} from  '@angular/core';
 import { MarkDownBlog } from '../../../pojo/markdown-blog';
 import { UEditorBlog } from '../../../pojo/ueditor-blog';
 import { Blog } from '../../../pojo/blog';
@@ -16,10 +18,14 @@ import { BlogVoteInfo } from 'app/pojo/blog-vote-info';
   styleUrls: ['blog.detail.component.css']
 })
 
-export class BlogDetailComponent implements OnInit, AfterViewInit {
+export class BlogDetailComponent implements OnInit, OnDestroy , AfterContentInit {
 
 
-  blog: Blog;
+  pageid = '/blog-detail/';
+
+  private timer;
+
+  blog: Blog = new Blog();
 
   blogVoteinfo: BlogVoteInfo = new BlogVoteInfo();
 
@@ -36,33 +42,53 @@ export class BlogDetailComponent implements OnInit, AfterViewInit {
     private blogService: BlogService,
     private location: Location,
     private voteService: VoteService,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private ref: ChangeDetectorRef
   ) {
   }
 
 
   ngOnInit() {
     this.route.params
-      .switchMap((params: Params) => this.blogService.getBlog_by_id(+params['id']))
-      .subscribe(response => {
-        this.blog = response.data;
-        if (this.blog.type === 1) {
-          const HyperDown = require('hyperdown');
-          this.markdownblog = new MarkDownBlog();
-          const parser = new HyperDown, html = parser.makeHtml(this.blog.content);
-          this.markdownblog.content = html;
-        }
-        // tslint:disable-next-line:one-line
-        else {
-          this.uEditorBlog = new UEditorBlog();
-          this.uEditorBlog.content = this.blog.content;
-        }
-        this.get_blog_info(this.blog.id);
-      });
+    .switchMap((params: Params) => this.blogService.getBlog_by_id(+params['id']))
+    .subscribe(response => {
+      this.blog = response.data;
+      if (this.blog.type === 1) {
+        const HyperDown = require('hyperdown');
+        this.markdownblog = new MarkDownBlog();
+        const parser = new HyperDown, html = parser.makeHtml(this.blog.content);
+        this.markdownblog.content = html;
+      } else {
+        this.uEditorBlog = new UEditorBlog();
+        this.uEditorBlog.content = this.blog.content;
+      }
+      this.get_blog_info(this.blog.id);
+      // this.pageid += this.blog.id;
+    });
   }
 
-  ngAfterViewInit(): void {
+  ngOnDestroy(): void {
+    if (this.timer) {
+      clearInterval(this.timer);
+    }
   }
+
+  ngAfterContentInit(): void {
+    let i = 0;
+    this.timer = setInterval(() => {// 设置定时刷新事件，每隔100ms刷新
+      this.img_width_change(window.innerWidth, window.innerHeight);
+      const imgs = this.blogContentDiv.nativeElement.getElementsByTagName('img');
+      if (imgs.length > 0) {
+        clearInterval(this.timer);
+      }
+      i++;
+      // 超过10S 未响应 默认超时
+      if (i >= 100) {
+        clearInterval(this.timer);
+      }
+    }, 100);
+  }
+
 
   onResize(event) {
     // tslint:disable-next-line:no-unused-expression
@@ -72,13 +98,12 @@ export class BlogDetailComponent implements OnInit, AfterViewInit {
   }
 
   img_width_change(contentWidth: number, contentHeight: number) {
+    const imgs = this.blogContentDiv.nativeElement.getElementsByTagName('img');
     if (contentHeight / contentWidth > 1.2) {
-      const imgs = this.blogContentDiv.nativeElement.getElementsByTagName('img');
       for (let i = 0; i < imgs.length; i++) {
         imgs[i].style.width = '100%';
       }
     } else {
-      const imgs = this.blogContentDiv.nativeElement.getElementsByTagName('img');
       for (let i = 0; i < imgs.length; i++) {
         imgs[i].style.width = '';
       }

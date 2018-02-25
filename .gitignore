@@ -1,42 +1,39 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
-
-# compiled output
-/dist
-/tmp
-/out-tsc
-
-# dependencies
-/node_modules
-
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-testem.log
-/typings
-
+ 
 # e2e
 /e2e/*.js
 /e2e/*.map
 
-# System Files
+# src
+
+# 暂时这样 后期会有需要再改
+*js
+*js.map
+!karma.conf.js
+!protractor.conf.js
+
+
+dist/
+dist.tar
+dist.tar.gz
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# IDEs
+.idea/
+jsconfig.json
+.vscode/
+
+# Typings file.
+typings/
+
+# Misc
+tmp/
+
+# Mac OSX Finder files.
+**/.DS_Store
 .DS_Store
-Thumbs.db
+
+!.gitignore 
+ 
