@@ -24,7 +24,7 @@
     "@angular/router": "^4.0.0",
     "@types/node": "^6.0.78",
     "core-js": "^2.4.1",
-    "hyperdown": "^2.3.1",
+    "marked": "^0.3.17",
     "ng2-bootstrap": "^1.6.3",
     "ng2-file-upload": "^1.2.1",
     "ng2-pagination": "^2.0.2",

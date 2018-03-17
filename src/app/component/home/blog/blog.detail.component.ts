@@ -1,6 +1,6 @@
-import { Component, OnInit,OnDestroy,  AfterContentInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterContentInit, ElementRef, ViewChild } from '@angular/core';
 // tslint:disable-next-line:import-spacing
-import {ChangeDetectionStrategy, ChangeDetectorRef} from  '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MarkDownBlog } from '../../../pojo/markdown-blog';
 import { UEditorBlog } from '../../../pojo/ueditor-blog';
 import { Blog } from '../../../pojo/blog';
@@ -12,13 +12,14 @@ import { BlogService } from '../../../service/blog.service';
 import { VoteService } from 'app/service';
 import { BlogVoteInfo } from 'app/pojo/blog-vote-info';
 
+
 @Component({
   selector: 'blog-detail',
   templateUrl: 'blog.detail.component.html',
   styleUrls: ['blog.detail.component.css']
 })
 
-export class BlogDetailComponent implements OnInit, OnDestroy , AfterContentInit {
+export class BlogDetailComponent implements OnInit, OnDestroy, AfterContentInit {
 
 
   pageid = '/blog-detail/';
@@ -50,21 +51,32 @@ export class BlogDetailComponent implements OnInit, OnDestroy , AfterContentInit
 
   ngOnInit() {
     this.route.params
-    .switchMap((params: Params) => this.blogService.getBlog_by_id(+params['id']))
-    .subscribe(response => {
-      this.blog = response.data;
-      if (this.blog.type === 1) {
-        const HyperDown = require('hyperdown');
-        this.markdownblog = new MarkDownBlog();
-        const parser = new HyperDown, html = parser.makeHtml(this.blog.content);
-        this.markdownblog.content = html;
-      } else {
-        this.uEditorBlog = new UEditorBlog();
-        this.uEditorBlog.content = this.blog.content;
-      }
-      this.get_blog_info(this.blog.id);
-      // this.pageid += this.blog.id;
-    });
+      .switchMap((params: Params) => this.blogService.getBlog_by_id(+params['id']))
+      .subscribe(response => {
+        this.blog = response.data;
+        if (this.blog.type === 1) {
+          // const HyperDown = require('hyperdown');
+          const marked = require('marked');
+          const md = marked.setOptions({
+            renderer: new marked.Renderer(),
+            gfm: true,
+            tables: true,
+            breaks: false,
+            pedantic: false,
+            sanitize: false,
+            smartLists: true,
+            smartypants: false
+          });
+          this.markdownblog = new MarkDownBlog();
+          const html = marked(this.blog.content);
+          this.markdownblog.content = html;
+        } else {
+          this.uEditorBlog = new UEditorBlog();
+          this.uEditorBlog.content = this.blog.content;
+        }
+        this.get_blog_info(this.blog.id);
+        // this.pageid += this.blog.id;
+      });
   }
 
   ngOnDestroy(): void {
@@ -78,15 +90,12 @@ export class BlogDetailComponent implements OnInit, OnDestroy , AfterContentInit
     this.timer = setInterval(() => {// 设置定时刷新事件，每隔100ms刷新
       this.img_width_change(window.innerWidth, window.innerHeight);
       const imgs = this.blogContentDiv.nativeElement.getElementsByTagName('img');
-      if (imgs.length > 0) {
-        clearInterval(this.timer);
-      }
       i++;
-      // 超过10S 未响应 默认超时
-      if (i >= 100) {
+      // 超过6S 未响应 默认超时
+      if (i >= 30) {
         clearInterval(this.timer);
       }
-    }, 100);
+    }, 200);
   }
 
 
