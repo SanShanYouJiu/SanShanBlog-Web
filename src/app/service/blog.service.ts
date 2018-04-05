@@ -10,13 +10,6 @@ export class BlogService {
   constructor(private http: Http) { }
 
 
-  getBlog_All(): Promise<any> {
-    return this.http.get(Config.query_blog_all)
-      .toPromise()
-      .then(response => response.json())
-      .catch(LogService.handleError);
-  }
-
   getBlog_by_page(pageRows: number, pageNum: number): Promise<any> {
     return this.http.get(Config.query_blog_by_page+"pageRows:"+pageRows+"/pageNum:"+pageNum)
       .toPromise()
@@ -30,15 +23,6 @@ export class BlogService {
       .then(response => response.json())
       .catch(LogService.handleError);
   }
-
-
-  delete_by_id(id: number): Promise<any> {
-    return this.http.delete(Config.delete_blog_by_id+id, this.jwt())
-      .toPromise()
-      .then(response => response.json())
-      .catch(LogService.handleError);
-  }
-
 
   getBlog_tag_all(): Promise<any> {
     return this.http.get(Config.query_tag_all)
@@ -60,11 +44,6 @@ getTag_by_page(pageRows: number, pageNum: number):Promise<any>{
     .then(response => response.json())
     .catch(LogService.handleError);
 }
-
-  getBlog_title_all(): Promise<any> {
-    return this.http.get(Config.query_title_all).toPromise().then(response => response.json())
-      .catch(LogService.handleError);
-  }
 
   getBlog_by_title(title: string): Promise<any> {
     return this.http.get(Config.query_by_title+title)
@@ -93,20 +72,6 @@ getTag_by_page(pageRows: number, pageNum: number):Promise<any>{
       .toPromise()
       .then(response => response.json())
       .catch(LogService.handleError);
-  }
-
-
-  getBlog_date_all(): Promise<any> {
-    return this.http.get(Config.query_date_all).toPromise().then(response => response.json()).catch(LogService.handleError);
-  }
-
-  private jwt() {
-    // create authorization header with jwt token
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if (currentUser && currentUser.token) {
-      const headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
-      return new RequestOptions({ headers: headers });
-    }
   }
 
 }

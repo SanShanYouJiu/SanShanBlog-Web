@@ -28,10 +28,11 @@ export class HeaderComponent implements OnInit {
      this.authenticationService.logout();
   }
 
-  search(){ 
-   if(this.key !== null && this.key !=='' && this.key !== undefined){
-       this.router.navigate(['/search-show/'+this.key]);
-   } else{
+  search() { 
+   if (this.key !== null && this.key !=='' && this.key !== undefined) {
+       this.router.navigate(['/search-show/' + this.key]);
+       this.key = '';
+   } else {
      return;
    }
   }

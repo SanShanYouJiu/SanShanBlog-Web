@@ -1,7 +1,9 @@
 export class  Config{
-  static baseUrl= 'http://localhost/api/';
+  static baseUrl= 'http://localhost/api';
 
-  static  main_base= Config.baseUrl + '/main';
+  static main_base= Config.baseUrl + '/main';
+
+  static auth_base = Config.baseUrl + '/auth';
 
   /**
    * 首页发送建议 文本框方式
@@ -15,17 +17,17 @@ export class  Config{
    */
   static index_advice_upload: string= Config.main_base + '/index/advice/file';
 
-  static login: string= Config.main_base + '/auth/login';
+  static login: string= Config.auth_base + '/jwt/token';
 
   static register: string= Config.main_base + '/auth/register';
 
   static register_novalidate: string= Config.main_base + '/auth/register-novalidate';
 
   // 验证码
-  static codeValidate= Config.main_base + '/codeValidate';
+  static codeValidate= Config.auth_base + '/codeValidate';
 
   // 刷新验证token有效期
-  static refresh_token: string= Config.main_base + '/auth/refresh-token';
+  static refresh_token: string= Config.auth_base + '/jwt/refresh';
 
   // 是否可以登录
   static login_status: string = Config.main_base + '/auth/login-status';
@@ -63,8 +65,6 @@ export class  Config{
 
   // 博客相关
 
-  static query_blog_all: string= Config.main_base + '/blog/all';
-
   static query_blog_by_page: string= Config.main_base + '/blog/page/';
 
   static query_blog_by_id: string= Config.main_base + '/blog/id/';
@@ -72,8 +72,6 @@ export class  Config{
   static delete_blog_by_id: string= Config.main_base + '/blog/id/';
 
   static query_by_title: string= Config.main_base + '/blog/title/';
-
-  static query_title_all: string = Config.main_base + '/blog/title-all';
 
   static query_title_by_page: string = Config.main_base + '/blog/title-page/';
 
@@ -85,13 +83,10 @@ export class  Config{
 
   static query_by_date: string = Config.main_base + '/blog/date/';
 
-  static query_date_all: string = Config.main_base + '/blog/date-all';
-
   static query_date_by_page: string = Config.main_base + '/blog/date-page/';
 
   static insert_markdown_blog: string= Config.main_base + '/markdown-editor/blog';
 
-  static markdown_query_all: string = Config.main_base + '/markdown-editor/blog/all';
 
   static delete_markdown_blog: string= Config.main_base + '/markdown-editor/blog/id:';
 
@@ -101,7 +96,6 @@ export class  Config{
 
   static insert_ueditor_blog: string = Config.main_base + '/ueditor-editor/blog';
 
-  static ueditor_query_all: string = Config.main_base + '/ueditor-editor/blog/all';
 
   static delete_ueditor_blog: string= Config.main_base + '/ueditor-editor/blog/id:';
 
@@ -116,11 +110,11 @@ export class  Config{
 
   static blog_vote_info: string = '/info';
 
-  static vote_ip: string = Config.baseUrl + '/blog/vote/ip:';
+  static vote_ip: string = Config.main_base + '/blog/vote/ip:';
 
   static ip_vote_info: string = '/ip-vote-info';
 
-  static vote_user: string = Config.baseUrl + '/blog/vote/user:';
+  static vote_user: string = Config.main_base + '/blog/vote/user:';
 
   static user_vote_info: string = '/info';
 

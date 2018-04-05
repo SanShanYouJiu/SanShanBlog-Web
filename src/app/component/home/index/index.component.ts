@@ -79,11 +79,6 @@ export class IndexComponent implements OnInit {
   }
 
 
-  getBlogs(): void {
-    this.blogService.getBlog_All()
-      .then(response => this.blogs = response.data);
-  }
-
   changeFileFlag() {
     this.filechange = 1;
   }

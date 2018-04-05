@@ -14,7 +14,6 @@ export class UEditorService{
 
    }
 
-
   insert_blog(uEditorBlog: UEditorBlog): Promise<any> {
     const urlParams = new URLSearchParams();
     if (uEditorBlog.content != null) {
@@ -30,13 +29,6 @@ export class UEditorService{
     }
     return this.http.post(Config.insert_ueditor_blog, urlParams, this.jwt()).
       toPromise()
-      .then(response => response.json())
-      .catch(LogService.handleError);
-  }
-
-  query_all(): Promise<any>{
-    return this.http.get(Config.ueditor_query_all, this.jwt())
-      .toPromise()
       .then(response => response.json())
       .catch(LogService.handleError);
   }
@@ -64,7 +56,7 @@ export class UEditorService{
     // create authorization header with jwt token
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser && currentUser.token) {
-      const headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.token });
+      const headers = new Headers({ 'Authorization': currentUser.token });
       return new RequestOptions({ headers: headers });
     }
   }

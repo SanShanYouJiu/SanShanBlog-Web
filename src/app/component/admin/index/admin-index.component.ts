@@ -56,14 +56,14 @@ export class AdminIndexComponent implements OnInit {
   }
 
   change_user_info() {
-    this.adminIndexService.change_user_info(this.userinfo.username, this.model.avater, this.model.blogLink)
+    this.adminIndexService.change_user_info(this.model.avater, this.model.blogLink)
       .then(response => {
         if (response.status === 0) {
           this.alertService.success('成功');
         } else {
           this.alertService.error(response.msg);
         }
-      })
+      });
   }
 
   deleteBlogById(id: number) {

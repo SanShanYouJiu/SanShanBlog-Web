@@ -37,9 +37,8 @@ export class AdminIndexService {
       .catch(LogService.handleError);
   }
 
-  change_user_info(username: string, avater: string, blogLink: string): Promise<any> {
+  change_user_info(avater: string, blogLink: string): Promise<any> {
     const urlParams = new URLSearchParams();
-    urlParams.set('username', username);
     if (avater != null) {
       urlParams.set('avatar', avater);
     }
@@ -78,7 +77,7 @@ export class AdminIndexService {
     // create authorization header with jwt token
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser && currentUser.token) {
-      let headers = new Headers({'Authorization': 'Bearer ' + currentUser.token});
+      let headers = new Headers({'Authorization': currentUser.token});
       return new RequestOptions({headers: headers});
     }
   }
