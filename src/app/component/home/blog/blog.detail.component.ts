@@ -22,7 +22,7 @@ import { BlogVoteInfo } from 'app/pojo/blog-vote-info';
 export class BlogDetailComponent implements OnInit, OnDestroy, AfterContentInit {
 
 
-  pageid = '/blog-detail/';
+  url = document.location.href;
 
   private timer;
 
@@ -75,7 +75,6 @@ export class BlogDetailComponent implements OnInit, OnDestroy, AfterContentInit 
           this.uEditorBlog.content = this.blog.content;
         }
         this.get_blog_info(this.blog.id);
-        // this.pageid += this.blog.id;
       });
   }
 

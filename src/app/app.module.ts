@@ -12,6 +12,7 @@ import {TooltipModule } from 'ng2-bootstrap';
 import { FileUploadModule } from 'ng2-file-upload';
 import {PopoverModule} from 'ngx-popover';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+import { LivereModule } from 'ngx-livere';
 
 import {LoginComponent} from './component/home/auth/login/login.component';
 import {RegisterComponent} from './component/home/auth/register/register.component';
@@ -75,7 +76,7 @@ import { SearchService } from 'app/service/search.service';
     SpecificUserInfoComponent,
     MarkDownEditorComponent,
     AboutComponent,
-    SearchShowComponent
+    SearchShowComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,8 +91,9 @@ import { SearchService } from 'app/service/search.service';
     Ng2PaginationModule,
     LMarkdownEditorModule,
     PopoverModule,
-    // TODO: 修复Disqus
- 
+    LivereModule.forRoot(
+     'MTAyMC8zMjY1Mi85MjEz'
+  ),
   ],
   providers: [
     AuthGuard,
