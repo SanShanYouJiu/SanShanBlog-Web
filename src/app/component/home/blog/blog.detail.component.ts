@@ -5,12 +5,13 @@ import { MarkDownBlog } from '../../../pojo/markdown-blog';
 import { UEditorBlog } from '../../../pojo/ueditor-blog';
 import { Blog } from '../../../pojo/blog';
 import 'rxjs/add/operator/switchMap';
-import { Params, ActivatedRoute } from '@angular/router';
+import { Params, ActivatedRoute, Router } from '@angular/router';
 // tslint:disable-next-line:import-spacing
 import { Location } from '@angular/common';
 import { BlogService } from '../../../service/blog.service';
 import { VoteService } from 'app/service';
 import { BlogVoteInfo } from 'app/pojo/blog-vote-info';
+import { IfObservable } from 'rxjs/observable/IfObservable';
 
 
 @Component({
@@ -41,6 +42,7 @@ export class BlogDetailComponent implements OnInit, OnDestroy, AfterContentInit 
 
   constructor(private route: ActivatedRoute,
     private blogService: BlogService,
+    private router: Router,
     private location: Location,
     private voteService: VoteService,
     private elementRef: ElementRef,
@@ -70,11 +72,16 @@ export class BlogDetailComponent implements OnInit, OnDestroy, AfterContentInit 
           this.markdownblog = new MarkDownBlog();
           const html = marked(this.blog.content);
           this.markdownblog.content = html;
-        } else {
+        } else if(this.blog.type === 2){
           this.uEditorBlog = new UEditorBlog();
           this.uEditorBlog.content = this.blog.content;
+        }else{
+          //没有该博客类型
         }
         this.get_blog_info(this.blog.id);
+      }, error => {
+        console.log(error);
+        this.router.navigate(['/error']);
       });
   }
 
@@ -147,10 +154,12 @@ export class BlogDetailComponent implements OnInit, OnDestroy, AfterContentInit 
 
   get_blog_info(blogId: number): void {
     this.voteService.get_blog_info(blogId).then(response => {
+      console.log(response);
       if (response.status === 0) {
         this.blogVoteinfo = response.data;
       } else {
-
+       //没有该博客
+       this.router.navigate(['/error']);
       }
     }
     );
