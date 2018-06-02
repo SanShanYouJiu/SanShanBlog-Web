@@ -1,173 +1,177 @@
 <div class="container ">
-  <div class="row clearfix">
     <div class="row clearfix">
-      <div class="col-xs-12 col-sm-12 hidden-md hidden-lg main-center" >
-        <div class="row clearfix ">
-          <div class="col-md-4 col-xs-4 ">
-            <a role="button" routerLinkActive="active" routerLink="/blog-date" class="btn btn-block btn-default btn-small">归档</a>
-          </div>
-          <div class="col-md-4 col-xs-4 ">
-            <a role="button" routerLinkActive="active" routerLink="/blog-tag" class="btn btn-block btn-default btn-small">标签</a>
-          </div>
-          <div class="col-md-4 col-xs-4">
-            <a role="button" routerLinkActive="active" routerLink="/blog-title" class="btn btn-block btn-default btn-small">分类</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row clearfix">
-
-      <div class="col-md-7 col-xs-12 col-sm-12 ">
-        <div class="row">
-          <div class="receipt-main col-xs-12 col-sm-12 col-md-12 ">
-
-            <ul class="blog-list">
-              <li *ngFor="let blog of asyncBlogs | paginate: { id: 'server', itemsPerPage: 20, currentPage: p, totalItems: total }">
-                <a routerLinkActive="active" style="color:black" [routerLink]="['/blog-detail',blog.id]">{{blog.title}}</a>
-              </li>
-            </ul>
-            <div class="has-text-centered">
-              <div  [ngClass]="{ 'hidden': !loading }"></div>
-              <pagination-controls class="my-pagination" (pageChange)="getPage($event)" id="server"></pagination-controls>
+        <div class="row clearfix">
+            <div class="col-xs-12 col-sm-12 hidden-md hidden-lg main-center">
+                <div class="row clearfix ">
+                    <div class="col-md-4 col-xs-4 ">
+                        <a role="button" routerLinkActive="active" routerLink="/blog-date" class="btn btn-block btn-default btn-small">归档</a>
+                    </div>
+                    <div class="col-md-4 col-xs-4 ">
+                        <a role="button" routerLinkActive="active" routerLink="/blog-tag" class="btn btn-block btn-default btn-small">标签</a>
+                    </div>
+                    <div class="col-md-4 col-xs-4">
+                        <a role="button" routerLinkActive="active" routerLink="/blog-title" class="btn btn-block btn-default btn-small">分类</a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
+        <div class="row clearfix">
 
-      </div>
-      <div class="col-md-1 hidden-xs hidden-sm"></div>
+            <div class="col-md-7 col-xs-12 col-sm-12 ">
+                <div class="row">
+                    <div class="receipt-main col-xs-12 col-sm-12 col-md-12 ">
 
+                        <ul class="blog-list">
+                            <li *ngFor="let blog of asyncBlogs | paginate: { id: 'server', itemsPerPage: 20, currentPage: p, totalItems: total }">
+                                <a routerLinkActive="active" style="color:black" [routerLink]="['/blog-detail',blog.id]">{{blog.title}}</a>
+                            </li>
+                        </ul>
+                        <div class="has-text-centered">
+                            <div [ngClass]="{ 'hidden': !loading }"></div>
+                            <pagination-controls class="my-pagination" (pageChange)="getPage($event)" id="server"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
 
-      <div class="col-md-4  hidden-xs hidden-sm" >
-        <div *ngIf="!isLogin()" class="col-md-12 main-login main-center">
-          <div class="panel-heading">
-            <div class="panel-title text-center">
-              <h4 class="title">加入我们</h4>
-              <hr />
             </div>
-          </div>
-          <div>
-            <form class="form-horizontal"   (ngSubmit)="register()" #f="ngForm"  novalidate action="#">
+            <div class="col-md-1 hidden-xs hidden-sm"></div>
 
-              <div class="form-group">
-                <div class="cols-sm-10">
-                  <div class="input-group">
-                    <span class="input-group-addon">
+
+            <div class="col-md-4  hidden-xs hidden-sm">
+                <div *ngIf="!isLogin()" class="col-md-12 main-login main-center">
+                    <div class="panel-heading">
+                        <div class="panel-title text-center">
+                            <h4 class="title">加入我们</h4>
+                            <hr />
+                        </div>
+                    </div>
+                    <div>
+                        <form class="form-horizontal" (ngSubmit)="register()" #f="ngForm" novalidate action="#">
+
+                            <div class="form-group">
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
                       <i class="fa fa-user fa" aria-hidden="true"></i>
                     </span>
-                    <input type="text" class="form-control"  [(ngModel)]="usermodel.username" name="name" id="name" placeholder="用户名" required/>
-                  </div>
-                </div>
-              </div>
+                                        <input type="text" class="form-control" [(ngModel)]="usermodel.username" name="name" id="name" placeholder="用户名" required/>
+                                    </div>
+                                </div>
+                            </div>
 
-              <div class="form-group">
-                <div class="cols-sm-10">
-                  <div class="input-group">
-                    <span class="input-group-addon">
+                            <div class="form-group">
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
                       <i class="fa fa-envelope fa" aria-hidden="true"></i>
                     </span>
-                    <input type="text" class="form-control" [(ngModel)]="usermodel.email" name="email" id="email" placeholder="邮箱" required/>
-                  </div>
-                </div>
-              </div>
+                                        <input type="text" class="form-control" [(ngModel)]="usermodel.email" name="email" id="email" placeholder="邮箱" required/>
+                                    </div>
+                                </div>
+                            </div>
 
 
-              <div class="form-group">
-                <div class="cols-sm-10">
-                  <div class="input-group">
-                    <span class="input-group-addon">
+                            <div class="form-group">
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
                       <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
                     </span>
-                    <input type="password" class="form-control" [(ngModel)]="usermodel.password" name="password" id="password" placeholder="密码(不少于6位)" required />
-                  </div>
-                </div>
-              </div>
+                                        <input type="password" class="form-control" [(ngModel)]="usermodel.password" name="password" id="password" placeholder="密码(不少于6位)" required />
+                                    </div>
+                                </div>
+                            </div>
 
-              <div class="form-group">
-                <div class="cols-sm-10">
-                  <div class="input-group">
-                    <span class="input-group-addon">
+                            <div class="form-group">
+                                <div class="cols-sm-10">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
                       <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
                     </span>
-                    <input type="password" class="form-control"[(ngModel)]="repeatPassword" name="confirm" id="confirm" placeholder="确认密码"  required/>
-                  </div>
+                                        <input type="password" class="form-control" [(ngModel)]="repeatPassword" name="confirm" id="confirm" placeholder="确认密码" required/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group ">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block login-button">立即注册</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-              </div>
 
-              <div class="form-group ">
-                <button type="submit" class="btn btn-primary btn-lg btn-block login-button">立即注册</button>
-              </div>
-            </form>
-          </div>
-        </div>
 
-   
-        <div class="col-md-12  nav-center" >
-          <div class="row clearfix">
-            <div class="col-md-4 ">
-              <a role="button" routerLinkActive="active" routerLink="/blog-date" class="btn btn-block btn-default btn-small">归档</a>
-            </div>
-            <div class="col-md-4 ">
-              <a role="button" routerLinkActive="active" routerLink="/blog-tag" class="btn btn-block btn-default btn-small">标签</a>
-            </div>
-            <div class="col-md-4  ">
-              <a role="button" routerLinkActive="active" routerLink="/blog-title" class="btn btn-block btn-default btn-small">分类</a>
-            </div>
-          </div>
-          <hr />
-        </div>
-        <div class="col-md-12  nav-center " >
-          <div class="panel-heading">
-            <div class="panel-title text-center">
-              <h4 class="title">推荐阅读</h4>
-              <hr />
-            </div>
-          
-          </div>
-          
-          <div class="panel-heading">
-            <div class="panel-title text-center">
-              <h4 class="title">推荐用户</h4>
-              <hr />
-            </div>
-          </div>
-        </div>
-        
+                <div class="col-md-12  nav-center">
+                    <div class="row clearfix">
+                        <div class="col-md-4 ">
+                            <a role="button" routerLinkActive="active" routerLink="/blog-date" class="btn btn-block btn-default btn-small">归档</a>
+                        </div>
+                        <div class="col-md-4 ">
+                            <a role="button" routerLinkActive="active" routerLink="/blog-tag" class="btn btn-block btn-default btn-small">标签</a>
+                        </div>
+                        <div class="col-md-4  ">
+                            <a role="button" routerLinkActive="active" routerLink="/blog-title" class="btn btn-block btn-default btn-small">分类</a>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="isLogin()" class="col-md-12  nav-center ">
+                    <div class="panel-heading">
+                        <div class="panel-title text-center">
+                            <h4 class="title">你可能感兴趣的用户</h4>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
 
-       
 
-        <!-- <img alt="140x140" src="assets/images/defaultHomePage.jpg" class="img-responsive img-rounded" /> -->
-        <div class="col-md-12  nav-center " >
-        <div class="alert alert-success alert-dismissable"  >
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true" >×</button>
-          <h4>
-            如果您有什么建议的话
-          </h4>
-          <strong>注意!</strong> 您可以在下方进行反馈
-          <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=wba2tu-59PXy8-D28oGwsO_irqw" class="alert-link">也可以直接发Email给我</a>
-        </div>
+                <div class="col-md-12  nav-center ">
+                    <div class="panel-heading">
+                        <div class=" text-center">
+                            <h4 class="title">推荐阅读</h4>
+                            <ul class="recommend-list">
+                                <li *ngFor="let recommendBlog of blogRecommends ">
+                                    <a routerActive="active" style="color:darkslategray" [routerLink]="['/blog-detail',recommendBlog.id]">
+                                        <p align="left">{{recommendBlog.title}}</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
 
-        <form class="form-horizontal" enctype="multipart/form-data">
-          <div class="form-group">
-            <div class="row">
-              <div class="col-xs-12">
-                <input type="email" class="form-control" id="exampleInputEmail1" #emailfeedback required placeholder="您的Email" />
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="row">
-              <div class="col-xs-12">
-                <textarea class="form-control" rows="3" placeholder="您的意见" #opinionfeedback></textarea>
-              </div>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-default btn-block" (click)="feedback()">
+                    </div>
+
+                </div>
+
+
+
+                <!-- <img alt="140x140" src="assets/images/defaultHomePage.jpg" class="img-responsive img-rounded" /> -->
+                <div class="col-md-12  nav-center ">
+                    <div class="alert alert-success alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> 您可以在下方进行反馈
+                        <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=wba2tu-59PXy8-D28oGwsO_irqw" class="alert-link">也可以直接发Email给我</a>
+                    </div>
+
+                    <form class="form-horizontal" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <input type="email" class="form-control" id="exampleInputEmail1" #emailfeedback required placeholder="您的Email" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <textarea class="form-control" rows="3" placeholder="您的意见" #opinionfeedback></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-default btn-block" (click)="feedback()">
             <strong>反馈</strong>
           </button>
-        </form>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-  </div>
+    </div>
 </div>

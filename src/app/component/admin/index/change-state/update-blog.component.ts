@@ -42,12 +42,21 @@ export class UpdateBlogComponent implements OnInit {
       .subscribe(response => {
         this.blog = response.data;
         if (this.blog.type === 1) {
-          const  HyperDown = require('hyperdown');
+          const marked = require('marked');
+          const md = marked.setOptions({
+            renderer: new marked.Renderer(),
+            gfm: true,
+            tables: true,
+            breaks: false,
+            pedantic: false,
+            sanitize: false,
+            smartLists: true,
+            smartypants: false
+          });
           this.markdownblog = new MarkDownBlog();
-          const  parser = new HyperDown, html = parser.makeHtml(this.blog.content);
+          const html = marked(this.blog.content);
           this.markdownblog.content = html;
-        }
-        else {
+        } else {
           this.uEditorBlog = new UEditorBlog();
           this.uEditorBlog.content = this.blog.content;
         }

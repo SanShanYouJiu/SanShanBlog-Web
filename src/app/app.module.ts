@@ -52,6 +52,7 @@ import { AboutComponent } from 'app/component/home/about/about.component';
 import { LeaveGuard } from './service/guard/leave.guard';
 import { SearchShowComponent } from './component/home/search/search-show.component';
 import { SearchService } from 'app/service/search.service';
+import { RecommendService } from './service/recommend.service';
 
 
 @NgModule({
@@ -106,6 +107,7 @@ import { SearchService } from 'app/service/search.service';
     AlertService,
     VoteService,
     SearchService,
+    RecommendService,
 
     CodeValidateService,
     BlogService],

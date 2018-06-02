@@ -130,4 +130,8 @@ export class  Config{
   static search_blog_info: string = Config.search_base + '/blog-info';
 
   static search_blog_content: string = Config.search_base + '/blog-content';
+
+  // 推荐
+  static recommend_base: string = Config.main_base + '/recommend';
+  static blog_recommend: string = Config.recommend_base + '/blogs';
 }

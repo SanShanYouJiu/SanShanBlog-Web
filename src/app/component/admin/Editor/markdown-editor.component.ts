@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { MarkDownService } from "../../../service/markdown-editor.service";
 import { MarkDownBlog } from "../../../pojo/markdown-blog";
 import { AlertService } from "../../../service/alert.service";
-import { MarkdownEditorComponent } from '../../../../../node_modules/_ngx-markdown-editor@1.1.6@ngx-markdown-editor';
+import { MarkdownEditorComponent } from 'ngx-markdown-editor';
 
 @Component({
   selector: 'markdown-editor',

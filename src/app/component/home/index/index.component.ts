@@ -15,8 +15,9 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/delay';
-import { PaginationInstance } from '../../../../../node_modules/_ng2-pagination@2.0.2@ng2-pagination';
+import { PaginationInstance } from 'ng2-pagination';
 import { UserService } from 'app/service/user.service';
+import { RecommendService } from '../../../service/recommend.service';
 
 const URL = Config.index_advice_upload;
 
@@ -24,7 +25,7 @@ const URL = Config.index_advice_upload;
 @Component({
   selector: 'index',
   templateUrl: 'index.component.html',
-  styleUrls:["index.component.css"]
+  styleUrls: ["index.component.css"]
 })
 
 
@@ -50,6 +51,8 @@ export class IndexComponent implements OnInit {
 
   filechange: number;
 
+  blogRecommends: Observable<Blog[]>;
+
   public uploader: FileUploader = new FileUploader({
     url: URL,
   });
@@ -67,6 +70,7 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     this.getPage(1);
+    this.getRecommend();
   }
 
 
@@ -74,6 +78,7 @@ export class IndexComponent implements OnInit {
     private userService: UserService,
     private blogService: BlogService,
     private indexService: IndexService,
+    private recommendService: RecommendService,
     private alertService: AlertService) {
     this.filechange = 0;
   }
@@ -87,17 +92,17 @@ export class IndexComponent implements OnInit {
     this.loading = true;
     this.blogService.getBlog_by_page(20, page)
       .then(
-      res => {
-        if (res.status === 0) {
-          this.total = res.data.total;
-          this.p = res.data.pageNum;
-          this.loading = false;
-          this.asyncBlogs = res.data.completeData;
-        } else {
-          // 出错的情况
-          this.alertService.error(res.msg);
+        res => {
+          if (res.status === 0) {
+            this.total = res.data.total;
+            this.p = res.data.pageNum;
+            this.loading = false;
+            this.asyncBlogs = res.data.completeData;
+          } else {
+            // 出错的情况
+            this.alertService.error(res.msg);
+          }
         }
-      }
       );
     //   .do(res => {
     //     this.total = res.total;
@@ -108,13 +113,27 @@ export class IndexComponent implements OnInit {
   }
 
 
+  getRecommend() {
+    this.recommendService.get_blogRecommends()
+    .then(
+      res => {
+        if ( res.status === 0) {
+         this.blogRecommends = res.data;
+        } else {
+          this.alertService.error(res.msg);
+        }
+      }
+    );
+  }
+
   //判断是否显示头部和尾部
-  isLogin(): boolean{
+  isLogin(): boolean {
     if (localStorage.getItem('currentUser')) {
       // logged in so return true
       return true;
-    }else
-         return false;
+    } else {
+      return false;
+    }
   }
 
   register() {
@@ -122,11 +141,11 @@ export class IndexComponent implements OnInit {
       this.alertService.error('用户名不能为空');
       return;
     }
-    if (this.usermodel.email === undefined || this.usermodel.email ==="") {
+    if (this.usermodel.email === undefined || this.usermodel.email === "") {
       this.alertService.error('邮箱不能为空');
       return;
     }
-    if (this.usermodel.password === undefined || this.usermodel.password ==="") {
+    if (this.usermodel.password === undefined || this.usermodel.password === "") {
       this.alertService.error('密码不能为空');
       return;
     }
@@ -135,22 +154,22 @@ export class IndexComponent implements OnInit {
       return;
     }
 
-    
+
     this.userService.create_novalidate(this.usermodel)
       .subscribe(
-      data => {
-        if (data.status === 0) {
-          this.alertService.success('注册成功', true);
-          this.router.navigate(['/login']);
-        } else {
-          this.alertService.error(data.msg);
+        data => {
+          if (data.status === 0) {
+            this.alertService.success('注册成功', true);
+            this.router.navigate(['/login']);
+          } else {
+            this.alertService.error(data.msg);
+            this.loading = false;
+          }
+        },
+        error => {
+          this.alertService.error(error.data);
           this.loading = false;
-        }
-      },
-      error => {
-        this.alertService.error(error.data);
-        this.loading = false;
-      });
+        });
   }
 
 
@@ -171,21 +190,21 @@ export class IndexComponent implements OnInit {
     } else if (emailValue !== '') {
       this.indexService.feedback(emailValue, opinionValue)
         .subscribe(
-        data => {
-          if (data.status === 0) {
-            this.alertService.success('反馈成功', true);
-            return;
-          } else {
-            LogService.errorMsg('反馈出错:' + data.msg);
-            this.alertService.error(data.msg);
+          data => {
+            if (data.status === 0) {
+              this.alertService.success('反馈成功', true);
+              return;
+            } else {
+              LogService.errorMsg('反馈出错:' + data.msg);
+              this.alertService.error(data.msg);
+              return;
+            }
+          },
+          error => {
+            LogService.error('反馈出错', error);
+            this.alertService.error('反馈出错');
             return;
           }
-        },
-        error => {
-          LogService.error('反馈出错', error);
-          this.alertService.error('反馈出错');
-          return;
-        }
         );
     } else {
       this.alertService.error('email不能为空');
