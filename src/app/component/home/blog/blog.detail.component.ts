@@ -72,10 +72,10 @@ export class BlogDetailComponent implements OnInit, OnDestroy, AfterContentInit 
           this.markdownblog = new MarkDownBlog();
           const html = marked(this.blog.content);
           this.markdownblog.content = html;
-        } else if(this.blog.type === 2){
+        } else if (this.blog.type === 0) {
           this.uEditorBlog = new UEditorBlog();
           this.uEditorBlog.content = this.blog.content;
-        }else{
+        } else {
           //没有该博客类型
         }
         this.get_blog_info(this.blog.id);
@@ -154,7 +154,6 @@ export class BlogDetailComponent implements OnInit, OnDestroy, AfterContentInit 
 
   get_blog_info(blogId: number): void {
     this.voteService.get_blog_info(blogId).then(response => {
-      console.log(response);
       if (response.status === 0) {
         this.blogVoteinfo = response.data;
       } else {
