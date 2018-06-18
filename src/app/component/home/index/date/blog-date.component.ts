@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogService } from '../../../../service/blog.service';
-import { AlertService } from 'app/service';
+import { AlertService, BlogService } from 'app/service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { Blog } from 'app/pojo/blog';
 @Component({
   selector: 'blog-date',
   templateUrl: 'blog-date.component.html'
@@ -11,7 +11,7 @@ export class BlogDateComponent implements OnInit {
   p = 1;
   total: number;
   loading: boolean;
-  asyncDates: Observable<string[]>;
+  asyncDatas: Observable<Blog[]>;
 
   constructor(
     private route: Router,
@@ -31,7 +31,8 @@ export class BlogDateComponent implements OnInit {
           this.total = res.data.total;
           this.p = res.data.pageNum;
           this.loading = false;
-          this.asyncDates = res.data.completeData;
+          console.log(res.data.completeData);
+          this.asyncDatas = res.data.completeData;
         } else {
           this.alertService.error(res.msg);
         }

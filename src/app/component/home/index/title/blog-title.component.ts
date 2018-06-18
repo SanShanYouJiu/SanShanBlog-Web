@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogService } from '../../../../service/blog.service';
-import { AlertService } from 'app/service';
+import { AlertService, BlogService } from 'app/service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { Blog } from 'app/pojo/blog';
 
 @Component({
     selector: 'blog-title',
@@ -13,8 +13,7 @@ export class BlogTitleComponent implements OnInit {
     p = 1;
     total: number;
     loading: boolean;
-    asyncTitles: Observable<string[]>;
-    TitleAll: any[];
+    asyncDatas: Observable<Blog[]>;
     constructor(
         private route: Router,
         private blogService: BlogService,
@@ -33,7 +32,7 @@ export class BlogTitleComponent implements OnInit {
               this.total = res.data.total;
               this.p = res.data.pageNum;
               this.loading = false;
-              this.asyncTitles = res.data.completeData;
+              this.asyncDatas = res.data.completeData;
             } else {
               //  出错的情况
               this.alertService.error(res.msg);

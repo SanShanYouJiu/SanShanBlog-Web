@@ -1,26 +1,26 @@
 <div class="container">
-	<div class="row clearfix">
-		<div class="center-block">
-			<h2 class="text-center">
-				标签
-			</h2>
-		</div>
-		<div class="col-md-12 column">
-			<div class="row clearfix">
-				<div class="col-md-2 column">
-				</div>
-				<div class="col-md-8 column">
-					<ul class="pagination">
-						<li *ngFor="let tag of TagAll  ">
-							<a routerActive="active" style="color:darkslategray" class="btn btn-default" [routerLink]="['/blog-search-show','tag:'+tag]">
-								<h3>{{tag}}</h3>
-							</a>
-						</li>
-					</ul>
-				</div>
-				<div class="col-md-2 column">
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="row clearfix">
+        <div class="center-block">
+            <h2 class="text-center">
+                标签
+            </h2>
+        </div>
+        <div class="col-md-12 column">
+            <div class="row clearfix">
+                <div class="col-md-2 column">
+                </div>
+                <div class="col-md-8 column">
+                    <ul class="pagination">
+                        <li *ngFor="let blog of BlogAll  ">
+                            <a routerActive="active" style="color:darkslategray" class="btn btn-default" [routerLink]="['/blog-search-show','tag:'+blog.tag]">
+                                <h3>{{blog.tag}}</h3>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-2 column">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

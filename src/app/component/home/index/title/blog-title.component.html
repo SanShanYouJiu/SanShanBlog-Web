@@ -12,9 +12,9 @@
                 <div class="col-md-5  col-xs-12 col-sm-12 ">
                     <div class="receipt-main  col-md-12 col-md-offset-1  ">
                         <ul class="blog-list">
-                            <li *ngFor="let title of asyncTitles | paginate: { id: 'server', itemsPerPage: 15, currentPage: p, totalItems: total }">
+                            <li *ngFor="let data of asyncDatas | paginate: { id: 'server', itemsPerPage: 15, currentPage: p, totalItems: total }">
                                 <h3>
-                                    <a routerLinkActive="active"  style="color:darkturquoise" [routerLink]="['/blog-search-show','title:'+title]"><small>{{title}}</small></a>
+                                    <a routerLinkActive="active" style="color:darkturquoise" [routerLink]="['/blog-search-show','title:'+data.title]"><small>{{data.title}}</small></a>
                                 </h3>
                             </li>
                         </ul>

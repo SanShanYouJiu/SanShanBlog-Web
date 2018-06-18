@@ -1,47 +1,49 @@
-<div class="container"  >
-  <div class="row clearfix">
-    <div class="col-md-12 column">
-      <div class="row clearfix">
-        <div class="col-md-2 column">
-          <div class="box">
-            <div class="box-content">
-              <h4 class="tag-title" align="center"  >简要信息</h4>
-              <hr />
-              <p><strong>标签:</strong>{{blog.tag}} </p>
-              <p><strong>时间:</strong>{{blog.time}}</p>
-              <p><strong>类型:</strong>{{blog.type}}</p>
-              <p><strong> 作者:</strong>
-              <a routerLink="active" [routerLink]="['/spec-user',blog.user]">{{blog.user}}</a>
-              </p>
-              <hr />
-          
-            </div>  
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
             <div class="row clearfix">
-              <div class="col-md-2 column">
-                <a class="btn icon-btn btn-default" href="javascript:void(0)" (click)="vote_favour()"><span class="glyphicon btn-glyphicon glyphicon-thumbs-up img-circle text-primary"></span>{{blogVoteinfo.favours}}</a>
-              </div>
-              <div class="col-md-2 column">
-              </div>
-              <div class="col-md-2 column">
-                <a class="btn icon-btn btn-default" href="javascript:void(0)"  (click)="vote_tread()"><span class="glyphicon btn-glyphicon glyphicon-thumbs-down img-circle text-danger"></span> {{blogVoteinfo.treads}}</a>
-              </div>
+                <div class="col-md-2 column">
+                    <div class="box">
+                        <div class="box-content">
+                            <h4 class="tag-title" align="center">简要信息</h4>
+                            <hr />
+                            <p><strong>标签:</strong>{{blog.tag}} </p>
+                            <p><strong>时间:</strong>{{blog.time}}</p>
+                            <!-- TODO: 类型转换为具体的String -->
+                            <p><strong>类型:</strong>{{blog.type}}</p>
+                            <p><strong> 作者:</strong>
+                                <a routerLink="active" [routerLink]="['/spec-user',blog.user]">{{blog.user}}</a>
+                            </p>
+                            <hr />
+
+                        </div>
+                        <div class="row clearfix">
+                            <!--TODO: 按钮元素溢出 -->
+                            <div class="col-md-2 column">
+                                <a class="btn icon-btn btn-default" href="javascript:void(0)" (click)="vote_favour()"><span class="glyphicon btn-glyphicon glyphicon-thumbs-up img-circle text-primary"></span>{{blogVoteinfo.favours}}</a>
+                            </div>
+                            <div class="col-md-2 column">
+                            </div>
+                            <div class="col-md-2 column">
+                                <a class="btn icon-btn btn-default" href="javascript:void(0)" (click)="vote_tread()"><span class="glyphicon btn-glyphicon glyphicon-thumbs-down img-circle text-danger"></span> {{blogVoteinfo.treads}}</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-10 column" #blogContent style="background-color:#ffffff">
+                    <h3 class="text-center">
+                        {{blog.title}}
+                    </h3>
+                    <div (window:resize)="onResize($event)" [innerHtml]="markdownblog.content">
+                    </div>
+                    <div (window:resize)="onResize($event)" [innerHtml]="uEditorBlog.content">
+                    </div>
+                    <livere [refer]="url"></livere>
+                </div>
+
             </div>
-          </div>
 
         </div>
-        <div class="col-md-10 column" #blogContent style="background-color:#ffffff">
-          <h3 class="text-center">
-            {{blog.title}}
-          </h3>
-          <div  (window:resize)="onResize($event)"    [innerHtml]="markdownblog.content">
-          </div>
-          <div  (window:resize)="onResize($event)"   [innerHtml]="uEditorBlog.content">
-          </div>
-          <livere  [refer]="url"></livere >
-        </div>
-        
-      </div>
-      
     </div>
-  </div>
 </div>

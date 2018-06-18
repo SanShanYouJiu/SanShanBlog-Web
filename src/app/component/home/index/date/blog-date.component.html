@@ -1,26 +1,26 @@
 <div class="container">
-  <div class="row clearfix">
-      <div class="col-md-12 column">
-          <div class="center-block">
-              <h2 class="text-center">
-                  归档
-              </h2>
-          </div>
-          <div class="row clearfix">
-              <div class="col-md-4 column">
-              </div>
-              <div class="col-md-6 column">
-                <ul class="pagination">
-                      <li *ngFor="let date of asyncDates | paginate: { id: 'server', itemsPerPage: 8, currentPage: p, totalItems: total }">
-                          <h2 class="text-center"> <a  routerLinkActive="active" [routerLink]="['/blog-search-show','date:'+date]">{{date}}</a>
-                          </h2>
-                      </li>
-                  <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
-                  </ul> 
-              </div>
-              <div class="col-md-2 column"> 
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="center-block">
+                <h2 class="text-center">
+                    归档
+                </h2>
+            </div>
+            <div class="row clearfix">
+                <div class="col-md-4 column">
+                </div>
+                <div class="col-md-6 column">
+                    <ul class="pagination">
+                        <li *ngFor="let data of asyncDatas | paginate: { id: 'server', itemsPerPage: 8, currentPage: p, totalItems: total }">
+                            <h2 class="text-center"> <a routerLinkActive="active" [routerLink]="['/blog-search-show','date:'+data.time]">{{data.time}}</a>
+                            </h2>
+                        </li>
+                        <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
+                    </ul>
+                </div>
+                <div class="col-md-2 column">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>·
